@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: zhangyingcai的个人博客
+title: mumu的个人博客
 subtitle: 咬了一口的苹果
-description: 个人手记
+description: 银河系首席踩坑官@
 keywords: 
 author: YingCai Zhang
 language: zh-CN
@@ -81,3 +81,11 @@ deploy:
   type: git
   repository: https://github.com/zhangyingcai/zhangyingcai.github.io.git
   branch: master
+
+# add search
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
