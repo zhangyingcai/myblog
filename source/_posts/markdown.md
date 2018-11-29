@@ -143,3 +143,48 @@ title可加可不加
 ```
 
 # 列表
+
+无序列表使用* - + 作为列表标记
+注:标记和内容之间要加空格
+
+示例:
+```
+* red
+* green
+* yellow
+
+- red
+- green
+- yellow
+
++ red
++ green
++ yellow
+```
+效果如下:
+* red
+* green
+* yellow
+
+- red
+- green
+- yellow
+
++ red
++ green
++ yellow
+
+有序列表使用数字接着一个英文句号
+注:标记和内容之间要加空格
+
+示例：
+```
+3. red
+2. green
+1. yellow
+```
+3. red
+2. green
+1. yellow
+
+注:有序的起始数只和第一个有关
