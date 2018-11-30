@@ -91,7 +91,7 @@ n个...
 
 # 分割线
 
-三个或者三个以上的 - 或者 * 都可以。
+三个或者三个以上的 - 或者 * _。行内不能有其他东西，也可在*号中间插入空格。
 
 示例:
 ```
@@ -188,3 +188,110 @@ title可加可不加
 1. yellow
 
 注:有序的起始数只和第一个有关
+
+# 表格
+
+语法：
+```
+表头|表头|表头|表头
+---|:--:|---:|:--
+内容|居中|居右|居左
+内容|居中|居右|居左
+
+-有一个就行
+```
+效果如下：
+表头|表头|表头|表头
+---|:--:|---:|:--
+内容|居中|居右|居左
+内容|居中|居右|居左
+
+注：很显然 hexo并没有用
+
+# 下划线
+
+语法：
+```
+<u>123</u>
+```
+效果如下：
+<u>123</u>
+注：使用的是html标签
+
+# 颜色、字体、字体大小
+
+语法：
+```
+<font color=#ee0000 size=9 face="黑体">我是黑体</font>
+<font color=#00ee00 size=8 face="宋体">我是宋体</font>
+<font color=#ee00ee size=7 face="微软雅黑">我是微软雅黑</font>
+<font color=#ee0000 size=6 face="黑体">我是黑体</font>
+<font color=#00ee00 size=5 face="宋体">我是宋体</font>
+<font color=#ee00ee size=4 face="微软雅黑">我是微软雅黑</font>
+<font color=#ee0000 size=3 face="黑体">我是黑体</font>
+<font color=#00ee00 size=2 face="宋体">我是宋体</font>
+<font color=#ee00ee size=1 face="微软雅黑">我是微软雅黑</font>
+
+color 16进制颜色
+size  6-1分别对应h1-h6共6个级别
+face  字体
+```
+效果如下：
+<font color=#ee0000 size=9 face="黑体">我是黑体</font>
+<font color=#00ee00 size=8 face="宋体">我是宋体</font>
+<font color=#ee00ee size=7 face="微软雅黑">我是微软雅黑</font>
+<font color=#ee0000 size=6 face="黑体">我是黑体</font>
+<font color=#00ee00 size=5 face="宋体">我是宋体</font>
+<font color=#ee00ee size=4 face="微软雅黑">我是微软雅黑</font>
+<font color=#ee0000 size=3 face="黑体">我是黑体</font>
+<font color=#00ee00 size=2 face="宋体">我是宋体</font>
+<font color=#ee00ee size=1 face="微软雅黑">我是微软雅黑</font>
+
+# 代码
+
+语法：
+```
+单行代码
+`代码内容`
+
+多行代码块
+(```)
+    代码块
+(```)
+```
+效果如下
+
+单行代码
+`代码内容`
+
+多行代码块
+```
+    代码块
+```
+
+# 流程图
+
+示例：
+```
+flow
+st=>start: 开始
+op=>operation: My Operation
+cond=>condition: Yes or No?
+e=>end
+st->op->cond
+cond(yes)->e
+cond(no)->op
+&
+```
+效果如下
+flow
+st=>start: 开始
+op=>operation: My Operation
+cond=>condition: Yes or No?
+e=>end
+st->op->cond
+cond(yes)->e
+cond(no)->op
+&
+
+注：hexo 不支持
