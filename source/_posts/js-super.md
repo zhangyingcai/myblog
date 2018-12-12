@@ -4,6 +4,9 @@ date: 2018-12-10 19:05:59
 tags: js
 ---
 
+学习一下js的继承实现。
+<!-- more -->
+
 ```
 function Animal(name){
     // 属性
