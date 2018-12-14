@@ -44,3 +44,18 @@ tags: css
 四个边框变成四个等腰三角形。
 
 TODO：继续深入了解，解决梯形的问题
+
+
+当width和height为0时，默认是四个三角形，当宽度或高度不为0的时候，就可以画出梯形。
+
+```
+.box{
+    width: 100px;
+    height: 0;
+    margin:10px;
+    border-left:100px solid red;
+    border-right:100px solid blue;
+    border-top:100px solid yellow;
+    border-bottom:100px solid green;
+}
+```
