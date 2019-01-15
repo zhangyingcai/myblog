@@ -51,3 +51,17 @@ const router = new VueRouter({
 ```
 
 ## 对象
+
+有的时候我们要传递一个对象到一个页面或者一个组件
+
+```
+// 通过:to='/search?q=vue&other=name'将对象拆分传递
+// 可以看到vue-router已经将我们的参数编码了
+const router = new VueRouter({
+  routes: [
+    // 我们可以通过props转换成需要的状态
+    // 在组件通过props获取
+    { path: '/search', component: SearchUser, props: (route) => ({ query: route.query.q }) }
+  ]
+})
+```
