@@ -6,15 +6,17 @@ tags: vue-router
 
 vue-router的使用总结
 
+<!-- more -->
+
 # 传参
 
 ## 普通模式（传单个值）
 
 ```
-《路由》/:id
- 通过在路由后面添`/:id`,`id`是参数名称
- 传参`:to="'/user/'+id"`
- 获取`$route.params.id`
+//《路由》/:id
+// 通过在路由后面添`/:id`,`id`是参数名称
+// 传参`:to="'/user/'+id"`
+// 获取`$route.params.id`
 const User = {
   template: '<div>User {{ $route.params.id }}</div>'
 }
@@ -65,3 +67,14 @@ const router = new VueRouter({
   ]
 })
 ```
+
+通过组件props获取的传参是不可修改的，可以在子组件新建变量接受参数。
+```
+data(){
+  return {
+    currentQ:this.q
+  }
+}
+```
+然后就可以对他进行修改了。
+猜测是const类型 todo:了解原理
