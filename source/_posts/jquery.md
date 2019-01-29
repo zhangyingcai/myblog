@@ -64,3 +64,7 @@ tags:  jQuery
 工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。
 
 [工厂模式](https://www.jianshu.com/p/11918dd0f694)
+
+# toggle 切换显示/隐藏
+
+[mdn类似的例子](https://developer.mozilla.org/zh-CN/docs/Web/Events/toggle)
