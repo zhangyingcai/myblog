@@ -43,3 +43,13 @@ element.scrollIntoView(alignToTop); // Boolean型参数
 element.scrollIntoView(scrollIntoViewOptions); // Object型参数
 ```
 [mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView)
+
+# 同源策略
+
+mdn(https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)
+
+同源策略限制了从同一个源加载的文件和脚本如何同另一个源加载的文件进行交互。
+
+同源的定义： 协议、端口、域名完全相同的两个页面，称这两个页面具有相同的源。
+
+源的继承： about:blank

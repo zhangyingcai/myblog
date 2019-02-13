@@ -41,3 +41,29 @@ button的类型。可选值：
 max-width: 100%;
 height: auto;
 ```
+
+# css3新特性
+[用于那些属性需要添加前缀-can i use](https://caniuse.com/)
+
+## 圆角
+
+```
+div{
+    border:2px solid;
+    border-radius: 25px;
+}
+注 50%是画圆
+```
+## 伪类选择器
+[列表](http://www.runoob.com/cssref/css-selectors.html)
+
+```
+a:link
+a:visited // 链接点击过之后的颜色
+a:hover // 鼠标在元素上的颜色
+a:active // 鼠标左键长按的颜色
+
+状态伪类选择器
+input:enabled
+input:disabled
+```

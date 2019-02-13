@@ -215,3 +215,17 @@ alert((function(){'use strict'; return this})()); // undefined
 
 类型转换
 {% asset_img 16716dec14421e47.png 类型转换 %}
+
+
+# 构造函数
+
+创建对象的两种方法：字面量方法和构造函数
+
+```
+function createPerson(name){
+  this.name = name;
+  this.greeting = function(){
+    alert('Hi! I'm '+name+'.');
+  }
+}
+```
