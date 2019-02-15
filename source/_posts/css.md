@@ -68,6 +68,18 @@ div{
         }
 注 50%是画圆
 ```
+半圆
+```
+.radius{
+            width: 100px;
+            height: 200px;
+            background-color: aqua;
+            /* border-top-left-radius: 100px; */
+            /* border-top-right-radius: 100px; */
+            /* border-radius: 100px 50px; */
+            border-radius: 100px 0 0 100px;
+        }
+```
 ## 伪类选择器
 [列表](http://www.runoob.com/cssref/css-selectors.html)
 
