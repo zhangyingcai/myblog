@@ -99,5 +99,36 @@
     <div class="demo">
         <div class="letter">我是一句话额！</div>
     </div>
+    <!-- 对话框 -->
+    <style>
+        .dialog{
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #f66;
+            border-radius: 6px;
+            position: relative;
+        }
+        .dialog::before{
+            content: '';
+            border-width: 10px;
+            border-color: transparent; 
+            border-style: solid;
+            border-right: 10px solid #f66;
+            position: absolute;
+            top: 15px;
+            left: -20px;
+        }
+        .triangle{
+            width: 0;
+            height: 0px;
+            border-right: 50px solid #f66;
+            border-left: 50px solid transparent;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+        }
+    </style>
+    <div class="triangle"></div>
+    <div class="dialog">我的小姐姐呢</div>
 </body>
 </html>

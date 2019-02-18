@@ -154,3 +154,26 @@ input:disabled
 }
 ::before // 这两个元素在使用时必须有content
 ```
+
+# 画对话框
+
+```
+.dialog{
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #f66;
+            border-radius: 6px;
+            position: relative;
+        }
+        .dialog::before{
+            content: '';
+            border-width: 10px;
+            border-color: transparent; 
+            border-style: solid;
+            border-right: 10px solid #f66;
+            position: absolute;
+            top: 15px;
+            left: -20px;
+        }
+```
