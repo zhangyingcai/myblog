@@ -229,3 +229,26 @@ function createPerson(name){
   }
 }
 ```
+
+# 当你输入网址的时候发生了什么
+
+[答案在这](https://github.com/skyline75489/what-happens-when-zh_CN#html)
+
+# http2比http1快了多少
+
+[here](https://http2.akamai.com/demo)
+
+```
+优化了哪些？
+http1请求是队头阻塞的,http2复用同一个tcp链接
+http2引入了新的编码机制，并采用二进制传输
+http2通过引入`帧`和`流`的方式实现多路复用
+http2对header进行了压缩
+
+新的问题
+原因：使用的tcp，如果出现丢包的情况，该条线路就会进入阻塞状态，等待重传。
+
+http3采用QUIC 
+
+QUIC 基于 UDP 实现，是 HTTP/3 中的底层支撑协议，该协议基于 UDP，又取了 TCP 中的精华，实现了即快又可靠的协议
+```
