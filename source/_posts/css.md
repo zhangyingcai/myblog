@@ -24,12 +24,31 @@ button的类型。可选值：
 
 # text-overflow
 
+[runoob](http://www.runoob.com/cssref/css3-pr-text-overflow.html)
 语法
 
 ```
 属性确定如何向用户发出未显示的溢出内容信号。它可以被剪切，显示一个省略号（'...'，U + 2026 HORIZONTAL ELLIPSIS）或显示一个自定义字符串。
 
 这个属性并不会强制"溢出"事件的发生，因此为了能让"text-overflow"能够生效，程序员们必须要在元素上添加几个额外的属性，比如"将overflow 设置为hidden"。
+```
+省略号
+```
+{
+    -webkit-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+单行省略
+{
+    white-space: nowrap; // 不换行
+    width: 10rem;
+    -webkit-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+注：需要适配浏览器
 ```
 
 # 图片自适应
@@ -40,6 +59,16 @@ button的类型。可选值：
 ```
 max-width: 100%;
 height: auto;
+```
+
+# display
+
+```
+默认 inline // 元素会被显示为内联元素，元素前后没有换行符。
+block // 元素被显示为块级元素，元素前后有换行符
+none // 元素不显示，也不占空间
+inherit // 元素继承父元素的属性
+inline-block // 行内块元素
 ```
 
 # css3新特性
@@ -176,4 +205,55 @@ input:disabled
             top: 15px;
             left: -20px;
         }
+```
+# 画菱形和平行四边形
+
+要考虑样式的兼容性。
+```
+画菱形的思路：先画个正方形旋转45度。 单位deg 
+.diamond{
+            width: 200px;
+            height: 200px;
+            -ms-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            background-color: aqua;
+        }
+平行四边形使用倾斜
+.parallel{
+            width: 300px;
+            height: 200px;
+            -ms-transform: skewX(45deg);
+            -moz-transform: skewX(45deg);
+            -webkit-transform: skewX(45deg);
+            -o-transform: skewX(45deg);
+            transform: skewX(45deg);
+            background-color: aqua;
+        }
+```
+
+# 五角星和六角星
+
+# 发光字体、立体字
+
+[runoob](http://www.runoob.com/cssref/css3-pr-text-shadow.html)
+
+```
+text-shadow: h-shadow v-shadow blur color;
+
+h-shadow	必需。水平阴影的位置。允许负值。
+v-shadow	必需。垂直阴影的位置。允许负值。
+blur	可选。模糊的距离。
+color	可选。阴影的颜色。参阅 CSS 颜色值。
+````
+
+# rem
+
+设置基准然后根据基准计算。
+```
+html{
+    font-size:62.5%; // 10/16*100% 默认16px
+}
 ```
