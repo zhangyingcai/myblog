@@ -260,3 +260,13 @@ QUIC 基于 UDP 实现，是 HTTP/3 中的底层支撑协议，该协议基于 U
 ../ 父级目录
 / 当前项目的根目录
 ```
+
+# location
+
+属性
+```
+location.search //返回`?`以及`?`以后的部分
+location.hash // 返回一个URL的锚部分
+location.host // 返回一个URL的主机名
+
+```

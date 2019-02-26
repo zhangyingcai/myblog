@@ -8,6 +8,18 @@ tags: vue
 
 <!-- more -->
 
+# 声明式渲染
+模板语法
+插值
+
+```
+vue.js的核心是一个允许采用简洁的模板语法来声明式地将数据渲染进DOM的系统。
+{{ 参数|单个表达式 }}
+```
+单个表达式包括：运算、三目运算
+{{ message.split('').reverse().join('') }} // 将字符串翻转
+
+
 # vue的生命周期
 
 beforeCreate // 实例初始化之后，数据观测和事件配置之前，也就是说这时候是不能获取数据和事件的
@@ -28,4 +40,70 @@ destroyed // 销毁 在销毁组件，如果有子组件的话，会递归销毁
 # v-if
 ```
 `v-if`指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回truthy值的时候被渲染。
+```
+
+# v-model
+
+```
+实现双向绑定 可以添加修饰符
+```
+
+# .trim
+
+```
+如果要自动过滤用户输入的首尾空白字符，可以给 `v-model` 添加 `trim` 修饰符：
+
+`<input v-model.trim="msg">`
+```
+
+# .number 
+
+```
+如果想自动将用户的输入值转为数值类型，可以给 `v-model` 添加 `number` 修饰符：
+
+`<input v-model.number="age" type="number">`
+这通常很有用，因为即使在 `type="number"` 时，`HTML` 输入元素的值也总会返回字符串。
+如果这个值无法被 `parseFloat()` 解析，则会返回原始的值。(说明`number`的实现是通过`parseFloat()`方法实现的)
+```
+
+# .lazy
+
+```
+在默认情况下，`v-model` 在每次 `input` 事件触发后将输入框的值与数据进行同步 。
+添加`lazy`从而转变为使用`change`时间进行同步，也就是在每次改变的时候进行同步。
+```
+
+# v-once
+
+```
+只赋值一次
+```
+
+# 事件修饰符
+## .prevent
+
+```
+`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 `event.preventDefault()`
+<form v-on:submit.prevent="onSubmit">...</form>
+```
+```
+<!-- 阻止单击事件继续传播 -->
+<a v-on:click.stop="doThis"></a>
+
+<!-- 提交事件不再重载页面 -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- 修饰符可以串联 -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- 只有修饰符 -->
+<form v-on:submit.prevent></form>
+
+<!-- 添加事件监听器时使用事件捕获模式 -->
+<!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+<div v-on:click.self="doThat">...</div>
 ```
