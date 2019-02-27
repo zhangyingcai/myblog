@@ -15,9 +15,11 @@ tags: vue
 ```
 vue.js的核心是一个允许采用简洁的模板语法来声明式地将数据渲染进DOM的系统。
 {{ 参数|单个表达式 }}
-```
+
 单个表达式包括：运算、三目运算
 {{ message.split('').reverse().join('') }} // 将字符串翻转
+```
+
 
 
 # vue的生命周期
@@ -106,4 +108,86 @@ destroyed // 销毁 在销毁组件，如果有子组件的话，会递归销毁
 <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
 <!-- 即事件不是从内部元素触发的 -->
 <div v-on:click.self="doThat">...</div>
+
 ```
+
+# 计算属性
+
+语法
+```
+<div id="example">
+  <p>Original message: "{{ message }}"</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+
+computed:{
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    }
+} // 关键字computed，是vue的一个属性
+```
+
+# 计算属性的setter
+
+```
+计算属性默认只有getter,不过在需要时你也可以提供一个setter
+computed: {
+  fullName: { // 计算属性
+    // getter
+    get: function () {
+      return this.firstName + ' ' + this.lastName
+    },
+    // setter
+    set: function (newValue) {
+      var names = newValue.split(' ')
+      this.firstName = names[0]
+      this.lastName = names[names.length - 1]
+    }
+  }
+}
+现在再运行 vm.fullName = 'John Doe' 时，setter 会被调用，vm.firstName 和 vm.lastName 也会相应地被更新。
+```
+
+目的：替换模板语法的复杂逻辑
+
+# 计算属性缓存 vs 方法
+
+```
+最终结果是完全相同的。
+不同的计算属性是基于他们的依赖进行缓存的。只有在相应的依赖发生改变时计算属性才会重新求值。
+这就意味着只要 `message` 还没有发生改变，多次访问 `reversedMessage` 计算属性会立即返回之前的计算结果，而不必再次执行函数。
+调用方法总会再次执行函数。
+computed: {
+  now: function () {
+    return Date.now()
+  }
+}// 只会返回第一次的时间。
+```
+
+# 计算属性 vs 倾听属性
+
+```
+vue提供了一种更通用的方式观察和响应vue实例上的数据变化。
+当你有一些数据需要随着其他数据的变化而变化时，很容易滥用watch,通常使用computed。
+
+var vm = new Vue({
+  el: '#demo',
+  data: {
+    firstName: 'Foo',
+    lastName: 'Bar',
+    fullName: 'Foo Bar'
+  },
+  watch: {
+    firstName: function (val) { // 监听某个数据改变
+      this.fullName = val + ' ' + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + ' ' + val
+    }
+  }
+})
+```
+
+# 倾听器
