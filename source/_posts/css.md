@@ -71,6 +71,16 @@ inherit // 元素继承父元素的属性
 inline-block // 行内块元素
 ```
 
+# word-break
+
+```
+指定了在单词内断行
+normal // 使用默认的断行规则
+break-all // 可在任意字符间断行
+keep-all // 文本不断行
+break-word // 断行，但是不会断单个单词
+```
+
 # css3新特性
 [用于那些属性需要添加前缀-can i use](https://caniuse.com/)
 

@@ -270,3 +270,24 @@ location.hash // 返回一个URL的锚部分
 location.host // 返回一个URL的主机名
 
 ```
+
+# 判断一个对象是否有值
+
+```
+Object.keys(obj).length // es6
+```
+
+# Number 和 0
+
+# 奇怪的用法
+
+```
+// 转义
+function htmlEncodeJQ ( str ) {
+    return $('<span/>').text( str ).html();
+}
+// 解码
+function htmlDecodeJQ ( str ) {
+    return $('<span/>').html( str ).text();
+}
+```
