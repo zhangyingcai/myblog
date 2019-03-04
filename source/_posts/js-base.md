@@ -85,10 +85,27 @@ operand:对象或者原始值
 
 instanceof运算符用于测试构造函数的prototype属性是否出现在对象的原型链中的任何位置
 object instanceof constructor
-object: 要检测的对象
+object: 要检测的对象  // 必须是对象呢
 constructor: 某个构造函数
 ```
 instanceof 典型的用法是判断是否继承关系，用于测试对象是不是特定构造函数的实例。
+
+实现instanceof
+```
+function myinstanceof(obj, constructor){
+  const prototype = constructor.prototype
+  let obj = obj.__proto__ // 获取原型对象
+  while(true){
+    if(obj === null || typeof obj !== 'Object'){ // 去除Null和不是对象的情况
+      return false
+    }
+    if(_proto === prototype){
+      return true
+    }
+    obj = obj.__proto__
+  }
+}
+```
 
 # 类型转换
 
