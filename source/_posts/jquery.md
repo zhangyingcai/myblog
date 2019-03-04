@@ -2,6 +2,7 @@
 title: jquery中$的实现方式
 date: 2018-12-10 17:12:08
 tags:  jQuery
+categories: jQuery
 ---
 
 # 实现方式(网上找的)

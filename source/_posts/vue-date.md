@@ -2,6 +2,7 @@
 title: date
 date: 2019-01-15 16:55:10
 tags: date
+categories: Vue
 ---
 
 date.js 处理日期的函数

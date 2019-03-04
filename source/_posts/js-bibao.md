@@ -2,6 +2,7 @@
 title: 闭包
 date: 2018-12-18 09:00:29
 tags: 闭包
+categories: JavaScript
 ---
 
 # 闭包

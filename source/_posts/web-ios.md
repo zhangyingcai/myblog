@@ -2,6 +2,7 @@
 title: web-ios
 date: 2019-02-26 16:03:47
 tags: ios适配
+categories: 其他
 ---
 记录在开发过程中遇到的iOS需要适配的问题
 <!-- more -->

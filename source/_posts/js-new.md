@@ -1,5 +1,5 @@
 ---
-title: js-new
+title: new操作符
 date: 2019-03-04 11:23:51
 tags: new
 categories: JavaScript

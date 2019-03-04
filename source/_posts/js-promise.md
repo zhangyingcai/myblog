@@ -2,6 +2,7 @@
 title: promise实现
 date: 2018-12-17 18:45:16
 tags: promise
+categories: ES6
 ---
 
 # promise是ES6新增的语法，解决了回调地狱的问题。
