@@ -234,6 +234,35 @@ alert((function(){'use strict'; return this})()); // undefined
 类型转换
 {% asset_img 16716dec14421e47.png 类型转换 %}
 
+# 深浅拷贝
+
+[assign详解](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+## 概念
+深拷贝：对象类型赋值时新建一个对象，分配了内存，指向不同的对象互不干扰
+浅拷贝：对象类型赋值时复制了地址，指向同一个对象，改了一个另外一个也发生改变
+
+浅拷贝通过`Object.assign`实现
+```
+针对深拷贝，需要使用其他办法，因为 Object.assign()拷贝的是属性值。假如源对象的属性值是一个对象的引用，那么它也只指向那个引用。
+```
+## 语法
+### Object.assign(target, ...sources)
+参数
+target
+目标对象。
+sources
+源对象。
+### 返回值
+目标对象。
+
+深拷贝通常可以通过 `JSON.parse(JSON.stringify(object))` 来解决。[参考](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bed40d951882545f73004f6)
+但是也有局限性
+* 会忽略 undefined
+* 会忽略 symbol
+* 不能序列化函数
+* 不能解决循环引用的对象
+
+推荐使用[lodash的深拷贝函数](https://lodash.com/docs#cloneDeep)
 
 # 构造函数
 
