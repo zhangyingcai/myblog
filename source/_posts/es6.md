@@ -2,6 +2,7 @@
 title: es6
 date: 2019-01-17 09:16:43
 tags: es6
+categories: ES6
 ---
 
 es6笔记
@@ -11,6 +12,8 @@ es6笔记
 # 变量提升
 
 英文：Hoisting
+
+[很有意思的题目](https://juejin.im/post/5c6a0fa451882562851b3cdd)
 
 `变量提升`变量和函数的声明移动到当前执行上下文(块)的最前面。
 应用范围：数据类型、变量、函数
