@@ -265,7 +265,7 @@ sources
 推荐使用[lodash的深拷贝函数](https://lodash.com/docs#cloneDeep)
 
 # 构造函数
-
+如果函数用来初始化(使用new运算符)一个新建的对象，称之为构造函数
 创建对象的两种方法：字面量方法和构造函数
 
 ```
