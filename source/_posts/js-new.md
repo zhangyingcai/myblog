@@ -34,3 +34,18 @@ function create(Con, ...args){
 * 因为 obj 对象需要访问到构造函数原型链上的属性，所以我们通过 setPrototypeOf 将两者联系起来。这段代码等同于 * obj.__proto__ = Con.prototype
 * 将 obj 绑定到构造函数上，并且传入剩余的参数
 * 判断构造函数返回值是否为对象，如果为对象就使用构造函数返回的值，否则使用 obj，这样就实现了忽略构造函数返回的原始值
+
+# Object.setPrototypeOf
+
+```
+设置一个对象的原型到另一个对象
+```
+## 语法
+Object.setPrototypeOf(obj, prototype)
+## 参数
+obj 要设置其原型的对象
+prototype 该对象的新原型
+
+# 获取对象的原型可以使用obj.__proto__，设置原型链不建议使用该方法
+
+[mdn参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)
