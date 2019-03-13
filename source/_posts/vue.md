@@ -12,6 +12,19 @@ categories: Vue
 # 重点
 
 # vue的双向绑定？怎么实现的？
+# vue响应式原理
+
+vue内部使用Object.defineProperty()来实现数据响应式，通过这个函数将vue实例data对象的所有属性全部转为getter/setter。然后在属性被访问和修改时通知变化。监听这个变化的是watcher实例对象，在渲染组件的过程中
+把属性记录为依赖，在setter被调用时，会通知watcher重新计算，从而导致它关联的组件更新。
+
+>JavaScript 的限制 ( Object.observe 已经被废弃)，Vue 不能检测到对象属性的添加或删除。所以属性必须在`data`对象上存在才能让Vue转化它。
+
+可以通过`Vue.set(object, key, value)`添加到data(或者其他对象)对象上实现响应式
+还可以使用`vm.$set` 实例方法，这也是全局 `Vue.set` 方法的别名：
+```
+this.$set(this.someObject,'b',2)
+```
+
 # 虚拟dom?怎么实现的？
 
 # 声明式渲染
