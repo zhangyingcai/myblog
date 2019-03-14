@@ -21,6 +21,9 @@ categories: 其他
 <meta content="telephone=no" name="format-detection">
 <!--禁止email识别-->
 <meta content="email=no" name="format-detection">
+<!-- 强制横屏或竖屏 -->
+<meta name="screen-orientation" content="portrait">//uc
+<meta name="x5-orientation" content="portrait">//qq
 ```
 
 # input输入框自动放大的问题

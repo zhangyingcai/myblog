@@ -5,7 +5,7 @@ tags: browser event
 categories: 浏览器
 ---
 
-记录学习浏览器的事件注册机制
+记录学习浏览器的事件机制
 
 <!-- more -->
 
@@ -51,3 +51,38 @@ node.addEventListener('click',(event) => {
 stopPropagation只能阻止事件的进一步传播，默认注册的事件还是会执行。
 和他相反的是preventDefault方法，用于阻止默认事件的执行，但是会发送事件的进一步传播，通常是对注册事件重新定义时使用。
 return false;就等于同时调用了event.stopPropagation()和event.preventDefault()，即会阻止事件冒泡也会阻止默认事件。
+
+# 事件代理
+
+如果一个节点中的子节点是动态生成的话，那么子节点的事件应该注册在符节点上
+
+优点： // 为什么这么做
+节省内存提高性能
+不需要给子节点注册事件和注销事件
+
+# 跨域
+
+跨域是浏览器自我保护的一个机制：同源策略。提高安全性，用于防止CSRF攻击。CSRF简单讲就是获取用户的登录状态，通过登录状态获取用户信息或者修改信息。
+
+解决方法：
+* JSONP 利用<scrtipt>标签没有跨域限制，通过src属性指向一个地址并提供回调函数来接收数据。
+缺点： 仅适用于get请求
+* CORS 服务端设置`Access-Control-Allow-Origin`。该属性表示哪些域名可以访问资源，如果设置通配符则表示所有资源都可以访问资源。
+
+`document.domain`可以设置一级域名，表示该泛域名下的二级域名都可以访问
+
+* postMessage 用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息。 (ToDo理解)
+```
+// 发送消息端
+window.parent.postMessage('message', 'http://test.com')
+// 接收消息端
+var mc = new MessageChannel()
+mc.addEventListener('message', event => {
+  var origin = event.origin || event.originalEvent.origin
+  if (origin === 'http://test.com') {
+    console.log('验证通过')
+  }
+})
+```
+
+
