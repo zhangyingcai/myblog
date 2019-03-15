@@ -35,6 +35,7 @@ console.log(tiger instanceof Tiger); //true
 ```
 
 [效果](/images/微信截图_20181211092617.png)
+[原型链](/images/微信截图_20190315115732.png)
 
 ##特点
 
@@ -50,3 +51,5 @@ console.log(tiger instanceof Tiger); //true
 4. 创建子类实例时，无法向父类构造函数传参
 
 TODO：写这个的时候还是有点蒙。
+
+# 组合继承同上

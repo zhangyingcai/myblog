@@ -46,6 +46,6 @@ Object.setPrototypeOf(obj, prototype)
 obj 要设置其原型的对象
 prototype 该对象的新原型
 
-# 获取对象的原型可以使用obj.__proto__，设置原型链不建议使用该方法
+# 获取对象的原型可以使用`obj.__proto__`，设置原型链不建议使用该方法
 
 [mdn参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)
