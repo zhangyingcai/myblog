@@ -82,6 +82,13 @@ keep-all // 文本不断行
 break-word // 断行，但是不会断单个单词
 ```
 
+# box-sizing
+
+box-sizing
+
+content-box：就是默认使用的盒模型，content只包括盒模型的width和height
+border-box：content包括content/padding/border
+
 # css3新特性
 [用于那些属性需要添加前缀-can i use](https://caniuse.com/)
 
@@ -258,7 +265,7 @@ h-shadow	必需。水平阴影的位置。允许负值。
 v-shadow	必需。垂直阴影的位置。允许负值。
 blur	可选。模糊的距离。
 color	可选。阴影的颜色。参阅 CSS 颜色值。
-````
+```
 
 # rem
 
@@ -266,5 +273,54 @@ color	可选。阴影的颜色。参阅 CSS 颜色值。
 ```
 html{
     font-size:62.5%; // 10/16*100% 默认16px
+}
+```
+
+# flex
+[参考](http://www.runoob.com/w3cnote/flex-grammar.html)
+Flexible Box的缩写，意思是弹性布局
+
+```
+display: flex;
+// 行内元素也可以
+display: inline-flex;
+```
+
+## flex-direction 主轴的方向
+```
+.box {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+```
+
+## flex-wrap 轴线如何换行
+
+```
+.box{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+```
+
+## flex-flow 是flex-direction和flex-wrap的简写形式
+
+```
+.box {
+  flex-flow: <flex-direction> <flex-wrap>;
+}
+```
+
+## justify-content 主轴的对其方式
+
+```
+.box {
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+}
+```
+
+## align-items 交叉轴上如何对齐
+
+```
+.box {
+  align-items: flex-start | flex-end | center | baseline | stretch;
 }
 ```
