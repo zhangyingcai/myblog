@@ -211,3 +211,5 @@ var vm = new Vue({
 ```
 
 # 倾听器
+
+# vuex

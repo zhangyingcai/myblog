@@ -67,3 +67,72 @@ let、const 因为暂时性死区的原因，不能在声明前使用
 (function(){})()
 ```
 
+# 箭头函数（Arrow Function）
+
+没有自己的this,arguments,super或者new.target这些函数表达式更适用于那些本来需要匿名函数的地方，并且他们不能用作构造函数。
+箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。
+
+# 解构赋值
+
+它使得将值从数组，或属性从对象，提取到不同的变量中，成为可能
+为了方便从对象数组中提取需要的值
+
+```
+var a, b, rest;
+[a, b] = [10, 20];
+console.log(a); // 10
+console.log(b); // 20
+
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // [30, 40, 50]
+
+({ a, b } = { a: 10, b: 20 });
+console.log(a); // 10
+console.log(b); // 20
+
+
+// Stage 4（已完成）提案中的特性
+({a, b, ...rest} = {a: 10, b: 20, c: 30, d: 40});
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // {c: 30, d: 40}
+```
+
+
+# 模板字符串（Template String）
+
+# 对象字面量扩展语法（Enhanced Object Literals）
+
+# 表达式结构（Destructuring）
+
+# 函数参数表达、传参
+
+# 新的数据结构
+
+# 类语法（Classes）
+
+# 生成器
+
+# Promise
+
+# 代码模块化
+
+# Symbol
+
+# Proxy
+
+# for of 替换 for...in
+
+```
+const Zootopia=[
+    {name:'Nick',gender:1,species:'Fox'},
+    {name:'Judy',gender:0,species:'Bunny'}
+];
+for(const {name,species} of Zootopia){
+    console.log(`hi,I am ${name},and I am a ${species}`);
+}
+```
+
+# Array.forEach 

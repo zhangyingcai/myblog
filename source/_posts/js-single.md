@@ -8,10 +8,12 @@ tags: 单例
 
 ```
 //单例模式抽象，分离创建对象的函数和判断对象是否已经创建
-var getSingle = function(fn){
+// func 构造函数
+// arguments 参数
+var getSingle = function(func,arguments){
     var result;
-    return function(){
-        return result || (result = fn.apply(this, arguments));
+    return function(arguments){
+        return result || (result = func.apply(this, arguments));
     }
 }
 ```

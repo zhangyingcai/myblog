@@ -60,3 +60,17 @@ function loadScript(url, callback) {
 }
 ```
 
+# 网站可用性、可访问性
+
+
+面试总结
+
+# box-sizing
+
+```
+content-box // 标准盒模型 `width` 与 `height` 只包括内容的宽和高
+border-box // width = border + padding + 内容的高度
+```
+
+# promise用法
+
