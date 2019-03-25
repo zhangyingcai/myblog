@@ -163,3 +163,10 @@ for(const {name,species} of Zootopia){
 ```
 
 # Array.forEach 
+
+# Map和Set
+
+Map 对象保存键值对。任何值（对象和原始值）都可以作为一个键或者值。
+
+Map 和 Object 的区别
+* 一个Object的键只能是字符串或者 Symbols ,但是一个Map的键可以是任意值。
