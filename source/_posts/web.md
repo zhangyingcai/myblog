@@ -74,3 +74,5 @@ border-box // width = border + padding + 内容的高度
 
 # promise用法
 
+# 清除浮动的方法，应用场景以及为什么清除浮动。
+
