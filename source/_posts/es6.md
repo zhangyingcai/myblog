@@ -143,6 +143,27 @@ console.log(rest); // {c: 30, d: 40}
 
 # 代码模块化
 
+特点
+* ES6的模块自动开启严格模式，不管你有没有在模块开头添加 use strict
+* 模块中可以导入和导出各种类型的变量，如函数，对象，字符串，数字，布尔值，类等
+* 每个模块都有自己的上下文，每一个模块内声明的变量都是局部变量，不会污染全局作用域。
+* 每一个模块只加载一次(单例)，若再去加载同目录下通文件，直接从内存中读取。
+
+export 与 import
+
+基本用法
+* 导出的函数声明与类声明必须要有名称（export default 命令另外考虑）。 
+* 不仅能导出声明还能导出引用（例如函数）。
+export 命令可以出现在模块的任何位置，但必需处于模块顶层。
+import 命令会提升到整个模块的头部，首先执行。
+
+## export default 命令 重点
+* 在一个文件或模块中，export、import 可以有多个，export default 仅有一个。
+* export default 中的 default 是对应的导出接口变量。
+* 通过 export 方式导出，在导入时要加{ }，export default 则不需要。
+* export default 向外暴露的成员，可以使用任意变量来接收。
+
+
 # Symbol
 
 SE6 引入的一种新的原始数据类型 Symbol ,表示独一无二的值，最大的用法是用来定义对象的唯一属性名。
@@ -173,3 +194,157 @@ Map 和 Object 的区别
 * Map 中键值是有序的，而添加到对象中的键则不是。
 * Map 的键值对个数可以从 size 中获取，而 Object 的键值对个数只能手动计算。
 * Object 都有自己的原型，原型链上的键名有可能和你自己在对象的设置上的键名产生冲突。
+
+## api
+```
+Map.set(key, value)
+Map.get(key) // return value
+Map.size // return 当前 Map 键值对个数
+Map.clear() // 清空键值对
+Map.delete(key) // 删除键值对 return 操作的结果？boolean
+Map.has(key) // 是否含有键值对 return 操作的结果？boolean
+Map.forEach((key, value)=>{})
+
+// set 可以是任何类型的唯一值
+Set 对象存储的值总是唯一的，所以需要判断两个值是否恒等。有几个特殊值需要特殊对待：
+
++0 与 -0 在存储判断唯一性的时候是恒等的，所以不重复，只会生成一个键是0的键值对
+undefined 与 undefined 是恒等的，所以不重复；
+NaN 与 NaN 是不恒等的，但是在 Set 中只能存一个，不重复。
+
+// to array
+Array.from(map) // 根据键值对转换成数组
+
+// clone
+var newmap = new Map(oldmap) // 每次都会迭代一个新的对象
+
+// concat 合并
+var first = new Map([[1, 'one'], [2, 'two'], [3, 'three'],]);
+var second = new Map([[1, 'uno'], [2, 'dos']]);
+ 
+// 合并两个 Map 对象时，如果有重复的键值，则后面的会覆盖前面的，对应值即 uno，dos， three
+var merged = new Map([...first, ...second]);
+```
+
+## 遍历方法
+
+```
+var mymap = new Map();
+myMap.set(0, "zero");
+myMap.set(1, "one");
+
+for (var [key, value] of myMap) {
+    console.log(key + " = " + value);
+} 
+// 0 = zero
+// 1 = one
+
+for (var [key, value] of myMap.entries()) {
+  console.log(key + " = " + value);
+}
+// 同上
+/* 这个 entries 方法返回一个新的 Iterator 对象，它按插入顺序包含了 Map 对象中每个元素的 [key, value] 数组。 */
+// entry 条目/项、输入、河口 entries
+// Iterator 迭代器
+
+// 将会显示两个log。 一个是 "0" 另一个是 "1"
+for (var key of myMap.keys()) {
+  console.log(key);
+}
+/* 这个 keys 方法返回一个新的 Iterator 对象， 它按插入顺序包含了 Map 对象中每个元素的键。 */
+ 
+// 将会显示两个log。 一个是 "zero" 另一个是 "one"
+for (var value of myMap.values()) {
+  console.log(value);
+}
+/* 这个 values 方法返回一个新的 Iterator 对象，它按插入顺序包含了 Map 对象中每个元素的值。 */
+```
+
+## Set
+
+Set 对象存储的值总是唯一的，所以需要判断两个值是否恒等。有几个特殊值需要特殊对待：
+
++0 与 -0 在存储判断唯一性的时候是恒等的，所以不重复；
+undefined 与 undefined 是恒等的，所以不重复；
+NaN 与 NaN 是不恒等的，但是在 Set 中只能存一个，不重复。
+
+# 字符串
+
+## 判断字符串是否包含子串使用 indexOf() lastIndexOf()
+新增
+```
+String.includes(str) // return boolean
+String.startsWith(str) // return boolean 判断参数字符串是否在原字符串的头部
+String.endsWith(str) // 
+```
+
+## 字符串重复
+
+repeat() 返回新的字符串，表示将字符串重复指定次数返回。
+
+# 对象
+
+属性直接写变量，这时候属性名是变量名，属性值是变量值。
+```
+const age = 12;
+const name = "Amy";
+const person = {age, name};
+person   //{age: 12, name: "Amy"}
+//等同于
+const person = {age: age, name: name}
+```
+方法名也可以简写
+```
+const person = {
+    sayHi(){
+        console.log("hi");
+    }
+}
+person.sayHi();
+```
+如果是Generator函数，则要在前面加一个星号
+```
+const obj = {
+  * myGenerator() {
+    yield 'hello world';
+  }
+};
+//等同于
+const obj = {
+  myGenerator: function* () {
+    yield 'hello world';
+  }
+};
+```
+// generator 发电机
+
+## 使用剩余运算符浅拷贝对象 (...)
+
+```
+let person = {name: "Amy", age: 15, eat(){ console.log('I am eating')}};
+let someone = { ...person };
+someone;  //{name: "Amy", age: 15, eat(){ console.log('I am eating')}}
+someone.eat(); // I am eating
+```
+合并对象
+```
+let age = {age: 15};
+let name = {name: "Amy"};
+let person = {...age, ...name};
+person;  //{age: 15, name: "Amy"}
+```
+## 自定义的属性和拓展运算符对象里面属性的相同的时候：自定义的属性在拓展运算符后面，则拓展运算符对象内部同名的属性将被覆盖掉。
+```
+let person = {name: "Amy", age: 15};
+let someone = { ...person, name: "Mike", age: 17};
+someone;  //{name: "Mike", age: 17}
+```
+
+## Object.assign(target, source_1, ···)
+用于将源对象的所有可枚举属性复制到目标对象中。
+
+数组的处理
+```
+Object.assign([2,3], [5]);  // [5,3]
+```
+会将数组处理成对象，所以先将 [2,3] 转为 {0:2,1:3} ，然后再进行属性复制，所以源对象的 0 号属性覆盖了目标对象的 0。
