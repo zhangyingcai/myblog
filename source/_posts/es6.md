@@ -71,6 +71,44 @@ let、const 因为暂时性死区的原因，不能在声明前使用
 
 没有自己的this,arguments,super或者new.target这些函数表达式更适用于那些本来需要匿名函数的地方，并且他们不能用作构造函数。
 箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。
+应用场景： 当我们需要维护一个this上下文的时候
+比如
+```
+var self = this
+```
+
+不合适的场景：定义函数的方法，且该方法中包含this
+```
+var Person = {
+    'age': 18,
+    'sayHello': ()=>{
+        console.log(this.age);
+      }
+};
+var age = 20;
+Person.sayHello();  // 20
+// 此时 this 指向的是全局对象
+
+// 正常使用
+var Person1 = {
+    'age': 18,
+    'sayHello': function () {
+        console.log(this.age);
+    }
+};
+var age = 20;
+Person1.sayHello();   // 18
+// 此时的 this 指向 Person1 对象
+```
+需要动态 this 的时候
+```
+// 错误使用
+var button = document.getElementById('userClick');
+button.addEventListener('click', () => {
+     this.classList.toggle('on');
+});
+```
+button 的监听函数是箭头函数，所以监听函数里面的 this 指向的是定义的时候外层的 this 对象，即 Window，导致无法操作到被点击的按钮对象
 
 # 解构赋值
 
@@ -132,6 +170,53 @@ console.log(rest); // {c: 30, d: 40}
 # 表达式结构（Destructuring）
 
 # 函数参数表达、传参
+
+## 使用函数默认参数时，不允许有同名参数
+```
+// 不报错
+function fn(name,name){
+ console.log(name);
+}
+ 
+// 报错 当使用默认参数时    
+//SyntaxError: Duplicate parameter name not allowed in this context
+function fn(name,name,age=17){
+ console.log(name+","+age);
+}
+```
+
+## 什么时间使用默认参数：当参数为undefined时使用
+
+```
+function fn(name, age=17){
+    console.log(name+","+age);
+}
+fn('Tom', null) // Tom,null 生效
+```
+## 函数参数默认值存在默认值死区，在函数参数默认值表达式中，还未初始化赋值的参数值无法作为其他参数的默认值。
+
+```
+function f(x,y=x){
+    console.log(x,y);
+}
+f(1);  // 1 1
+ 
+function f(x=y){
+    console.log(x);
+}
+f();  // ReferenceError: y is not defined
+// chrome 最近版本并不报错 ！！！
+```
+
+## 不定参数
+
+不定参数用来表示不确定参数个数 ...args 只能放在参数组的最后，而且只有一个
+打印出来是个Array
+```
+function fn(...args){
+
+}
+```
 
 # 新的数据结构
 
