@@ -226,6 +226,27 @@ function fn(...args){
 
 # Promise
 
+异步编程的一种解决方案
+从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。
+
+Promise 状态 pending(进行中) fulfilled(已成功) rejected(已失败)
+
+无法改变这个状态。
+
+Promise 对象只有：从 pending 变为 fulfilled 和从 pending 变为 rejected 的状态改变。只要处于 fulfilled 和 rejected ，状态就不会再变了即 resolved（已定型）。
+
+状态机制的缺点
+
+* 无法取消Promise, 一旦创建就会立即执行，无法中途取消.
+* 如果不设置回调函数， Promise 内部抛出的错误， 不会反应到外部。
+* 当处于 pending 状态时，无法得知目前进行到哪一个阶段了
+
+# then 方法
+
+then 方法接收两个函数作为参数，第一个参数是 Promise 执行成功时的回调，第二参数是 Promise 执行失败时的回调，两个函数只会有一个被调用。
+
+大多数浏览器不能终止的 Promise 链里的 rejection, 建议后面都跟上.catch();
+
 # 代码模块化
 
 特点
