@@ -481,3 +481,7 @@ _.throttle = function(func, wait, options) {
     };
   };
 ```
+
+# JavaScript标准库
+
+## decodeURI() 解码
