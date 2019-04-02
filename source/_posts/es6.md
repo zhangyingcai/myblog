@@ -241,11 +241,17 @@ Promise 对象只有：从 pending 变为 fulfilled 和从 pending 变为 reject
 * 如果不设置回调函数， Promise 内部抛出的错误， 不会反应到外部。
 * 当处于 pending 状态时，无法得知目前进行到哪一个阶段了
 
-# then 方法
+## then 方法
 
-then 方法接收两个函数作为参数，第一个参数是 Promise 执行成功时的回调，第二参数是 Promise 执行失败时的回调，两个函数只会有一个被调用。
+then 方法接收两个函数作为参数，第一个参数是 Promise 执行成功时的回调 resolve ，第二参数是 Promise 执行失败时的回调，两个函数只会有一个被调用 reject 。
 
 大多数浏览器不能终止的 Promise 链里的 rejection, 建议后面都跟上.catch();
+
+通过 .then 方法添加的回调函数，不论什么时候，都会被调用。
+
+通过 .then 可以添加多个回调函数，他们会按照插入顺序并且独立运行。
+
+.then 方法将返回一个 resolved 或者 rejected 状态的 Promise 对象用于链式调用，且 Promise 对象的值就是这个返回值。
 
 # 代码模块化
 
@@ -454,3 +460,5 @@ someone;  //{name: "Mike", age: 17}
 Object.assign([2,3], [5]);  // [5,3]
 ```
 会将数组处理成对象，所以先将 [2,3] 转为 {0:2,1:3} ，然后再进行属性复制，所以源对象的 0 号属性覆盖了目标对象的 0。
+
+# Generator 
