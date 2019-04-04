@@ -78,6 +78,7 @@ console.log(p2) // -> ?
 >在 `Javascript` 里，对象可以被看作是一组属性的集合。用对象字面量语法来定义一个对象时，会自动初始化一组属性。
 
 # typeof vs instanceof
+[mdn原型链](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 
 语法：
 ```
@@ -91,19 +92,28 @@ constructor: 某个构造函数
 ```
 instanceof 典型的用法是判断是否继承关系，用于测试对象是不是特定构造函数的实例。
 
-实现instanceof
+实现instanceof 
+要点：
+* obj 是null 或者不是对象的时候返回 false
+* 每个实例对象都有一个私有属性( __prototype__ )指向它的原型对象Prototype
+* 该原型对象也有一个自己的原型对象( __proto__ ) ，层层向上直到一个对象的原型对象为 null。根据定义，null 没有原型，并作为这个原型链中的最后一个环节。
 ```
 function myinstanceof(obj, constructor){
+  if(obj === null || typeof obj !== 'Object'){ // 去除Null和不是对象的情况
+    return false
+  }
+  // 获得构造函数的原型对象
   const prototype = constructor.prototype
-  let obj = obj.__proto__ // 获取原型对象
+  // 获取对象的原型
+  let _proto = obj.__proto__ 
   while(true){
-    if(obj === null || typeof obj !== 'Object'){ // 去除Null和不是对象的情况
+    if(_proto === null){ // 最后一个环节
       return false
     }
     if(_proto === prototype){
       return true
     }
-    obj = obj.__proto__
+    _proto = obj.__proto__
   }
 }
 ```
