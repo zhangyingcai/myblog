@@ -47,7 +47,7 @@ test1()
 ```
 
 >let 不存在 Hoisting
-var 在全局作用域下声明变量会导致变量挂载在 window 上，`let``const`两者不会
+var 在全局作用域下声明变量会导致变量挂载在 window 上
 
 [tomdn](https://developer.mozilla.org/zh-CN/docs/Glossary/Hoisting)
 
