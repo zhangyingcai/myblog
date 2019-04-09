@@ -53,3 +53,19 @@ console.log(tiger instanceof Tiger); //true
 TODO：写这个的时候还是有点蒙。
 
 # 组合继承同上
+
+# Object.create实现继承
+
+```
+function parent(val){
+    this.x = val;
+}
+function child(val){
+    parent.call(this,val);
+    this.y = val;
+}
+child.prototype = Object.create(parent.prototype);
+child.prototype.constructor = child;
+
+const child = new child(1);
+```

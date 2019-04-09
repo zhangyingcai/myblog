@@ -9,6 +9,34 @@ es6笔记
 
 <!-- more -->
 
+# let const var
+* var 在全局作用域下声明变量会导致变量挂载在 window 上, let const 不会
+* let 声明的变量只在 let 命令所在的代码块内有效。
+* const 声明一个只读的常量，一旦声明，常量的值就不能改变。
+* let 只能声明一次 var 可以声明多次
+* let 不存在变量提升
+* const 声明一个只读变量，声明之后不允许改变。
+
+```
+for 循环计数器很适合用 let
+for (var i = 0; i < 10; i++) {
+  setTimeout(function(){
+    console.log(i);
+  })
+}
+// 输出十个 10
+for (let j = 0; j < 10; j++) {
+  setTimeout(function(){
+    console.log(j);
+  })
+}
+// 输出 12345...
+```
+变量 i 是用 var 声明的，在全局范围内有效，所以全局中只有一个变量 i, 每次循环时，setTimeout 定时器里面的 i 指的是全局变量 i ，而循环里的十个 setTimeout 是在循环结束后才执行，所以此时的 i 都是 10。
+变量 j 是用 let 声明的，当前的 i 只在本轮循环中有效，每次循环的 j 其实都是一个新的变量，所以 setTimeout 定时器里面的 j 其实是不同的变量，即最后输出12345。（若每次循环的变量 j 都是重新声明的，如何知道前一个循环的值？这是因为 JavaScript 引擎内部会记住前一个循环的值）。
+
+
+
 # 变量提升
 
 英文：Hoisting
@@ -109,6 +137,14 @@ button.addEventListener('click', () => {
 });
 ```
 button 的监听函数是箭头函数，所以监听函数里面的 this 指向的是定义的时候外层的 this 对象，即 Window，导致无法操作到被点击的按钮对象
+
+# call apply bind
+
+语法
+call(this,...args) // args 参数列表
+apply(this, ...args) // args 参数数组
+bind(this, ...args) // 以上两种都支持 es5实现
+作用:重定义this
 
 # 解构赋值
 

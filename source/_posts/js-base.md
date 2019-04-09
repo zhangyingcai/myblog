@@ -95,7 +95,7 @@ instanceof 典型的用法是判断是否继承关系，用于测试对象是不
 实现instanceof 
 要点：
 * obj 是null 或者不是对象的时候返回 false
-* 每个实例对象都有一个私有属性( __prototype__ )指向它的原型对象Prototype
+* 每个实例对象都有一个私有属性( __proto__ )指向它的原型对象Prototype
 * 该原型对象也有一个自己的原型对象( __proto__ ) ，层层向上直到一个对象的原型对象为 null。根据定义，null 没有原型，并作为这个原型链中的最后一个环节。
 ```
 function myinstanceof(obj, constructor){
@@ -105,7 +105,7 @@ function myinstanceof(obj, constructor){
   // 获得构造函数的原型对象
   const prototype = constructor.prototype
   // 获取对象的原型
-  let _proto = obj.__proto__ 
+  let _proto = obj.__proto__ // 推荐使用 Object.getPrototypeOf(object)
   while(true){
     if(_proto === null){ // 最后一个环节
       return false
@@ -117,6 +117,10 @@ function myinstanceof(obj, constructor){
   }
 }
 ```
+
+## Object.getPrototypeOf(object)
+
+在 ES5 中，如果参数不是一个对象类型，将抛出一个TypeError异常。在 ES2015 中，参数会被强制转换为一个 Object。
 
 # 类型转换
 
