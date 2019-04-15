@@ -504,3 +504,35 @@ Object.assign([2,3], [5]);  // [5,3]
 会将数组处理成对象，所以先将 [2,3] 转为 {0:2,1:3} ，然后再进行属性复制，所以源对象的 0 号属性覆盖了目标对象的 0。
 
 # Generator 
+
+# async
+
+async 是ES7才有的语法
+```
+async function name([param[,param[,...param]]]){
+  statements
+}
+
+// name 函数名称
+// param 要传递给函数的参数的名称
+// statements 函数体语句
+```
+
+async 返回一个 Promise 对象，可以使用 then 方法添加回调函数。
+```
+async function hello(){
+  return "hello"
+}
+console.log(hello()) // Promise
+hello().then(v=>{
+  console.log(v) // hello
+})
+```
+
+async 函数中可能会有 await 表达式， async 函数执行时， 如果遇到 await 就会先暂停执行， 等我触发的异步操作完成后， 恢复 async 函数的执行并返回解析值。
+
+await 关键字只在 async function 中有效。
+
+await 针对所跟不同表达式的处理方式
+
+Promise 对象：await 会暂停执行，等待 Promise 对象 resolve, 然后恢复async函数的执行并返回解析值。
