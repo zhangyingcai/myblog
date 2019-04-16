@@ -275,7 +275,7 @@ Promise 对象只有：从 pending 变为 fulfilled 和从 pending 变为 reject
 
 * 无法取消Promise, 一旦创建就会立即执行，无法中途取消.
 * 如果不设置回调函数， Promise 内部抛出的错误， 不会反应到外部。
-* 当处于 pending 状态时，无法得知目前进行到哪一个阶段了
+* 当处于 pending 状态时，无法得知目前进行到哪一个阶段了-
 
 ## then 方法
 
@@ -505,6 +505,97 @@ Object.assign([2,3], [5]);  // [5,3]
 
 # Generator 
 
+可用通过关键字 yield 关键字，把函数的执行流挂起，为改变执行流提供了可能，从而为异步编程提供解决方案。
+函数的组成：
+有两个区分于普通函数的部分
+> 一个是在function后面，函数名前面有个*；
+> 函数内部有 yield 表达式
+
+其中 * 表示函数为 generator 函数， yield 用来定义函数内部的状态。
+
+```
+function* func(){
+ console.log("one");
+ yield '1';
+ console.log("two");
+ yield '2'; 
+ console.log("three");
+ return '3';
+}
+```
+
+调用方式 和普通函数一样，在函数名后面添加(), 但是 Generator 函数不会像普通函数一样立即执行，而是返回一个指向内部状态对象的指针，所以要调用遍历器对象的iterator 的 next 方法，指针就会从函数头部或者上一次停下来的地方开始执行。
+
+```
+var f = func(); // 实例
+f.next();
+// one
+// {value: "1", done: false} 返回值
+ 
+f.next();
+// two
+// {value: "2", done: false}
+ 
+f.next();
+// three
+// {value: "3", done: true}
+ 
+f.next();
+// {value: undefined, done: true}
+```
+第一次调用 next 方法时，从 Generator 函数的头部开始执行，先是打印了 one ,执行到 yield 就停下来，并将yield 后边表达式的值 '1'，作为返回对象的 value 属性值，此时函数还没有执行完， 返回对象的 done 属性值是 false。
+
+第二次调用 next 方法时，同上步 。
+
+第三次调用 next 方法时，先是打印了 three ，然后执行了函数的返回操作，并将 return 后面的表达式的值，作为返回对象的 value 属性值，此时函数已经结束，多以 done 属性值为true 。
+
+第四次调用 next 方法时， 此时函数已经执行完了，所以返回 value 属性值是 undefined ，done 属性值是 true 。如果执行第三步时，没有 return 语句的话，就直接返回 {value: undefined, done: true}。
+
+函数返回的遍历器对象的方法
+
+一般情况下，next 方法不传入参数的时候， yield 表达式的返回值是 undefined , 当 next 传入参数的时候，该参数作为上一步的 yield 的返回值。
+
+```
+function* sendParameter(){
+    console.log("strat");
+    var x = yield '2';
+    console.log("one:" + x);
+    var y = yield '3';
+    console.log("two:" + y);
+    console.log("total:" + (x + y));
+}
+
+// next 不传参
+var sendp1 = sendParameter();
+sendp1.next();
+// strat
+// {value: "2", done: false}
+sendp1.next();
+// one:undefined
+// {value: "3", done: false}
+sendp1.next();
+// two:undefined
+// total:NaN
+// {value: undefined, done: true}
+
+// next传参
+var sendp2 = sendParameter();
+sendp2.next(10);
+// strat
+// {value: "2", done: false}
+sendp2.next(20);
+// one:20
+// {value: "3", done: false}
+sendp2.next(30);
+// two:30
+// total:50
+// {value: undefined, done: true}
+```
+
+return 方法
+
+return 方法返回给定值，并结束遍历 Generator 函数
+return 方法提供参数时，返回该参数，不提供该参数时，返回 undefined
 # async
 
 async 是ES7才有的语法
