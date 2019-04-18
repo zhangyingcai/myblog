@@ -286,14 +286,14 @@ display: flex;
 display: inline-flex;
 ```
 
-## flex-direction 主轴的方向
+## flex-direction 主轴的方向,项目的排列方向
 ```
 .box {
   flex-direction: row | row-reverse | column | column-reverse;
 }
 ```
 
-## flex-wrap 轴线如何换行
+## flex-wrap 轴线上如何换行
 
 ```
 .box{
@@ -313,14 +313,29 @@ display: inline-flex;
 
 ```
 .box {
-  justify-content: flex-start | flex-end | center | space-between | space-around;
+  justify-content: flex-start(默认值) | flex-end | center | space-between | space-around;
 }
+// space-between 项目之间的距离都相等
+// space-around 项目两侧的间隔都相等，所以项目之间的间隔比与边框的间隔大一倍
 ```
 
 ## align-items 交叉轴上如何对齐
 
 ```
 .box {
-  align-items: flex-start | flex-end | center | baseline | stretch;
+  align-items: flex-start | flex-end | center | baseline | stretch(默认值));
 }
+// baseline 项目的第一行文字的基线对齐
+// stretch 如果项目未设置高度或设为auto，将占满整个容器的高度。
 ```
+
+## align-conetent align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+
+## 项目的属性
+
+order 
+项目的顺序，数字越小，排列越靠前，默认值是0
+
+flex-grow 
+定义项目的放大的比例，默认为0，保持自身，即使还有剩余空间，也不放大。
+如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。

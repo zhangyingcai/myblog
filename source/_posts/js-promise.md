@@ -184,3 +184,5 @@ function resolutionProcedure(promise2, x, resolve, reject) {
   }
 }
 ```
+
+

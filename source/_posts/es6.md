@@ -275,11 +275,11 @@ Promise 对象只有：从 pending 变为 fulfilled 和从 pending 变为 reject
 
 * 无法取消Promise, 一旦创建就会立即执行，无法中途取消.
 * 如果不设置回调函数， Promise 内部抛出的错误， 不会反应到外部。
-* 当处于 pending 状态时，无法得知目前进行到哪一个阶段了-
+* 当处于 pending 状态时，无法得知目前进行到哪一个阶段了.
 
 ## then 方法
 
-then 方法接收两个函数作为参数，第一个参数是 Promise 执行成功时的回调 resolve ，第二参数是 Promise 执行失败时的回调，两个函数只会有一个被调用 reject 。
+then 方法接收两个函数作为参数，第一个参数是 Promise 执行成功时的回调 resolve ，第二参数是 Promise 执行失败时的回调 reject，两个函数只会有一个被调用。
 
 大多数浏览器不能终止的 Promise 链里的 rejection, 建议后面都跟上.catch();
 
@@ -596,6 +596,8 @@ return 方法
 
 return 方法返回给定值，并结束遍历 Generator 函数
 return 方法提供参数时，返回该参数，不提供该参数时，返回 undefined
+
+
 # async
 
 async 是ES7才有的语法

@@ -4,6 +4,80 @@ date: 2019-04-04 09:22:53
 tags: JavaScript
 ---
 
+# 36 浏览器事件
+
+```
+<body>
+    <input id='input'/>
+</body>
+<script>
+document.body.addEventListener('mousedown', function(e){
+    console.log('body');
+}, true); // 捕获
+document.getElementById('input').addEventListener('mousedown', function(){
+    console.log('input');
+}, true)
+document.body.addEventListener('mousedown', function(){
+    console.log('body1');
+}, false); // 冒泡
+document.getElementById('input').addEventListener('mousedown', function(){
+    console.log('input1');
+}, false)
+</script>
+```
+
+最终的顺序是
+```
+body
+input
+input1
+body1
+```
+
+在一个事件发生时，捕获过程跟冒泡过程总是先后发生，跟你是否监听毫无关联。
+
+```
+target.addEventListener(type, listener[, options]);
+// option: capture...
+target.addEventListener(type, listener[, useCapture]);
+// useCapture 默认为false
+```
+
+默认使用冒泡机制，遇到父元素控制子元素的行为时，可以使用捕获机制。
+
+常用的三个参数：
+* 事件名称
+* 事件处理函数
+* 捕获还是冒泡（useCapture）
+
+事件的处理函数不一定是函数，也可以是个javaScript具有handleEvent方法的对象
+```
+var o = { handleEvent:event => console.log()}
+document.body.addEventListener('click', o, false);
+
+```
+
+## 焦点
+
+键盘事件是由焦点系统控制的，一般来说，操作系统也会提供一套焦点系统，但是现代浏览器一般都选择在自己的系统内覆盖原本的焦点系统。
+
+浏览器api来操作焦点
+```
+document.body.focus
+document.body.blur
+```
+
+## 自定义事件
+
+只能在 DOM 元素上使用自定义事件。
+自定义事件的代码示例如下（来自 MDN）
+```
+var evt = new Event("look", {"bubbles":true, "cancelable":false});
+document.dispatchEvent(evt);
+```
+这里使用 Event 构造器来创造了一个新的事件，然后调用 dispatchEvent 来在特定元素上触发。
+
+注意，这里旧的自定义事件方法（使用 document.createEvent 和 initEvent）已经被废弃。
 # 31 什么是表达式语句？
 
 >事实上真正能干活的语句并不多，其他语句的作用就是产生各种结构，来控制表达式语句执行，或者改变表达式语句的意义。
