@@ -408,7 +408,7 @@ for (var value of myMap.values()) {
 /* 这个 values 方法返回一个新的 Iterator 对象，它按插入顺序包含了 Map 对象中每个元素的值。 */
 ```
 
-## Set
+## Set 允许你存储任何类型的唯一值，无论是原始值还是对象引用
 
 Set 对象存储的值总是唯一的，所以需要判断两个值是否恒等。有几个特殊值需要特殊对待：
 
@@ -423,7 +423,7 @@ NaN 与 NaN 是不恒等的，但是在 Set 中只能存一个，不重复。
 ```
 String.includes(str) // return boolean
 String.startsWith(str) // return boolean 判断参数字符串是否在原字符串的头部
-String.endsWith(str) // 
+String.endsWith(str) // return boolean 判断参数字符串是否在原字符串的尾部
 ```
 
 ## 字符串重复
@@ -435,6 +435,11 @@ String.repeat(val) // 返回新的字符串，表示将字符串重复指定次�
 ```
 
 ## 字符串补全
+
+## 模板字符串
+```
+`123`&{myvar} // {}可以放表达式 
+```
 
 # 对象
 
@@ -472,7 +477,7 @@ const obj = {
 ```
 // generator 发电机
 
-## 使用剩余运算符浅拷贝对象 (...)
+## 使用剩余运算符浅拷贝对象 (...) 浅拷贝
 
 ```
 let person = {name: "Amy", age: 15, eat(){ console.log('I am eating')}};
@@ -494,7 +499,7 @@ let someone = { ...person, name: "Mike", age: 17};
 someone;  //{name: "Mike", age: 17}
 ```
 
-## Object.assign(target, source_1, ···)
+## Object.assign(target, source_1, ···) 浅拷贝
 用于将源对象的所有可枚举属性复制到目标对象中。
 
 数组的处理
@@ -502,6 +507,18 @@ someone;  //{name: "Mike", age: 17}
 Object.assign([2,3], [5]);  // [5,3]
 ```
 会将数组处理成对象，所以先将 [2,3] 转为 {0:2,1:3} ，然后再进行属性复制，所以源对象的 0 号属性覆盖了目标对象的 0。
+## Object.is(value1,value2) 
+
+用来比较两个值是否严格相等。与 (===) 基本相同
+
+与 === 的区别
+```
+// +0 != -0
+Object.is(+0, -0) // false
+// NaN
+Object.is(NaN,NaN); //true
+NaN === NaN  //false
+```
 
 # Generator 
 
@@ -622,7 +639,7 @@ hello().then(v=>{
 })
 ```
 
-async 函数中可能会有 await 表达式， async 函数执行时， 如果遇到 await 就会先暂停执行， 等我触发的异步操作完成后， 恢复 async 函数的执行并返回解析值。
+async 函数中可能会有 await 表达式， async 函数执行时， 如果遇到 await 就会先暂停执行， 等触发的异步操作完成后， 恢复 async 函数的执行并返回解析值。
 
 await 关键字只在 async function 中有效。
 
