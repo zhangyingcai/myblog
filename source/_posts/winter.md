@@ -6,6 +6,38 @@ tags: JavaScript
 重学前端笔记
 <!-- more -->
 
+# 38 css的动画和交互
+
+CSS动画相关的属性有两个：animation 属性和 transition 属性
+
+animation 分为6个部分
+
+* animation-name: 动画的名称，这是一个 keyframes 类型的值 （第九节，keyframes 产生一种数据，用于定义动画关键帧）
+* animation-duration：动画的时长
+* animation-timing-function 动画的时间曲线
+* animation-delay 动画开始前的延时
+* animation-iteration-count 动画的播放次数
+* animation-direction 动画的方向
+
+animation-name 用来表示动画的名称，需要配合@规则来使用
+
+```
+@keyframes myanimation{
+    0%{ top: 0 }
+    25%{ top: 10px }
+    50%{ top: 30px }
+    75%{ top: 70px }
+    100%{ top: 150px }
+}
+```
+
+transition
+
+* transition-property 属性
+* transition-duration 时间
+* transition-timing-function 时间曲线
+* transition-delay 延时
+
 # 36 浏览器事件
 
 ```
@@ -136,3 +168,4 @@ f`a${b}c` //这是一个是带函数的模板，这个带函数名的模板表�
 ```
 <!-- ToDo -->
 
+# 浏览器工作机制

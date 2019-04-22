@@ -75,3 +75,5 @@ Google关键字“Chrome transition blink”和“Chrome transition bug”
 * -webkit-transform-style: preserve-3d; （设置内嵌的元素在 3D 空间如何呈现：保留 3D ）
 
 亲测上述两种方法都是有效的。不过第二种方法有时候会复现。
+
+# webkit 私有属性 -webkit-overflow-scrolling: touch 运行独立的滚动区域和触摸回弹
