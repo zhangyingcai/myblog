@@ -63,6 +63,8 @@ runtime：
     }
 }
 catName("Tom");
+// 我的猫名叫 Chloe
+// 我的猫名叫 Tom
 ```
 ```
 function test1() {
@@ -86,6 +88,19 @@ let、const 因为暂时性死区的原因，不能在声明前使用
 >在 ECMAScript 6 中，let（const）将不会提升变量到代码块的顶部。因此，在变量声明之前引用这个变量，将抛出引用错误（ReferenceError）。这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。
 
 [tomdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types)
+
+```
+var PI = "a";
+if(true){
+  console.log(PI);  // ReferenceError: PI is not defined
+  const PI = "3.1415926";
+}
+```
+ES6 明确规定，代码块内如果存在 let 或者 const，代码块会对这些命令声明的变量从块的开始就形成一个封闭作用域。代码块内，在声明变量 PI 之前使用它会报错。
+
+const 如何做到变量在声明初始化之后不允许改变的？
+保证变量指向的内存地址所保存的数据不被改变。
+此时，你可能已经想到，简单类型和复合类型保存值的方式是不同的。是的，对于简单类型（数值 number、字符串 string 、布尔值 boolean）,值就保存在变量指向的那个内存地址，因此 const 声明的简单类型变量等同于常量。而复杂类型（对象 object，数组 array，函数 function），变量指向的内存地址其实是保存了一个指向实际数据的指针，所以 const 只能保证指针是固定的，至于指针指向的数据结构变不变就无法控制了，所以使用 const 声明复杂类型对象时要慎重
 
 # 原型继承
 # 立即执行函数
