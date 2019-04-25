@@ -7,6 +7,8 @@
 
 ### 进阶教程
 
+[Event Loop](https://zhangyingcai.github.io/2019/04/25/JavaScript-super-1/#more)
+
 ### ES6
 
 [ES6](https://zhangyingcai.github.io/2019/01/17/es6/)
