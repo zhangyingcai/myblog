@@ -45,6 +45,13 @@ null.toString()
 
 最新的 `ECMAScript` 标准定义了 7 种数据类型:包括以上6种类型和object。
 
+## 从内存来看 null 和 undefined 本质的区别是什么？
+
+值 null 是一个字面量，它不像 undefined 是全局对象的一个属性。null 是指变量未指向任何对象，所以常用来将对象置空，释放对象的内存。但是它是存在的，只不过没有类型和值。
+
+
+undefined 是全局对象的一个属性。一个没有被赋值的变量的类型是 undefined 。
+
 # 对象类型
 
 对象类型和原始类型的不同之处？函数参数是对象会发生什么问题？
@@ -580,5 +587,53 @@ Event Loop 的执行顺序
 事件循环模型的特性，永不阻塞
 
 [总结：JavaScript异步、事件循环与消息队列、微任务与宏任务](https://juejin.im/post/5be5a0b96fb9a049d518febc)
+
+# 常见的内存泄漏
+
+1.意外的全局变量
+
+未定义的变量会在全局对象创建一个新变量，如下。
+
+function foo(arg) {
+    bar = "this is a hidden global variable";
+}
+
+创建的变量随着 window 而一直存在知道 window 被销毁才能被释放。
+
+解决办法：严格模式，注意代码规范，使用完毕之后置空
+
+2.被遗忘的计时器或回调函数
+
+计时器setInterval
+
+```
+var someResource = getData();
+setInterval(function() {
+    var node = document.getElementById('node');
+    if(node) {
+        // 处理 node 和 someResource
+        node.innerHTML = JSON.stringify(someResource);
+    }
+}, 1000);
+```
+
+节点 node 随着定时器一直存在，node 被移除它所占用的内存也不会被销毁，除非定时器被销毁。
+
+```
+var node = document.getElementById('node');
+function onClick(event) {
+    node.innerHTML = 'text';
+}
+
+node.addEventListener('click', onClick);
+```
+
+添加监听事件属于异步？
+上面添加观察者的例子，形成循环引用，无法释放内存，现代浏览器引擎通过*标记清除算法*已经可以识别这类循环引用了。
+解决办法移除监听事件 removeEventListener 。
+
+
+## 闭包
+
 
 
