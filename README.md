@@ -7,9 +7,11 @@
 
 ### 进阶教程
 
-[Event Loop](https://zhangyingcai.github.io/2019/04/25/JavaScript-super-1/)
-[原始类型](https://zhangyingcai.github.io/2019/04/28/JavaScript-super-2/)
-[引用类型](https://zhangyingcai.github.io/2019/04/28/JavaScript-super-3/)
+1.[Event Loop](https://zhangyingcai.github.io/2019/04/25/JavaScript-super-1/)
+
+2.[原始类型](https://zhangyingcai.github.io/2019/04/28/JavaScript-super-2/)
+
+3.[引用类型](https://zhangyingcai.github.io/2019/04/28/JavaScript-super-3/)
 
 ### ES6
 
