@@ -69,13 +69,13 @@ func()
 
 异步函数被分为 **宏任务** 和 **微任务**
 
-宏任务包括 script ， setTimeout ，setInterval ，setImmediate ，I/O ，UI rendering。
+宏任务包括 script (同步代码) ， setTimeout ，setInterval ，setImmediate ，I/O ，UI rendering。
 
 微任务包括 process.nextTick ，promise ，MutationObserver，其中 process.nextTick 为 Node 独有。
 
 Event Loop 的执行顺序
 
-* 执行一个宏任务（栈中没有就从事件队列中获取）
+* 执行一个宏任务（栈中没有就从事件队列中获取，同步代码也是宏任务）
 
 * 执行过程中如果遇到微任务，就将它添加到微任务的任务队列中
 
