@@ -15,7 +15,7 @@ JavaScript进阶系列-引用类型
 ECMAScript 中的所有对象都由这个对象继承而来，Object 对象中的所有属性和方法都会出现在其他对象中，所以理解了 Object 对象，就可以更好地理解其他对象。
 
 属性
-* *construtor* 对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始 Object() 函数
+* *constructor* 对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始 Object() 函数
 * *Prototype* 对该对象的原型对象的引用。 通常用来获取对象的原型对象,默认返回 Object 对象的一个实例。
 方法
 * *hasOwnProperty(String)* 是否有某个属性
