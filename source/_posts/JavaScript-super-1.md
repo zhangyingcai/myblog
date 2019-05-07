@@ -89,3 +89,17 @@ Event Loop 的执行顺序
 事件循环模型的特性，永不阻塞
 
 [总结：JavaScript异步、事件循环与消息队列、微任务与宏任务](https://juejin.im/post/5be5a0b96fb9a049d518febc)
+
+问题：为何 try里面放 return， finally还会执行，理解其内部机制？
+
+问题：JavaScript如何实现异步编程，可以详细描述 EventLoop机制
+
+问题：宏任务和微任务分别有哪些？
+
+问题：可以快速分析一个复杂的异步嵌套逻辑，并掌握分析方法
+
+问题：使用 Promise实现串行
+
+问题：Node与浏览器 EventLoop的差异
+
+问题：如何在保证页面运行流畅的情况下处理海量数据
