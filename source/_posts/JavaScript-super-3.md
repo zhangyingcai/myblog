@@ -67,3 +67,13 @@ new String(123) instanceof String // true
 如上图 String 对象和 Array 对象有些类似是一个数组+length属性，不过可以观察原型链，他们实现还是不一样的，而且对象原型都 Object 。
 
 [对象参考手册](http://www.w3school.com.cn/js/js_reference.asp)
+
+问题：对象的底层数据结构是什么？
+
+答：上面的对象的数据结构。
+
+问题：JavaScript中的变量在内存中的具体存储形式？
+
+问题：理解值类型和引用类型？
+
+问题：至少可以说出三种判断 JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型？

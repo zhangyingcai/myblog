@@ -19,8 +19,8 @@ function mul(a, b){
 }
 
 // 实现一个双倍的函数
-// 绑定上下文 this 为 null
-let double = mul.bind(null, 2);
+// 绑定上下文 this 为 undefined
+let double = mul.bind(undefined, 2);
 
 double(3) // 6
 ```

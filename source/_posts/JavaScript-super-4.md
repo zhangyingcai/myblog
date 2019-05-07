@@ -47,7 +47,7 @@ ECMAScript 中可用的 3 种强制类型转换如下：
 
 ## Boolean() 函数
 
-当要转换的值是至少有一个字符的字符串、非 0 数字或对象时，Boolean() 函数将返回 true。如果该值是空字符串、数字 0、undefined 或 null，它将返回 false。
+当要转换的值是至少有一个字符的字符串、非 0 数字或对象时，Boolean() 函数将返回 true。如果该值是空字符串、数字 0、undefined 或 null、NaN，它将返回 false。
 
 ## Number() 函数
 Number() 函数的强制类型转换与 parseInt() 和 parseFloat() 方法的处理方式相似，只是它转换的是整个值，而不是部分值。
@@ -60,3 +60,5 @@ String() 它可把任何值转换成字符串。
 [ECMAScript 类型转换](http://www.w3school.com.cn/js/pro_js_typeconversion.asp)
 
 [JavaScript 的怪癖 1：隐式类型转换](https://justjavac.com/javascript/2013/04/08/javascript-quirk-1-implicit-conversion-of-values.html)
+
+问题：可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用？
