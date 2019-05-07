@@ -11,7 +11,7 @@ categories: JavaScript进阶系列
 
 # Event loop
 
-javaScript 的并发模型基于“事件循环”。
+javaScript 的并发模型基于**事件循**。
 
 在了解执行栈之前先来了解一些概念
 
@@ -67,7 +67,7 @@ func()
 异步代码会被挂起，并在需要执行的时候放到队列中，宏任务放到宏任务队列队尾，微任务放到微任务队列队尾，当当前执行栈为空时，从队列中获取需要执行的代码并执行。
 本质上异步还是同步。
 
-异步函数被分为 *宏任务* 和 *微任务*
+异步函数被分为 **宏任务** 和 **微任务**
 
 宏任务包括 script ， setTimeout ，setInterval ，setImmediate ，I/O ，UI rendering。
 
