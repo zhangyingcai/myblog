@@ -1,7 +1,8 @@
 ---
 title: JavaScript进阶系列-偏函数、柯里化、Compose 和 Pipe
 date: 2019-04-30 15:06:54
-tags:
+tags: JavaScript
+categories: JavaScript进阶系列
 ---
 JavaScript进阶系列-偏函数、柯里化、Compose 和 Pipe
 <!-- more -->
@@ -26,9 +27,9 @@ double(3) // 6
 
 这里利用了闭包的原理，double 函数实际上是
 ```
-{
+function double(...args){
     var a = 2;
-    mul(a, b)
+    mul(a, ...args)
 }
 ```
 这样做的好处是可以将一些参数给包装到函数中，后面只需要调用其他参数，不用重复传入包装的参数，包装的参数可以有多个。
@@ -74,4 +75,13 @@ let currySum = curry(sum);
 currySum(1)(2) // 3
 ```
 
+**仅针对函数参数长度固定**
+柯里化需要函数有已知的参数数量是固定的。
+
+但在JavaScript中的函数大多数实现是超越定义的，也可以让函数使用多个参数变量执行。例如 console.log() 
+
 柯里化的高级实现，如 lodash 中的 _.curry 可以实现更复杂的功能。
+
+总结：
+
+* 当我们不想一次次重复传递参数时可以使用偏函数。
