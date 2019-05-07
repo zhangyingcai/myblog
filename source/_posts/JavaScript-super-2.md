@@ -54,5 +54,56 @@ number | Number
 boolean | Boolean
 symbol | Symbol
 
+## Symbol
+
+* Symbol() 来创建 Symbol 类型，每个 Symbol() 返回的值都是唯一的。
+
+```
+const symbol1 = Symbol();
+const symbol2 = Symbol();
+symbol1 === symbol2 // false
+```
+
+* Symbol() 参数用来放 Symbol 的描述，是一个可选的字符串。无法使用 new 运算符。
+```
+const symbol = new Symbol(); // TypeError:Symbol is not a constructor
+
+```
+
+* Symbol() 创建的 Symbol 类型不是全局的，需要全局的需要使用 Symbol.for() 方法和  Symbol.keyFor()。
+
+* Symbols 在 for...in 迭代中不可枚举。作为对象的属性时，使用 Object.getOwnPropertySymbols() 获取，Object.getOwnPropertyNames() 则不行。
+
+```
+var obj = {};
+
+obj[Symbol("a")] = "a";
+obj[Symbol.for("b")] = "b";
+obj["c"] = "c";
+obj.d = "d";
+
+for (var i in obj) {
+   console.log(i); // logs "c" and "d"
+}
+```
+
+* 当使用 JSON.strIngify() 时以 symbol 值作为键的属性会被完全忽略。
+
+```
+JSON.stringify({[Symbol("foo")]: "foo"});                 // '{}'
+```
+
 ToDo:如下图发现一个有趣的事,关于 new 的实现。new 新创建一个对象实例。
 {% asset_img 微信截图_20190428150619.png %}
+
+问题：从内存来看 null 和 undefined 本质的区别是什么？
+
+答：值 null 是一个字面量，它不像 undefined 是全局对象的一个属性。null 是指变量未指向任何对象，所以常用来将对象置空，释放对象的内存。但是它是存在的，只不过没有类型和值。
+
+undefined 是全局对象的一个属性。一个没有被赋值的变量的类型是 undefined 。
+
+问题：规定了几种语言类型？
+
+问题：Symbol类型在实际开发中的应用、可手动实现一个简单的 Symbol？
+
+问题：基本类型对应的内置对象，以及他们之间的装箱拆箱操作？
