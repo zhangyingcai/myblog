@@ -29,6 +29,17 @@ func.toString() // "function func(){}"
 
 false.toString() // "false"
 ```
+|参数|结果|
+|:-:|:-:|
+|undefined | "undefined"|
+|null |	"null"|
+|boolean | "true" 或者 "false"|
+|number | 数字作为字符串。比如，"1.765"|
+|string | 无需转换|
+|[]  | ""|
+|[5,2] | "5,2"|
+|{} | "[object Object]"|
+|Symbol()|"Symbol()"|
 
 Symbol ??
 
@@ -37,6 +48,31 @@ Symbol ??
 ECMAScript 提供了两种把非数字的原始值转换成数字的方法，即 parseInt() 和 parseFloat()
 。
 只有对 String 类型调用这些方法，它们才能正确运行；对其他类型返回的都是 NaN。
+
+|参数|结果|
+|:-:|:-:|
+|undefined|NaN|
+|null|+0|
+|boolean|true被转换为1,false转换为+0|
+|number|无需转换|
+|string|由字符串解析为数字。例如，"324"被转换为324|
+|[] | +0|
+|[5]| 5|
+|{}|NaN|
+|Symbol|报错|
+
+# 转换为 Boolean
+
+|参数|结果|
+|:-:|:-:|
+|undefined|false|
+|null|false|
+|boolean|无需转换|
+|number|+0,-0转换为false,其他为true|
+|string|''为false,其他为true|
+|[] | true|
+|{}|true|
+|Symbol|true|
 
 # 强制类型转换
 
@@ -55,6 +91,33 @@ Number() 函数的强制类型转换与 parseInt() 和 parseFloat() 方法的处
 ## String() 函数
 String() 它可把任何值转换成字符串。
 
+# 隐式类型转换
+
+JavaScript 默认自动转换，没有任何警告
+隐式类型转换常见场景
+
+## 自动转换 Boolean
+例如 if 语句 或者其他需要 Boolean 的地方
+```
+if (表达式){}
+```
+
+## 字符串
+
++ 运算符其中一个操作数是字符串的话，会进行连接字符串的操作。
+```
+1+'2' // '12'
+```
+false
+```
+Boolean('false') // true
+Boolean('undefined') // true
+// 这里他们都是字符串
+```
+
+## 对象
+
+
 参考
 
 [ECMAScript 类型转换](http://www.w3school.com.cn/js/pro_js_typeconversion.asp)
@@ -62,3 +125,9 @@ String() 它可把任何值转换成字符串。
 [JavaScript 的怪癖 1：隐式类型转换](https://justjavac.com/javascript/2013/04/08/javascript-quirk-1-implicit-conversion-of-values.html)
 
 问题：可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用？
+
+问题：{} + {} = ？
+
+"[object Object][object Object]"
+
+[JavaScript中,{}+{}等于多少?](https://justjavac.com/javascript/2012/12/20/object-plus-object.html)
