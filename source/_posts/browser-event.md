@@ -69,6 +69,10 @@ return false;就等于同时调用了event.stopPropagation()和event.preventDefa
 缺点： 仅适用于get请求
 * CORS 服务端设置`Access-Control-Allow-Origin`。该属性表示哪些域名可以访问资源，如果设置通配符则表示所有资源都可以访问资源。
 
+[CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
+[Nginx配置跨域请求 Access-Control-Allow-Origin *](https://segmentfault.com/a/1190000012550346?utm_source=tag-newest)
+[nginx通过CORS实现跨域](https://www.cnblogs.com/sunmmi/articles/5956554.html)
+
 `document.domain`可以设置一级域名，表示该泛域名下的二级域名都可以访问
 
 * postMessage 用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息。 (ToDo理解)
