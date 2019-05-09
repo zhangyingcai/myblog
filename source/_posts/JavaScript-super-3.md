@@ -15,13 +15,13 @@ JavaScript进阶系列-引用类型
 ECMAScript 中的所有对象都由这个对象继承而来，Object 对象中的所有属性和方法都会出现在其他对象中，所以理解了 Object 对象，就可以更好地理解其他对象。
 
 属性
-* *constructor* 对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始 Object() 函数
-* *Prototype* 对该对象的原型对象的引用。 通常用来获取对象的原型对象,默认返回 Object 对象的一个实例。
+* **constructor** 对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始 Object() 函数
+* **Prototype** 对该对象的原型对象的引用。 通常用来获取对象的原型对象,默认返回 Object 对象的一个实例。
 方法
-* *hasOwnProperty(String)* 是否有某个属性
-* *IsPrototypeOf(object)* 判断该对象是否是某个对象的原型(父是该对象)
-* *PropertyIsEnumerable* 返回一个 boolean 值，*是否可枚举(enumberable)*
-* *ValueOf()* 返回该对象的原始值
+* **-(String)** 是否有某个属性
+* **IsPrototypeOf(object)** 判断该对象是否是某个对象的原型(父是该对象)
+* **PropertyIsEnumerable** 返回一个 boolean 值，**是否可枚举(enumberable)**
+* **ValueOf()** 返回该对象的原始值
 
 # JavaScript 对象
 
@@ -49,7 +49,7 @@ ECMAScript 中的所有对象都由这个对象继承而来，Object 对象中�
 原始类型保持在栈中，占用固定内存用来保持原始值。
 引用类型保存在堆中，变量只负责保存引用类型的地址。
 
-*赋值*语句执行区别，赋值语句是将变量保存的值复制一份到新的变量中，原始类型保存的是值，而引用类型保存的是引用类型的引用。
+**赋值**语句执行区别，赋值语句是将变量保存的值复制一份到新的变量中，原始类型保存的是值，而引用类型保存的是引用类型的引用。
 
 原始类型
 
