@@ -70,7 +70,32 @@ add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
 
 注：使用 call 和 apply 时，如果传递给 this 的不是一个对象， javascript 会使用相关构造函数将其转换为对象。
 
-es5 引入了 function.prototype.bind 。调用f.bind(someObject)会创建一个和 f 具有相同函数体和作用域的函数，但是在这个*新函数*中， this 被永久性的绑定到了 bind 第一个参数上。
+# call()
+
+[mdn call()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+
+定义：*func.apply(thisArg, ...args)*
+
+* thisArg 在 func 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动指向全局对象（浏览器中就是window对象），同时值为原始值（number，string，boolean）的 this 会指向该原始值的自动包装对象。strict mode 下是 undefined;
+* args 参数列表
+
+# apply()
+
+[mdn apply()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+
+定义：*func.apply(thisArg, [argsArray])*
+
+* thisArg 在 func 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动指向全局对象（浏览器中就是window对象），同时值为原始值（number，string，boolean）的 this 会指向该原始值的自动包装对象。strict mode 下是 undefined;
+
+* argsArray：一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 fun 函数。如果该参数的值为null 或 undefined，则表示不需要传入任何参数。从ECMAScript 5 开始可以使用类数组对象。
+
+# call 和 apply 的区别就是参数不同
+
+# bind()
+
+es5 引入了 function.prototype.bind 。调用f.bind(someObject)会创建一个和 f **具有相同函数体和作用域的函数**，但是在这个*新函数*中， this 被永久性的绑定到了 bind 第一个参数上。
+
+这个函数可以反复被调用，不过 this 指针已经无法改变。
 
 ```
 function f(){
