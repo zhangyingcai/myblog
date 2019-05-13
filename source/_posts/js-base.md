@@ -162,7 +162,7 @@ function f2(){
 }
 f2(); // undefined
 ```
-因为f2是被直接调用的，而不是作为对象的属性或方法调用的。
+因为 f2 是被直接调用的，而不是作为对象的属性或方法调用的。
 
 如果想把`this`的值从一个环境传到另一个环境，就需要使用`call`或者`apply`。
 
@@ -176,7 +176,7 @@ whatsThis();          // 'global'
 whatsThis.call(obj);  // 'custom'
 whatsThis.apply(obj); // 'custom'
 ```
-当一个函数在其主体中使用this关键字时，可以通过使用函数继承自function.prototype的call或apply方法将this绑定到调用中的特定对象。也就是调用call或apply方法绑定到调用的对象上。
+当一个函数在其主体中使用 this 关键字时，可以通过使用函数继承自 function.prototype 的 call 或 apply 方法将this 绑定到调用中的特定对象。也就是调用 call 或 apply 方法绑定到调用的对象上。
 ```
 function add(c, d) {
   return this.a + this.b + c + d;
@@ -184,20 +184,20 @@ function add(c, d) {
 
 var o = {a: 1, b: 3};
 
-// 第一个参数是作为‘this’使用的对象
+// 第一个参数是作为 'this' 使用的对象
 // 后续参数作为参数传递给函数调用
 // call(obj,...arguments)
 add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
 
-// 第一个参数也是作为‘this’使用的对象
+// 第一个参数也是作为 'this' 使用的对象
 // 第二个参数是一个数组，数组里的元素用作函数调用中的参数
 // apply(obj,[...arguments])
 add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
 ```
 
-注：使用call和apply时，如果传递给this的不是一个对象，javascript会使用相关构造函数将其转换为对象。
+注：使用 call 和 apply 时，如果传递给 this 的不是一个对象， javascript 会使用相关构造函数将其转换为对象。
 
-es5引入了function.prototype.bind。调用f.bind(someObject)会创建一个和f具有相同函数体和作用域的函数，但是在这个*新函数*中，this被永久性的绑定到了bind第一个参数上。
+es5 引入了 function.prototype.bind 。调用f.bind(someObject)会创建一个和 f 具有相同函数体和作用域的函数，但是在这个*新函数*中， this 被永久性的绑定到了 bind 第一个参数上。
 
 ```
 function f(){
@@ -214,12 +214,12 @@ var o = {a:37, f:f, g:g, h:h};
 console.log(o.f(), o.g(), o.h()); // 37, azerty, azerty
 ```
 
-es6箭头函数：this与封闭词法环境中的this保持一致。全局代码中是window。
+es6 箭头函数：this 与封闭词法环境中的 this 保持一致。全局代码中是 window 。
 
 
 
-当代码被内联on-event函数调用时，this指向监听器当前所在的dom。
-注意: 只有最外层的this是这样设置的。
+当代码被内联 on-event 函数调用时，this 指向监听器当前所在的 dom 。
+注意: 只有最外层的 this 是这样设置的。
 ```
 <button onclick="alert(this.tagName.toLowerCase());">
   Show this
