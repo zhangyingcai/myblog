@@ -9,7 +9,7 @@ categories: JavaScript进阶系列
 
 <!-- more -->
 
-## Object.assign(target, ...sources)
+## Object.prototype​.assign(target, ...sources)
 
 参数
 
