@@ -41,7 +41,6 @@ false.toString() // "false"
 |{} | "[object Object]"|
 |Symbol()|"Symbol()"|
 
-Symbol ??
 
 # 转换为数字
 
