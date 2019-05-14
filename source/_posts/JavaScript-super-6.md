@@ -131,4 +131,49 @@ alert((function(){return this})()); // window
 alert((function(){'use strict'; return this})()); // undefined
 ```
 
+# 箭头函数（Arrow Function）
+
+没有自己的this,arguments,super或者new.target这些函数表达式更适用于那些本来需要匿名函数的地方，并且他们不能用作构造函数。
+箭头函数不会创建自己的 this ,它只会从自己的作用域链的上一层继承this。
+应用场景： 当我们需要维护一个 this 上下文的时候
+比如
+```
+var self = this
+```
+
+不合适的场景：定义函数的方法，且该方法中包含 this
+```
+var Person = {
+    'age': 18,
+    'sayHello': ()=>{
+        console.log(this.age);
+      }
+};
+var age = 20;
+Person.sayHello();  // 20
+// 此时 this 指向的是全局对象
+
+// 正常使用
+var Person1 = {
+    'age': 18,
+    'sayHello': function () {
+        console.log(this.age);
+    }
+};
+var age = 20;
+Person1.sayHello();   // 18
+// 此时的 this 指向 Person1 对象
+```
+需要动态 this 的时候
+```
+// 错误使用
+var button = document.getElementById('userClick');
+button.addEventListener('click', () => {
+     this.classList.toggle('on');
+});
+```
+button 的监听函数是箭头函数，所以监听函数里面的 this 指向的是定义的时候外层的 this 对象，即 Window，导致无法操作到被点击的按钮对象
+
 [参见this详解](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this)
+
+[ call、apply 和 bind 的原生实现 —— github](https://github.com/Abiel1024/blog/issues/16)
