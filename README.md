@@ -13,6 +13,10 @@
 
 3.[引用类型](https://zhangyingcai.github.io/2019/04/28/JavaScript-super-3/)
 
+4.[类型转换、隐式类型转换](https://zhangyingcai.github.io/2019/04/28/JavaScript-super-4)
+
+6.[this, call, apply 和 bind 以及箭头函数](https://zhangyingcai.github.io/2019/04/28/JavaScript-super-6)
+
 ### ES6
 
 [ES6](https://zhangyingcai.github.io/2019/01/17/es6/)
