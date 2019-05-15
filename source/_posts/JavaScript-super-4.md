@@ -107,7 +107,7 @@ if (表达式){}
 ```
 1+'2' // '12'
 ```
-false
+* false
 ```
 Boolean('false') // true
 Boolean('undefined') // true
@@ -116,6 +116,25 @@ Boolean('undefined') // true
 
 ## 对象
 
+只有在 JavaScript **表达式**或**语句**中需要用到数字或字符串时，对象才被隐式转换。
+
+当需要将对象转换为数字时，需要三个步骤
+
+* 调用 valueOf()。如果结果是原始值（不是一个对象），则将其转换为一个数字。
+
+```
+3*{valueOf:function () { return 5 }} // 15
+```
+
+* 否则，调用 toString() 方法。如果结果是原始值，则将其转换为一个数字。
+```
+3*{toString:function () { return 5 }} // 15
+```
+* 否则，抛出一个类型错误。
+
+```
+3*{toString:function () { return {} }} //TypeError: Cannot convert object to primitive value
+```
 
 参考
 
