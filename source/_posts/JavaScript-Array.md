@@ -66,4 +66,15 @@ compareFunction(a, b) 必须总是对相同的输入返回相同的比较结果�
 * 如果该元素是个对象引用 （不是实际的对象），slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。
 * 对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。
 
+# Array​.prototype​.map() 生产新的数组
+
+创建一个新的数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+
+语法
+```
+var new_array = arr.map(function callback(currentValue[, index[, array]]) {
+ // Return element for new_array 
+}[, thisArg])
+```
+
 
