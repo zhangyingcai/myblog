@@ -348,3 +348,8 @@ z-index: -1;
 
 text-fill-color
 text-stroke
+
+# CSS 外边距合并
+[CSS 外边距合并](http://www.w3school.com.cn/css/css_margin_collapsing.asp)
+
+注：只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并。
