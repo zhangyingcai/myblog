@@ -5,7 +5,7 @@ tags: == vs ===, typeof vs instanceof
 categories: JavaScript进阶系列
 ---
 
-# JavaScript进阶系列- == vs ===, typeof vs instanceof
+JavaScript进阶系列- == vs ===, typeof vs instanceof
 
 <!-- more -->
 
@@ -51,7 +51,8 @@ NaN === NaN // false
 
 # typeof vs instanceof
 
-typeof 各个类型对应的值
+## typeof 判断原始类型的类型
+
 ```
 // Numbers
 typeof 1 === 'number';
@@ -102,6 +103,7 @@ typeof Math.sin === 'function';
 
 typeof 对于 null date array object RegExp 返回值都是 object 在做类型比较的时候不是很精确。
 
+## instanceof 判断对象的类型
 
 语法：
 ```
@@ -143,6 +145,8 @@ function myinstanceof(obj, constructor){
 
 参考：
 [mdn原型链](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+[浅谈 instanceof 和 typeof 的实现原理](https://juejin.im/post/5b0b9b9051882515773ae714)
+[mdn instanceof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof)
 
 问题：
 ```
