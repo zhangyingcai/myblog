@@ -566,7 +566,7 @@ f.next();
  
 f.next();
 // two
-// {value: "2", done: false}
+// {value: "2", done: false} 
  
 f.next();
 // three
@@ -661,3 +661,5 @@ await 关键字只在 async function 中有效。
 await 针对所跟不同表达式的处理方式
 
 Promise 对象：await 会暂停执行，等待 Promise 对象 resolve, 然后恢复async函数的执行并返回解析值。
+
+

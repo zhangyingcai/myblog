@@ -57,7 +57,18 @@
         /* .nth li:nth-child(2n){background-color: black;} */
         /* .nth li:nth-child(2n+1){background-color: black;} */
         .nth li:nth-child(n+5){background-color: black;}
+        .box {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    margin: 20px;
+    background: red;
+    border: 20px solid black;
+    box-sizing: border-box;
+}
+
     </style>
+    <div class="box"></div>
     <div class="nth">
         <ul>
             <li><a>1</a></li>
@@ -71,6 +82,7 @@
             <li><a>9</a></li>
             <li><a>0</a></li>
         </ul>
+        <p>通过对象的形式绑定</p>
     </div>
     <style>
         .after::after{
