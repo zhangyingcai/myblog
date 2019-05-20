@@ -133,7 +133,7 @@ alert((function(){'use strict'; return this})()); // undefined
 
 # 箭头函数（Arrow Function）
 
-没有自己的this,arguments,super或者new.target这些函数表达式更适用于那些本来需要匿名函数的地方，并且他们不能用作构造函数。
+没有自己的 this , arguments , super 或者 new.target 这些函数表达式更适用于那些本来需要匿名函数的地方，并且他们不能用作构造函数。
 箭头函数不会创建自己的 this ,它只会从自己的作用域链的上一层继承this。
 应用场景： 当我们需要维护一个 this 上下文的时候
 比如
