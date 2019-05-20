@@ -1,5 +1,5 @@
 ---
-title: JavaScript-super-7
+title: 函数作用域, 块级作用域和词法作用域
 date: 2019-04-30 15:06:42
 tags:
 ---
