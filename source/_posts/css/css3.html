@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <style>
-        .radius{
+        .radius {
             width: 100px;
             height: 200px;
             background-color: aqua;
@@ -23,29 +25,32 @@
     <style>
         /* 添加过渡效果 */
         /* -webkit-,-o- */
-        .circle{
+        .circle {
             background-color: aqua;
             width: 50px;
             height: 50px;
             border-radius: 50%;
             transition: all 0.5s;
         }
+
         /* 缩放1.5倍 */
-        .circle:hover{
+        .circle:hover {
             transform: scale(1.5);
         }
     </style>
     <div class="circle"></div>
     <style>
-        .nth ul{
+        .nth ul {
             list-style: none;
         }
-        .nth li{
+
+        .nth li {
             width: 20px;
             height: 20px;
             border: 1px solid #666;
         }
-        .nth a{
+
+        .nth a {
             display: block;
             width: 20px;
             height: 20px;
@@ -53,20 +58,23 @@
             border-radius: 50%;
             background-color: aquamarine;
         }
+
         /* .nth li:nth-child(n){background-color: black;} */
         /* .nth li:nth-child(2n){background-color: black;} */
         /* .nth li:nth-child(2n+1){background-color: black;} */
-        .nth li:nth-child(n+5){background-color: black;}
-        .box {
-    width: 200px;
-    height: 200px;
-    padding: 20px;
-    margin: 20px;
-    background: red;
-    border: 20px solid black;
-    box-sizing: border-box;
-}
+        .nth li:nth-child(n+5) {
+            background-color: black;
+        }
 
+        .box {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            margin: 20px;
+            background: red;
+            border: 20px solid black;
+            box-sizing: border-box;
+        }
     </style>
     <div class="box"></div>
     <div class="nth">
@@ -85,27 +93,30 @@
         <p>通过对象的形式绑定</p>
     </div>
     <style>
-        .after::after{
+        .after::after {
             content: '*';
             color: red;
         }
-        .after::before{
+
+        .after::before {
             content: '&';
             color: #666;
         }
     </style>
     <div class="after"></div>
     <style>
-        .letter::first-letter{
+        .letter::first-letter {
             font-size: 35px;
             color: crimson;
             font-weight: bold;
             float: left;
         }
+
         /* 添加float:left首个文字就会下沉 */
-        .letter::first-line{
+        .letter::first-line {
             color: #f66
         }
+
         /* 首行 */
     </style>
     <div class="demo">
@@ -113,7 +124,7 @@
     </div>
     <!-- 对话框 -->
     <style>
-        .dialog{
+        .dialog {
             width: 200px;
             height: 50px;
             line-height: 50px;
@@ -121,17 +132,19 @@
             border-radius: 6px;
             position: relative;
         }
-        .dialog::before{
+
+        .dialog::before {
             content: '';
             border-width: 10px;
-            border-color: transparent; 
+            border-color: transparent;
             border-style: solid;
             border-right: 10px solid #f66;
             position: absolute;
             top: 15px;
             left: -20px;
         }
-        .triangle{
+
+        .triangle {
             width: 0;
             height: 0px;
             border-right: 50px solid #f66;
@@ -144,7 +157,7 @@
     <div class="dialog">我的小姐姐呢</div>
     <!-- 菱形diamond -->
     <style>
-        .diamond{
+        .diamond {
             width: 200px;
             height: 200px;
             -ms-transform: rotate(45deg);
@@ -158,7 +171,7 @@
     <div class="diamond"></div>
     <!-- 平行四边形parallel -->
     <style>
-        .parallel{
+        .parallel {
             width: 300px;
             height: 200px;
             -ms-transform: skewX(45deg);
@@ -170,5 +183,63 @@
         }
     </style>
     <div class="parallel"></div>
+    <div>
+        <style>
+            .forum-item-title {
+                font-size: 16px;
+                margin: 15px;
+            }
+
+            .forum-item-title::after {
+                position: absolute;
+                content: '';
+                border-bottom: 1px solid #eee;
+                width: 95px;
+                margin-left: 5px;
+                margin-top: 12px;
+            }
+
+            .forum-item {
+                display: flex;
+                height: 38px;
+                align-items: center;
+                font-size: 16px;
+                line-height: 20px;
+                letter-spacing: 1px;
+                color: #757575;
+                text-decoration: none;
+                margin-bottom: 1px;
+                border-radius: 4px;
+            }
+
+            .forum-item:hover {
+                background: rgba(0, 154, 97, 0.08);
+            }
+
+            .forum-item-icon {
+                width: 50px;
+                display: flex;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .forum-item-icon img {
+                width: 25px;
+                height: 25px;
+            }
+        </style>
+        <div class="forum-item-title">城堡星球</div>
+        <a href="https://www.bcathub.com/forum-2-1.html" class="forum-item">
+            <span class="forum-item-icon"><img src="https://img.bcathub.com/-01.png"></span>
+            <span>综合交流</span>
+        </a>
+        <a href="https://www.bcathub.com/forum-51-1.html" class="forum-item">
+            <span class="forum-item-icon">
+                <img src="https://img.bcathub.com/-11.png">
+            </span>
+            <span>官方星球</span>
+        </a>
+    </div>
 </body>
 </html>
