@@ -33,7 +33,18 @@ NaN === NaN // false
 * number 和  string 进行比较时会先转换成 number
 * number 和  boolean 进行比较时会先转换成 number
 * string 和  boolean 进行比较时会先转换成 number
-* 其中一方是 Object 会先转换成原始值，在进行 == 判断
+* 其中一方是 Object 会先转换成原始值，在进行 == 判断。
+
+整体的判断流程就是
+
+* 类型是否相同，相同的话判断值是否相同。
+* 其中一方是 null 或者 undefined , null 和 undefined 只和自己相等。
+* 其中一方是 boolean ，将 boolean 转换成 number 。
+* 其中一方是 Object 将根据另外一个的类型转换成对应的类型。
+
+[] == ![] 现在应该能正确判断了吧
+
+首先是右边是个表达式，由前两节可知道 [] 转换成 boolean 为 true ,非运算之后就是 false, 此时的左边是 object 右边是 boolean ,执行第三步右边为 0， 然后将 object 转换成数字， [] 转换成数字是 0， 所以 0===0。
 
 |比较值列表|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
