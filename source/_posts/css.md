@@ -346,10 +346,77 @@ z-index: -1;
 
 # 文字镂空
 
+## 方式1
 text-fill-color
 text-stroke
+```
+text-fill-color:#2E208C;
+text-stroke: 1px #2E208C;
+```
+## 方式2
+```
+text-shadow: 1px 1px #2E208C, -1px -1px #2E208C, 1px -1px #2E208C, -1px 1px #2E208C;
+```
 
 # CSS 外边距合并
 [CSS 外边距合并](http://www.w3school.com.cn/css/css_margin_collapsing.asp)
 
 注：只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并。
+
+# 渐变色
+
+语法
+
+background: linear-gradient(direction, color-stop1, color-stop2, ...);
+线性渐变 - 从上到下（默认情况下）
+
+```
+#grad {
+  background: -webkit-linear-gradient(red, blue); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(red, blue); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(red, blue); /* Firefox 3.6 - 15 */
+  background: linear-gradient(red, blue); /* 标准的语法 */
+}
+```
+
+从左到右
+```
+#grad {
+  background: -webkit-linear-gradient(left, red , blue); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, red, blue); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, red, blue); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, red , blue); /* 标准的语法 */
+}
+```
+
+从左上角到右下角
+```
+#grad {
+  background: -webkit-linear-gradient(left top, red , blue); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(bottom right, red, blue); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(bottom right, red, blue); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to bottom right, red , blue); /* 标准的语法 */
+}
+```
+
+也可以使用角度
+
+# font-weight
+
+normal	默认值。定义标准的字符。
+bold	定义粗体字符。
+bolder	定义更粗的字符。
+lighter	定义更细的字符。
+100
+200
+300
+400
+500
+600
+700
+800
+900
+定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。
+inherit	规定应该从父元素继承字体的粗细。
+
+
