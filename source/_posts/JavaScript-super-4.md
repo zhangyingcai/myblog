@@ -133,7 +133,8 @@ Boolean('undefined') // true
 * 否则，抛出一个类型错误。
 
 ```
-3*{toString:function () { return {} }} //TypeError: Cannot convert object to primitive value
+3*{toString:function () { return {} }} //TypeError: C
+】annot convert object to primitive value
 ```
 
 参考
