@@ -15,13 +15,11 @@ JavaScript进阶系列-this, call, apply 和 bind 以及箭头函数
 
 >在绝大多数情况下，函数的调用方式决定了`this`的值。`this`不能再执行期间被赋值，并且在函数每次函数被调用时`this`的值可能不会相同。
 >`ES5`引入了`bind`方法来设置函数的`this`值，而不用考虑函数如何被调用的
->`ES2015` 引入了支持`this`词法解析的*箭头函数*（它在闭合的执行环境内设置`this`的值）。
-
-全局环境
+>`ES2015` 引入了支持`this`词法解析的**箭头函数**（它在闭合的执行环境内设置`this`的值）。
 
 无论是否在严格模式下，在全局执行环境中`this`指向全局函数。
 
-在严格模式下，`this`将保持他执行环境的值。如果`this`没有被环境定义，那他将保持为undefined。
+在严格模式下，`this`将保持他执行环境的值。如果`this`没有被环境定义，那他将保持为 undefined 。
 
 ```
 function f1(){
@@ -74,7 +72,7 @@ add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
 
 [mdn call()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
-定义：*func.apply(thisArg, ...args)*
+定义：**func.apply(thisArg, ...args)**
 
 * thisArg 在 func 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动指向全局对象（浏览器中就是window对象），同时值为原始值（number，string，boolean）的 this 会指向该原始值的自动包装对象。strict mode 下是 undefined;
 * args 参数列表
@@ -83,7 +81,7 @@ add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
 
 [mdn apply()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
-定义：*func.apply(thisArg, [argsArray])*
+定义：**func.apply(thisArg, [argsArray])**
 
 * thisArg 在 func 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动指向全局对象（浏览器中就是window对象），同时值为原始值（number，string，boolean）的 this 会指向该原始值的自动包装对象。strict mode 下是 undefined;
 
@@ -93,7 +91,7 @@ add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
 
 # bind()
 
-es5 引入了 function.prototype.bind 。调用f.bind(someObject)会创建一个和 f **具有相同函数体和作用域的函数**，但是在这个*新函数*中， this 被永久性的绑定到了 bind 第一个参数上。
+es5 引入了 function.prototype.bind 。调用f.bind(someObject)会创建一个和 f **具有相同函数体和作用域的函数**，但是在这个**新函数**中， this 被永久性的绑定到了 bind 第一个参数上。
 
 这个函数可以反复被调用，不过 this 指针已经无法改变。
 
