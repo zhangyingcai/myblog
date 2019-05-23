@@ -331,14 +331,28 @@ display: inline-flex;
 
 ## align-conetent align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
 
-## 项目的属性
+## flex 项目的属性
 
-order 
+### order 
 项目的顺序，数字越小，排列越靠前，默认值是0
 
-flex-grow 
+### flex-grow 
 定义项目的放大的比例，默认为0，保持自身，即使还有剩余空间，也不放大。
 如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+
+### flex-shrink 
+定义项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+
+### flex-basis 属性
+
+定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值是 auto ,即项目的本来大小。
+
+可以设置和 width 一样的值。
+
+## flex
+
+flex 属性是 flex-grow, flex-shrink 和 flex-basis 的简写。
+默认值 0 1 auto
 
 # 伪元素放到父元素的下面
 
