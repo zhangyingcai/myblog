@@ -1,5 +1,6 @@
 ---
 title: self 1
+abbrlink: 20578
 tags:
 ---
 

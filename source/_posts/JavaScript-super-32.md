@@ -1,8 +1,9 @@
 ---
 title: JavaScript进阶系列-偏函数、柯里化、Compose 和 Pipe
-date: 2019-04-30 15:06:54
 tags: JavaScript
 categories: JavaScript进阶系列
+abbrlink: 7919
+date: 2019-04-30 15:06:54
 ---
 JavaScript进阶系列-偏函数、柯里化、Compose 和 Pipe
 <!-- more -->

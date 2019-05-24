@@ -1,8 +1,9 @@
 ---
 title: jquery中$的实现方式
-date: 2018-12-10 17:12:08
-tags:  jQuery
+tags: jQuery
 categories: jQuery
+abbrlink: 7917
+date: 2018-12-10 17:12:08
 ---
 
 # 实现方式(网上找的)

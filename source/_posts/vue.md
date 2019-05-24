@@ -1,8 +1,9 @@
 ---
 title: vue
-date: 2019-01-24 16:40:52
 tags: vue
 categories: Vue
+abbrlink: 24839
+date: 2019-01-24 16:40:52
 ---
 
 记录vue的知识点

@@ -1,8 +1,9 @@
 ---
 title: new操作符
-date: 2019-03-04 11:23:51
 tags: new
 categories: JavaScript
+abbrlink: 40155
+date: 2019-03-04 11:23:51
 ---
 
 js中的new操作符

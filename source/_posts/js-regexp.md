@@ -1,8 +1,9 @@
 ---
 title: js-regexp
-date: 2019-02-15 16:53:44
 tags: regexp
-categories: JavaScript, Regexp
+categories: 'JavaScript, Regexp'
+abbrlink: 50182
+date: 2019-02-15 16:53:44
 ---
 
 常用正则表达式

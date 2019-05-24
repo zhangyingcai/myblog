@@ -1,8 +1,9 @@
 ---
 title: 用栈实现队列
-date: 2018-12-14 19:35:36
 tags: quene
 categories: JavaScript
+abbrlink: 39382
+date: 2018-12-14 19:35:36
 ---
 
 先上代码

@@ -1,8 +1,9 @@
 ---
 title: 前端工程师必须懂得概念（一）
-date: 2018-12-20 18:15:10
 tags: call stack
 categories: JavaScript
+abbrlink: 38073
+date: 2018-12-20 18:15:10
 ---
 
 # 调用堆栈

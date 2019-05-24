@@ -1,8 +1,9 @@
 ---
 title: JavaScript进阶系列-原始类型
-date: 2019-04-28 14:28:17
 tags: 原始类型
 categories: JavaScript进阶系列
+abbrlink: 30131
+date: 2019-04-28 14:28:17
 ---
 JavaScript进阶系列-原始类型
 <!-- more -->

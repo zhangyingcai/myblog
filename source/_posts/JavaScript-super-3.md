@@ -1,8 +1,9 @@
 ---
 title: JavaScript进阶系列-引用类型
-date: 2019-04-28 14:29:20
 tags: 值类型和引用类型
 categories: JavaScript进阶系列
+abbrlink: 20015
+date: 2019-04-28 14:29:20
 ---
 
 JavaScript进阶系列-引用类型

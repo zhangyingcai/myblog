@@ -1,8 +1,9 @@
 ---
 title: JavaScript进阶系列-类型转换、隐式类型转换
-date: 2019-04-29 09:52:57
 tags: 类型转换
 categories: JavaScript进阶系列
+abbrlink: 38075
+date: 2019-04-29 09:52:57
 ---
 
 JavaScript进阶系列-类型转换、隐式类型转换

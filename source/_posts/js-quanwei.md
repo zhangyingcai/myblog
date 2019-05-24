@@ -1,8 +1,9 @@
 ---
 title: JavaScript权威指南第6版
-date: 2019-03-05 18:40:39
 tags: JavaScript权威指南第6版
 categories: JavaScript
+abbrlink: 61290
+date: 2019-03-05 18:40:39
 ---
 
 阅读笔记

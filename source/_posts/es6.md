@@ -1,8 +1,9 @@
 ---
 title: es6
-date: 2019-01-17 09:16:43
 tags: es6
 categories: ES6
+abbrlink: 14773
+date: 2019-01-17 09:16:43
 ---
 
 es6笔记

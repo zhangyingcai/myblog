@@ -1,5 +1,6 @@
 ---
 title: wordpress-function
+abbrlink: 57516
 date: 2019-05-08 14:27:03
 tags:
 ---

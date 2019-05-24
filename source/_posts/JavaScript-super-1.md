@@ -1,8 +1,9 @@
 ---
 title: JavaScript进阶系列-Event Loop
-date: 2019-04-25 10:43:57
 tags: Event Loop
 categories: JavaScript进阶系列
+abbrlink: 18146
+date: 2019-04-25 10:43:57
 ---
 
 前端工程师必须要懂得33个知识点 Event Loop

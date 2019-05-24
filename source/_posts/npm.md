@@ -1,7 +1,8 @@
 ---
 title: npm
-date: 2019-01-03 11:49:00
 tags: npm
+abbrlink: 61573
+date: 2019-01-03 11:49:00
 ---
 
 世界上最大的软件注册表(做JavaScript的都要懂得)

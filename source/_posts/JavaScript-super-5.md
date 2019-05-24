@@ -1,8 +1,9 @@
 ---
-title: JavaScript进阶系列- == vs ===, typeof vs instanceof
-date: 2019-04-30 14:50:38
-tags: == vs ===, typeof vs instanceof
+title: 'JavaScript进阶系列- == vs ===, typeof vs instanceof'
+tags: '== vs ===, typeof vs instanceof'
 categories: JavaScript进阶系列
+abbrlink: 64439
+date: 2019-04-30 14:50:38
 ---
 
 JavaScript进阶系列- == vs ===, typeof vs instanceof

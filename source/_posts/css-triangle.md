@@ -1,8 +1,9 @@
 ---
 title: 用css画三角形
-date: 2018-12-11 18:22:42
 tags: css
 categories: CSS
+abbrlink: 1235
+date: 2018-12-11 18:22:42
 ---
 
 ```

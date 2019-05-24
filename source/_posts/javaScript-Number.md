@@ -1,8 +1,9 @@
 ---
 title: 每天一个知识点之Number
-date: 2019-04-28 15:39:48
 tags: Number
 categories: JavaScript进阶系列
+abbrlink: 4093
+date: 2019-04-28 15:39:48
 ---
 number 类型的注意点以及 Number 引用类型
 

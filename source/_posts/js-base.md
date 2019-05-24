@@ -1,8 +1,9 @@
 ---
 title: javascript 基础
-date: 2018-12-26 09:03:29
 tags: 原始类型
 categories: JavaScript
+abbrlink: 64784
+date: 2018-12-26 09:03:29
 ---
 
 # 基础

@@ -1,8 +1,9 @@
 ---
 title: virtualbox-centos7.5-wdcp
-date: 2018-12-04 14:23:46
-tags:  virtualbox
+tags: virtualbox
 categories: virtualbox
+abbrlink: 14296
+date: 2018-12-04 14:23:46
 ---
 
 用于记录一次成功使用virtualbox虚拟机安装centos7.5成功联网并安装上wdcp

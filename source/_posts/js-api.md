@@ -1,7 +1,8 @@
 ---
 title: js-api
-date: 2019-01-23 09:30:02
 tags: jsapi
+abbrlink: 40369
+date: 2019-01-23 09:30:02
 ---
 
 用于平常学到的js知识点

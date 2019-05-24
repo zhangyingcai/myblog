@@ -1,8 +1,9 @@
 ---
 title: vue-element-admin
-date: 2019-02-25 13:41:34
 tags: vue-element-admin
 categories: Vue
+abbrlink: 25206
+date: 2019-02-25 13:41:34
 ---
 
 vue-element-admin的使用总结

@@ -1,8 +1,9 @@
 ---
 title: 浏览器的事件注册机制
-date: 2018-12-20 17:56:08
 tags: browser event
 categories: 浏览器
+abbrlink: 12074
+date: 2018-12-20 17:56:08
 ---
 
 记录学习浏览器的事件机制

@@ -1,8 +1,9 @@
 ---
 title: 闭包
-date: 2019-04-30 15:06:48
 tags: 闭包
 categories: JavaScript进阶系列
+abbrlink: 7415
+date: 2019-04-30 15:06:48
 ---
 
 JavaScript进阶系列 - 闭包

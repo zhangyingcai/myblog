@@ -1,8 +1,9 @@
 ---
 title: datetime
-date: 2019-03-13 11:20:09
 tags: datetime
 categories: datetime
+abbrlink: 62998
+date: 2019-03-13 11:20:09
 ---
 
 遇到 `+new Date()` 没有明白，特来学习一下

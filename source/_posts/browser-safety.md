@@ -1,8 +1,9 @@
 ---
 title: JavaScript进阶系列-web安全
-date: 2019-05-08 09:36:10
 tags: JavaScript
 categories: JavaScript进阶系列
+abbrlink: 64580
+date: 2019-05-08 09:36:10
 ---
 
 JavaScript进阶系列-web安全

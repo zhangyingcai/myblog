@@ -1,8 +1,9 @@
 ---
 title: Markdown的基本使用
-date: 2018-11-29 16:15:26
 tags: Markdown
 categories: Markdown
+abbrlink: 64441
+date: 2018-11-29 16:15:26
 ---
 
 记录markdown的使用方法
