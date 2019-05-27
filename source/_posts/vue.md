@@ -230,3 +230,14 @@ var vm = new Vue({
 类型：Object
 
 持有所有 ref 注册的 DOM 元素和组件实例，通过注册的 ref 名称访问 DOM 元素和组件实例 
+
+# vm.$el 
+
+Element
+
+vue 实例的根元素
+
+# vue.$nextTick()
+
+在下次 DOM 更新循环结束之后的延时回调，在数据更新之后立即调用这个方法，获取更新后的DOM
+
