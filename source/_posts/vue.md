@@ -230,3 +230,22 @@ var vm = new Vue({
 类型：Object
 
 持有所有 ref 注册的 DOM 元素和组件实例，通过注册的 ref 名称访问 DOM 元素和组件实例 
+
+# vm.mixins
+
+类型 **Array<Object>**
+
+
+接受一个混入对象的数组。
+这些混入实例对象可以通过和实例相同钩子来合并要完成的逻辑。mixin 钩子按照传入的顺序依次调用，并且在调用组件自身钩子之前被调用。
+```
+var mixin = {
+  created: function () { console.log(1) }
+}
+var vm = new Vue({
+  created: function () { console.log(2) },
+  mixins: [mixin]
+})
+// => 1
+// => 2
+```
