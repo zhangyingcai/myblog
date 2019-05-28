@@ -20,7 +20,7 @@ return 返回由删除的元素组成的一个数组。
 
 这样原数组就会被改变为我们想要的结构。
 
-# Array.prototype​.concat() 合并字数组
+# Array.prototype​.concat() 合并数组
 
 var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])
 

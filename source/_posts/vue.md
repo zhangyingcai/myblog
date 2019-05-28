@@ -15,8 +15,8 @@ date: 2019-01-24 16:40:52
 # vue的双向绑定？怎么实现的？
 # vue响应式原理
 
-vue内部使用Object.defineProperty()来实现数据响应式，通过这个函数将vue实例data对象的所有属性全部转为getter/setter。然后在属性被访问和修改时通知变化。监听这个变化的是watcher实例对象，在渲染组件的过程中
-把属性记录为依赖，在setter被调用时，会通知watcher重新计算，从而导致它关联的组件更新。
+vue 内部使用 Object.defineProperty() 来实现数据响应式，通过这个函数将 vue 实例 data 对象的所有属性全部转为 getter/setter 。然后在属性被访问和修改时通知变化。监听这个变化的是 watcher 实例对象，在渲染组件的过程中
+把属性记录为依赖，在 setter 被调用时，会通知 watcher 重新计算，从而导致它关联的组件更新。
 
 >JavaScript 的限制 ( Object.observe 已经被废弃)，Vue 不能检测到对象属性的添加或删除。所以属性必须在`data`对象上存在才能让Vue转化它。
 
@@ -25,6 +25,7 @@ vue内部使用Object.defineProperty()来实现数据响应式，通过这个函
 ```
 this.$set(this.someObject,'b',2)
 ```
+我们来模拟一遍过程以及怎么使用 proxy 来实现
 
 # 虚拟dom?怎么实现的？
 
@@ -231,6 +232,7 @@ var vm = new Vue({
 
 持有所有 ref 注册的 DOM 元素和组件实例，通过注册的 ref 名称访问 DOM 元素和组件实例 
 
+
 # vm.$el 
 
 Element
@@ -241,3 +243,27 @@ vue 实例的根元素
 
 在下次 DOM 更新循环结束之后的延时回调，在数据更新之后立即调用这个方法，获取更新后的DOM
 
+# vm.mixins
+
+类型 **Array<Object>**
+
+
+接受一个混入对象的数组。
+这些混入实例对象可以通过和实例相同钩子来合并要完成的逻辑。mixin 钩子按照传入的顺序依次调用，并且在调用组件自身钩子之前被调用。
+```
+var mixin = {
+  created: function () { console.log(1) }
+}
+var vm = new Vue({
+  created: function () { console.log(2) },
+  mixins: [mixin]
+})
+// => 1
+// => 2
+```
+
+## keyup 对于键盘按键时间监听
+
+v-bind:keyup.enter
+
+监听键盘 Enter 按下的时候触发
