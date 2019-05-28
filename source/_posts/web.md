@@ -138,6 +138,11 @@ function money(num){
 ## (123456.123).toLocaleString('en-US')  ie11以上支持
 [mdn参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#)
 
+# '123add12da1' 截取数字
+
+'123add12da1'.split(/[^\d]/).join('') // 转换成字符串
+'123add12da1'.match(/\d/g) // 转换成数组
+
 腾讯面试题目
 
 
