@@ -82,3 +82,32 @@ var new_array = arr.map(function callback(currentValue[, index[, array]]) {
 * index
 * array
 * thisArg
+
+# Array.isArray 判断是否是 Array 引用类型类型
+
+注意：是 Array 对象实现的方法，不在原型链上。
+
+当检测 Array 实例时,  Array.isArray 优于 instanceof ,因为 Array.isArray 能检测 iframes .
+
+示例：
+```
+var iframe = document.createElement('iframe');
+document.body.appendChild(iframe);
+xArray = window.frames[window.frames.length-1].Array;
+var arr = new xArray(1,2,3); // [1,2,3]
+
+// Correctly checking for Array
+Array.isArray(arr);  // true
+// Considered harmful, because doesn't work though iframes
+arr instanceof Array; // false
+```
+
+isArray 实现
+
+通过调用 Object toString 方法转换成字符串，判断是否恒等于 '[object Array]'。
+
+```
+Array.isArray = function(value){
+  retrun Object.prototype.toString.call(value) === '[object Array]';
+}
+```
