@@ -16,6 +16,13 @@ null
 undefined
 symbol [ES6新增]
 
+* number  9527
+* string '9527',"9527"
+* boolean true,false
+* Null null
+* undefined undefined
+* symbol （ECMAScript 6新定义）
+
 特性：
 * 基本类型的*值*不能被改变
 * boolean 表示一个逻辑实体，可以有两个值：true 和 false。
