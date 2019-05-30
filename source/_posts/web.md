@@ -80,6 +80,51 @@ border-box // width = border + padding + 内容的高度
 clear:both;
 overflow:auto;
 
+## 浮动到底是什么
+
+浮动是元素脱离文档流。
+
+清除浮动的方式:
+
+```
+// 现代浏览器clearfix方案，不支持IE6/7
+.clearfix:after {
+    display: table;
+    content: " ";
+    clear: both;
+}
+
+// 全浏览器通用的clearfix方案
+// 引入了zoom以支持IE6/7
+.clearfix:after {
+    display: table;
+    content: " ";
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+
+// 全浏览器通用的clearfix方案【推荐】
+// 引入了zoom以支持IE6/7
+// 同时加入:before以解决现代浏览器上边距折叠的问题
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: " ";
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+```
+
+BFC 是块状格式化上下文
+
+[浮动到底是什么？](https://www.jianshu.com/p/09bd5873bed4)
+
 # 千分位分割数字，并自定义保留小数位数
 
 ## 正则表达式
