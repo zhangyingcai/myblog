@@ -102,18 +102,20 @@ JavaScript 默认自动转换，没有任何警告
 if (表达式){}
 ```
 
-## 字符串
+## 运算符
 
-+ 运算符其中一个操作数是字符串的话，会进行连接字符串的操作。
+在非 Numeber 类型进行数学运算符 - * / 时，会先将非 Number 转换成 Number 类型。
+`+` 运算符要考虑字符串的情况，在操作数中存在字符串时，优先转换成字符串，
+
+`+` 运算符其中一个操作数是字符串的话，会进行连接字符串的操作。
 ```
 1+'2' // '12'
 ```
-* false
-```
-Boolean('false') // true
-Boolean('undefined') // true
-// 这里他们都是字符串
-```
+
+`+` 操作符的执行顺序是：
+* 当一侧操作数为 String 类型，会优先将另一侧转换为字符串类型。
+* 当一侧操作数为 Number 类型，另一侧为原始类型，则将原始类型转换为 Number 类型。
+* 当一侧操作数为 Number 类型，另一侧为引用类型，将引用类型和 Number 类型转换成字符串后拼接。
 
 ## 对象
 
@@ -151,3 +153,19 @@ Boolean('undefined') // true
 "[object Object][object Object]"
 
 [JavaScript中,{}+{}等于多少?](https://justjavac.com/javascript/2012/12/20/object-plus-object.html)
+
+常见错误使用：false
+```
+Boolean('false') // true
+Boolean('undefined') // true
+// 这里他们都是字符串
+```
+
+问题:如何让：a == 1 && a == 2 && a == 3
+
+```
+const a = {
+  value:[3,2,1],
+  valueOf: function(){this.value.pop()}
+}
+```
