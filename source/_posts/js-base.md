@@ -21,7 +21,7 @@ date: 2018-12-26 09:03:29
 * string '9527',"9527"
 * boolean true,false
 * Null null
-* undefined
+* undefined undefined
 * symbol （ECMAScript 6新定义）
 
 首先，原始类型存储的都是值，是没有函数可以调用的。
