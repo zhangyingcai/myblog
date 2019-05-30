@@ -267,3 +267,34 @@ var vm = new Vue({
 v-bind:keyup.enter
 
 监听键盘 Enter 按下的时候触发
+
+## proxy 实现数据监听
+
+```
+const onWatch = (obj, setBind, getLogger) => {
+  const handler = {
+    get(target, property){
+      getLogger(target, property, receiver)
+      return Reflect.get(target, property)
+    },
+    set(target, property, value, receiver){
+      setBind(value, property)
+      return Reflect.set(target, property, value)
+    }
+  }
+  return new Proxy(obj, handler)
+}
+
+let obj = { a: 1 }
+let p = onWatch(
+  obj,
+  (v, property) => {
+    console.log(`监听到属性${property}改变为${v}`)
+  },
+  (target, property) => {
+    console.log(`'${property}' = ${target[property]}`)
+  }
+)
+p.a = 2 // 监听到属性a改变
+p.a // 'a' = 2
+```
