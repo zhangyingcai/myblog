@@ -43,6 +43,7 @@ console.log(tiger instanceof Tiger); //true
 # 原型链
 
 什么是原型链？
+要理解原型链，需要从**函数对象**、**constructor**、new、Prototype、__proto__ 这五个概念入手。
 
 ## 什么是原型链
 
@@ -99,3 +100,68 @@ let child = new Child(1)
 child.getValue() // 1
 child instanceof Parent // true
 ```
+
+## 函数对象
+
+在 JavaScript 当值 函数即对象。（函数是一等公民）
+可以把函数赋值给变量，可以作为参数传递给其他函数，添加属性和调用方法。
+凡是由关键字 function 定义的函数都是函数对象，而且，只有函数对象拥有 prototype 属性。指向该函数的原型对象。
+
+## constructor 构造函数
+
+```
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+        console.log(this.name);
+    };
+}
+```
+
+我们创建了一个自定义函数 Person() ,构造函数通常使用大写字母开头。
+
+## new 
+
+要创建 Person() 的新实例，必须使用 new 关键字。
+new 调用构造函数实际上会经历以下四个步骤。
+
+* 创建一个新对象
+* 将构造函数的作用域赋值给新对象 （this 指向新的对象）
+* 执行构造函数中的代码
+* 返回新的对象
+
+构造函数和其他普通函数没有什么区别，使用 new 操作符号都可以作为构造函数来调用。
+
+注意：构造函数如果返回一个对象的话，会覆盖掉新建的对象。
+
+###构造函数的问题
+
+问题1：创建实例时构造函数每次都要执行
+
+```
+const Tom = new Person('Tom', 12, 'cxy');
+const lucy = new Person('lucy', 14, 'dd');
+Tom.sayName === lucy.sayName // false
+```
+
+这样每个实例都有一个独立的 sayName 方法。
+通常的解决办法是把方法添加到原型链上。
+
+```
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = sayName;
+}
+
+Person.prototype.sayName = function (){
+    console.log(this.name);
+}
+```
+
+## prototype 原型
+
+就像我们上面做的那样，使用原型的好处就是可以让所有的对象实例共享他所包含的属性和方法。
