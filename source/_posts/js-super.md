@@ -8,6 +8,8 @@ date: 2018-12-10 19:05:59
 学习一下js的继承实现。
 <!-- more -->
 
+# 继承
+
 ```
 function Animal(name){
     // 属性
@@ -69,4 +71,10 @@ child.prototype = Object.create(parent.prototype);
 child.prototype.constructor = child;
 
 const child = new child(1);
+```
+
+# Class 继承
+
+
+```
 ```
