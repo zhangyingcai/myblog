@@ -188,6 +188,15 @@ function money(num){
 '123add12da1'.split(/[^\d]/).join('') // 转换成字符串
 '123add12da1'.match(/\d/g) // 转换成数组
 
+# 判断对象的类型
+
+```
+const isType =  type => target => `[object ${type}]` === Object.prototype.toString.call(target)
+```
+
+Object.prototype.toString 使用了闭包 一个函数
+注意：type 类型首字母大写
+
 腾讯面试题目
 
 
