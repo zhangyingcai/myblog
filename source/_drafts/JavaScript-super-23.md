@@ -103,7 +103,7 @@ child instanceof Parent // true
 
 ## 函数对象
 
-在 JavaScript 当值 函数即对象。（函数是一等公民）
+在 JavaScript 当中 函数即对象。（函数是一等公民）
 可以把函数赋值给变量，可以作为参数传递给其他函数，添加属性和调用方法。
 凡是由关键字 function 定义的函数都是函数对象，而且，只有函数对象拥有 prototype 属性。指向该函数的原型对象。
 
@@ -136,9 +136,9 @@ new 调用构造函数实际上会经历以下四个步骤。
 
 注意：构造函数如果返回一个对象的话，会覆盖掉新建的对象。
 
-###构造函数的问题
+##构造函数的问题
 
-问题1：创建实例时构造函数每次都要执行
+创建实例时构造函数每次都要执行
 
 ```
 const Tom = new Person('Tom', 12, 'cxy');
@@ -154,7 +154,6 @@ function Person(name, age, job){
     this.name = name;
     this.age = age;
     this.job = job;
-    this.sayName = sayName;
 }
 
 Person.prototype.sayName = function (){
@@ -165,3 +164,87 @@ Person.prototype.sayName = function (){
 ## prototype 原型
 
 就像我们上面做的那样，使用原型的好处就是可以让所有的对象实例共享他所包含的属性和方法。
+
+## 原型对象
+
+在默认情况下，所有原型对象都会自动获得一个 constructor 属性，这个属性包含一个指向 prototype 属性所在函数的指针。
+上面我们创建的 Person.prototype.constructor 指向 Person .通过这个构造函数我们还可以给原型对象添加其他的属性和方法。
+
+虽然可以通过对象实例访问保存在原型中的值，但却不能通过对象实例重写原型中的值。
+？？ 如果我们添加的属性和方法和原型对象的属性和方法一样会怎么样
+
+```
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+}
+
+Person.prototype.sayName = function (){
+    console.log(this.name);
+}
+Person.prototype.tag = '大V';
+const Tom = new Person('Tom', 12, '码农');
+Tom.tag = 'dd';
+Tom.sayName = function(){console.log(1)};
+```
+
+可以看到获取的是我们后添加的属性和方法，这是读取对象属性和方法的机制决定的。
+首先会在原型上查找，原型上没有的话再去原型链查找，一层一层向上查找。
+
+=v= 当我们修改原型对象会怎么样 嘿嘿
+
+```
+function Person(){}
+
+const Tom = new Person();
+
+Person.prototype = {
+    constructor: Person,
+    name : "Stone",
+    age : 28,
+    job : "Software Engineer",
+    sayName : function () {
+        console.log(this.name);
+    }
+};
+
+Tom.sayName();   // Uncaught TypeError: Tom.sayName is not a function
+```
+
+Tom 出生的时候还没有这些东西，机智如我。
+
+## 原生对象的原型
+
+原生对象也是通过这种模型创建的。
+
+所有原生引用类型，都在其构造函数的原型上定义了方法。通过上面的例子我们也可以直接修改原生对象的原型的方法，但是不推荐这种方式，有可能会重写原生方法。
+
+## 原型链的问题
+
+它省略了为构造函数传递初始化参数这一环节，结果所有实例在默认情况下都将取得相同的属性值。
+
+对于引用类型的共享属性
+
+```
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.friends = ["ZhangSan", "LiSi"];
+}
+
+Person.prototype = {
+    constructor : Person,
+    sayName : function(){
+        console.log(this.name);
+    }
+}
+
+const person1 = new Person("dd", 28, "Engineer");
+const person2 = new Person("tt", 29, "Teacher");
+person2.friends=[]
+person1.friends  //  ["ZhangSan", "LiSi"]
+```
+
+可以看到共享属性都是备份的。
