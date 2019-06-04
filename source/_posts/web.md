@@ -197,6 +197,14 @@ const isType =  type => target => `[object ${type}]` === Object.prototype.toStri
 Object.prototype.toString 使用了闭包 一个函数
 注意：type 类型首字母大写
 
+# 打包时候的注意事项
+
+css 引入顺序，如果引入了类库和自定义样式，应最后引入自定义样式，否则会被类库样式覆盖。
+
+图片路径修改，
+
+# vue-router 钩子使用情况
+
 腾讯面试题目
 
 
