@@ -84,3 +84,24 @@ data(){
 # 嵌套路由
 
 使用场景，只更改部分页面时使用嵌套路由
+
+# 导航守卫
+
+## 全局守卫
+
+全局守卫有三个：
+* router.beforeEach 全局前置守卫 进入路由之前
+可以添加进度条、修改文档 title 、可以对用户当前的登录状态进行校验。
+* router.beforeResolve 全局解析守卫 在 beforeRouteEnter 之前调用
+* router.afterEach 全局后置钩子 进入路由之后
+可以添加进度条结束之类的
+
+## 路由独享守卫
+
+beforeEnter
+
+## 路由组件内守卫
+
+beforeRouteEnter 进入路由前, 在路由独享守卫后调用 不能 获取组件实例 this，组件实例还没被创建
+beforeRouteUpdate (2.2) 路由复用同一个组件时, 在当前路由改变，但是该组件被复用时调用 可以访问组件实例 this
+beforeRouteLeave 离开当前路由时, 导航离开该组件的对应路由时调用，可以访问组件实例 this
