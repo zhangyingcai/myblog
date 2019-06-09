@@ -49,14 +49,14 @@ html 中大部分元素是不可替换元素，即其内容直接展示。
 
 ## 行内元素
 
-# 特点：
+特点：
 
 * 和其他元素都在一行上
 * 高，行高以及顶和底边距不可变
 * 宽度就是他的文字或者图片的宽度，不可改变
 
 与块级元素相比：
-* 一般情况下只能包含行内元素和其他行内元素。
+* 一般情况下只能包含数字和其他行内元素。
 * 默认情况下，行内元素不会新起一行。
 
 `<span>` `<i>` `<strong>` `<br>` `<a>`
@@ -136,16 +136,16 @@ padding 使用百分比时是基于内容的宽度计算的
     left:0;
 }
 ```
-还需呀要求 .img 的父级元素也是 block 元素。
+还需要要求 .img 的父级元素也是 block 元素。
 
 # postion 的取值
 
-postion: 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
-relative: 生成相对定位的元素，相对于其正常位置进行定位。left等生效。
-absolute: 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
-fixed: 生成绝对定位的元素，相对于浏览器窗口进行定位。
-static: 没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
-inherit: 规定应该从父元素继承 position 属性的值。
+postion:
+* relative: 生成相对定位的元素，相对于其正常位置进行定位。left等生效。
+* absolute: 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
+* fixed: 生成绝对定位的元素，相对于浏览器窗口进行定位。
+* static: 没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
+* inherit: 规定应该从父元素继承 position 属性的值。
 
 <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.0.4/lib/L2Dwidget.min.js"></script>
 <script type="text/javascript">
