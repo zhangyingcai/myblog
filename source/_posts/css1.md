@@ -96,6 +96,20 @@ title 是鼠标移动到图片的时候显示
 
 # 何为 BFC 如何触发？
 
+BFC 是 块级格式化上下文 （block fromatting context）是按照块级盒子布局的。
+块级格式化上下文包含创建它的元素内部的所有内容，并且在当前块级格式化上下文中盒子竖着排列。但是 BFC 不包含子元素 BFC 的子元素。
+
+形成 BFC 的条件：
+* 根元素或者其他包含它的元素。
+* float 不为 none
+* position 的值是 absolute 或 fixed。
+* display 的值是 inline-block、table-cell、flex、table-captio、grid 或者 inline-flex 
+* overflow 的值不是 visible。
+
+也就是说，当看到这些属性的时候，就代表了当前元素已经创建了一个 BFC。
+
+
+
 # padding-top 设置百分比时是基于什么计算的
 
 padding 使用百分比时是基于内容的宽度计算的
