@@ -44,3 +44,18 @@ const intersect = (nums1, nums2) => {
   return res
 }
 ```
+
+# 给定一个数组，去重
+
+## 可以新建数组
+```
+const arr = [1,2,3,4,5,1,2,3];
+const arr1 = [];
+for(let item of arr){
+  // includes indexOf
+  if(!arr1.includes(item)){
+    arr1.push(item);
+  }
+}
+```
+## 不可新建数组
