@@ -114,9 +114,107 @@ BFC 是 块级格式化上下文 （block fromatting context）是按照块级�
 外边距折叠（margin collapsing）也只会发生在同一个BFC的块级元素之间。
 
 主要解决的问题：
-处理浏览器溢出的内容。
+
+处理浏览器溢出的内容：如果一个没有高度或者高度为 auto 的盒子的子元素是浮动元素，则该盒子的高度是不会被撑开的，可以通过父级创建 BFC来包含浮动元素，这时的父级的高度要计算浮动元素的高度。
+
 创建新的BFC来避免相邻的 div 之间的外边距合并。
 
+避免文字环绕问题。
+
+* 处理溢出的内容
+
+![](https://user-gold-cdn.xitu.io/2019/6/11/16b4433fe8bac5ce?w=770&h=211&f=png&s=2315)
+```
+<style>
+  .box{
+    background-color: #888; // 灰色
+  }
+  .float{
+        background: #73DE80;    /* 绿色 */
+        opacity: 0.5;
+        border: 3px solid #F31264;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    .static{                        /* 粉色 */
+        background: #EF5BE2;
+        opacity: 0.5;
+        border: 3px solid #F31264;
+        width:400px;
+        min-height: 100px;
+    }
+  </style>
+```
+```
+<div class='box'>
+    <div class='float'></div>
+    <div class='static'></div>
+</div>
+```
+box 添加 overflow:hidden 属性来形成 BFC
+
+![](https://user-gold-cdn.xitu.io/2019/6/11/16b44343f24c6dc5?w=768&h=198&f=png&s=2422)
+* 解决BFC中相邻两个元素外边距折叠的问题
+
+![](https://user-gold-cdn.xitu.io/2019/6/11/16b443463691b09d?w=772&h=318&f=png&s=4355)
+```
+.box{
+    background-color: #888;
+    overflow: hidden;
+  }
+  .float{
+        background: #73DE80;    /* 绿色 */
+        opacity: 0.5;
+        border: 3px solid #F31264;
+        width: 200px;
+        height: 200px;
+    }
+    .static{                        /* 粉色 */
+        background: #EF5BE2;
+        opacity: 0.5;
+        border: 3px solid #F31264;
+        width:400px;
+        min-height: 100px;
+    }
+    .m-1{
+      margin: 10px 0;
+    }
+```
+```
+<div class='box'>
+    <div class='float m-1'> </div>
+    <div class='static m-1'> </div>
+</div>
+```
+
+box 的两个元素的实际外边距只有 10px 。让其中一个形成BFC就可以解决这个问题。
+
+* 避免文字环绕
+
+![](https://user-gold-cdn.xitu.io/2019/6/11/16b44348f1c4be29?w=765&h=102&f=png&s=9125)
+```
+.box{
+    background-color: #888;
+    overflow: hidden;
+  }
+  .float{
+        background: #73DE80;    /* 绿色 */
+        opacity: 0.5;
+        border: 3px solid #F31264;
+        width: 100px;
+        height: 20px;
+        float: left;
+    }
+```
+```
+<div class='box'>
+    <div class='float'> </div>
+    <p>BFC 是 块级格式化上下文 （block fromatting context）是按照块级盒子布局的。 块级格式化上下文包含创建它的元素内部的所有内容，并且在当前块级格式化上下文中盒子竖着排列。但是 BFC 不包含子元素 BFC 的子元素</p>
+</div>
+```
+
+将p标签变为新的BFC就可以解决
 
 # padding-top 设置百分比时是基于什么计算的
 
