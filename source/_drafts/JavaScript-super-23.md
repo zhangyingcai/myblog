@@ -13,10 +13,13 @@ JavaScript进阶系列-原型继承与原型链
 
 ## 原型继承实现
 
+要点：通过将子类构造函数 prototype 指向父类的实例 来作为子类的原型对象。（这不就符合原型链的定义了么 ==）
+
 ```
 function Animal(name){
     // 属性
     this.name = name || 'Animal';
+    this.friends = ['a','b'];
     // 实例方法
     this.sleep = function(){
         console.log(this.name + " 正在睡觉。");
@@ -28,7 +31,9 @@ Animal.prototype.eat = function(food){
 }
 
 // 子类
-function Tiger(){}
+function Tiger(){
+    this.tag = "wing";
+}
 Tiger.prototype = new Animal();
 Tiger.prototype.name = "Tiger";
 
@@ -38,7 +43,61 @@ console.log(tiger.eat('sleep'));
 console.log(tiger.sleep());
 console.log(tiger instanceof Animal); //true 
 console.log(tiger instanceof Tiger); //true
+var tiger1 = new Tiger();
+tiger1.friends.push('a');
+console.log(tiger.friends)
+console.log(tiger1.friends)
 ```
+
+## 判断原型和实例的继承关系
+
+* instanceof
+* Object.prototype.isPrototypeOf()
+
+## 原型继承的问题
+> 当原型链中包含引用类型值的属性时,该引用类型值会被所有实例共享;
+> 创建子类时，不能向父类的构造函数传递参数。
+
+# 构造函数实现继承
+
+要点就是在子类构造函数中调用父类的构造函数通过 call，apply 来重新绑定 this 来继承父类的属性，并且可以传递参数。
+
+```
+function Animal(name){
+    // 属性
+    this.name = name || 'Animal';
+    this.friends = ['a','b'];
+    // 实例方法
+    this.sleep = function(){
+        console.log(this.name + " 正在睡觉。");
+    }
+}
+    // 原型方法
+Animal.prototype.eat = function(food){
+    console.log(this.name + " 正在吃 "+food);
+}
+
+// 子类
+function Tiger(){
+    Animal.call(this, value);
+    this.tag = "wing";
+}
+Tiger.prototype.name = "Tiger";
+
+var tiger = new Tiger();
+console.log(tiger.name);
+console.log(tiger.sleep());
+console.log(tiger instanceof Animal); //false 
+console.log(tiger instanceof Tiger); //true
+var tiger1 = new Tiger();
+tiger1.friends.push('a'); // 不会共享
+console.log(tiger.friends)
+console.log(tiger1.friends)
+```
+
+解决了原型继承的两个问题。
+
+但是又有了新的问题，我们很多时候无法知道并修改父类的构造函数。
 
 # 原型链
 
@@ -52,6 +111,8 @@ console.log(tiger instanceof Tiger); //true
 函数通过 prototype 属性查找
 
 ## 组合继承
+
+要点就是在子类构造函数中调用父类的构造函数通过 call，apply 来重新绑定 this 来继承父类的属性，同时改变子类的原型对象为 父类的实例。刚好是前两种情况的结合。
 
 ```
 
@@ -79,6 +140,8 @@ var tiger = new Tiger();
 console.log(tiger.name);
 
 ```
+
+组合继承避免了原型链和借用构造函数的缺陷,融合了它们的优点,成为 JavaScript 中最常用的继承模式. 而且, instanceof 和 isPrototypeOf( )也能用于识别基于组合继承创建的对象.
 
 ## class 关键字实现
 
@@ -248,3 +311,7 @@ person1.friends  //  ["ZhangSan", "LiSi"]
 ```
 
 可以看到共享属性都是备份的。
+
+总结：
+如图
+![]()
