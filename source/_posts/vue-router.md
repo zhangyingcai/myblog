@@ -59,16 +59,21 @@ const router = new VueRouter({
 有的时候我们要传递一个对象到一个页面或者一个组件
 
 ```
+// 方法1
 // 通过:to='/search?q=vue&other=name'将对象拆分传递
 // 可以看到vue-router已经将我们的参数编码了
 const router = new VueRouter({
   routes: [
-    // 我们可以通过props转换成需要的状态
-    // 在组件通过props获取
+    // 我们可以通过 props 转换成需要的状态，通过创建一个函数返回 props 
+    // 在组件通过 props 获取
     { path: '/search', component: SearchUser, props: (route) => ({ query: route.query.q }) }
   ]
 })
 ```
+
+## 修改 props 属性值
+
+不需要通知父组件的时候可以自己复制一份，然后修改。
 
 通过组件props获取的传参是不可修改的，可以在子组件新建变量接受参数。
 ```
