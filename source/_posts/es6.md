@@ -353,6 +353,8 @@ for(const {name,species} of Zootopia){
 
 Map 对象保存键值对。任何值（对象和原始值）都可以作为一个键或者值。
 
+相当于是二维数组
+
 Map 和 Object 的区别
 * 一个 Object 的键只能是字符串或者 Symbols ,但是一个 Map 的键可以是任意值。
 * Map 中键值是有序的，而添加到对象中的键则不是。
