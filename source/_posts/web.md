@@ -215,6 +215,33 @@ css3 新增的一个相对单位
 
 # textarea 相关属性
 
+texteara webkit 内核的浏览器会默认设置 resize: both 用户可以调节元素的宽度和高度
+resize 的属性包括
+none: 不能调节元素的尺寸
+horizontal: 调节元素的宽度
+vertical: 调节元素的高度
+
+# 列举伪元素
+
+css2 
+:before
+:after
+css1
+:first-line 向文本的第一行添加特殊样式。
+:first-letter 向文本的第一个字母添加特殊样式。
+
+# 伪类
+
+:first-child 首个子对象
+:last-child 最后一个对象
+:link 未访问的链接
+:visited 已访问的链接
+:hover 鼠标移动到链接上
+:active 选定的链接
+
+注意：hover 必须在 link 和 visited 之后才能生效
+注意：active 必须在 hover 之后才能生效
+
 腾讯面试题目
 
 
