@@ -113,3 +113,23 @@ Array.isArray = function(value){
   retrun Object.prototype.toString.call(value) === '[object Array]';
 }
 ```
+
+# Array.from() 
+
+返回一个新数组
+
+creates a new , shallow-copied Array instance from an array-like or iterable object
+
+## Array.from(arrayLike[, mapFn[, thisArg]])
+## arrayLike 产生数组的来源
+## mapFn 数组的每个函数都会调用，返回的结果将组成新数组
+## thisArg  mapFn 需要的参数
+```
+console.log(Array.from('12')) // ["1", "2"]
+console.log(Array.from([1, 2, 3], x => x + x)); // [2, 4, 6]
+// map 与 array 相互转换
+const arr = [[1,2],[2,1]];
+const myMap = new Map(arr);
+console.log(Array.from(myMap))
+```
+[Array.from()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
