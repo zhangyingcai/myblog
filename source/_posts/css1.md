@@ -10,26 +10,26 @@ description:
 
 <!-- more -->
 
-# 写出你所知道的 Block Elements(Block-level Elements) 、 inline Elements 、 Replaced Elements / Empty Elements
+## 写出你所知道的 Block Elements(Block-level Elements) 、 inline Elements 、 Replaced Elements / Empty Elements
 
 CSS 中的元素类型
 
-## 替换和不可替换元素
+### 替换和不可替换元素
 
 元素本身的特点，可以分为替换和不可替换元素
 
-### 替换元素 Replaced Element/ Empty Elements
+#### 替换元素 Replaced Element/ Empty Elements
 
 替换元素是浏览器根据元素的标签和属性，来决定元素的具体显示内容。
 例如 `<img>` 标签的 scr 属性的值来读取图片的信息并显示出来，而如果查看 html 代码，则看不到图片的实际内容；又列如会根据 input 的 type 属性来决定显示输入框还是单选按钮。
 
-html 中的 `<img>` `<input>` `<select>` `<textarea>` `<select>` `<video>`都是可替换元素。
+html 中的 `<img>` `<input>` `<select>` `<textarea>` `<video>`都是可替换元素。
 
-### 不可替换元素
+#### 不可替换元素
 
 html 中大部分元素是不可替换元素，即其内容直接展示。
 
-## 块级元素
+### 块级元素
 
 默认情况下块级元素会新起一行。并且会横向充满其父元素的内容区域。
 
@@ -47,7 +47,7 @@ html 中大部分元素是不可替换元素，即其内容直接展示。
 
 * 可以包含行内元素和块级元素
 
-## 行内元素
+### 行内元素
 
 特点：
 
@@ -63,15 +63,15 @@ html 中大部分元素是不可替换元素，即其内容直接展示。
 
 几乎所有的可替换元素都是行内元素。
 
-## display
+### display
 
 其实就是对 display 属性的考察，因为 diplay 可以改变，所以元素的形态是经常可以切换的。
 
-### inline-block 将元素呈现为内联元素，但是对象的内容作为块级元素。
+#### inline-block 将元素呈现为内联元素，但是对象的内容作为块级元素。
 
 然后，同级的元素作为内联元素排在一行上，允许空格。
 
-## IE下块元素如何实现display:inline-block的效果？
+#### IE下块元素如何实现display:inline-block的效果？
 
 有两种方法：
 1.先使用display:inline-block属性触发块元素，然后再定义display:inline，让块元素呈递为内联对象（两个display要先后放在两个CSS声明中才有效果，这是IE的一个经典bug，如果先定义了display:inline-block，然后再将display设回inline或block，layout不会消失）。代码如下（...为省略的其他属性内容）：
@@ -89,12 +89,12 @@ div{display:inline; zoom:1;...}
 ```
 
 
-# img 标签的 alt 属性 和 title 属性有什么区别？
+## img 标签的 alt 属性 和 title 属性有什么区别？
 
 alt 标签内容是 img src 属性内容获取失败之后展示
 title 是鼠标移动到图片的时候显示
 
-# 何为 BFC 如何触发？
+## 何为 BFC 如何触发？
 
 BFC 是 块级格式化上下文 （block fromatting context）是按照块级盒子布局的。
 块级格式化上下文包含创建它的元素内部的所有内容，并且在当前块级格式化上下文中盒子竖着排列。但是 BFC 不包含子元素 BFC 的子元素。
@@ -103,15 +103,15 @@ BFC 是 块级格式化上下文 （block fromatting context）是按照块级�
 * 根元素或者其他包含它的元素。
 * float 不为 none
 * position 的值是 absolute 或 fixed。
-* display 的值是 inline-block、table-cell、flex、table-captio、grid 或者 inline-flex 
+* display 的值是 inline-block、table-cell、flex、table-caption、grid 或者 inline-flex 
 * overflow 的值不是 visible。
 
 也就是说，当看到这些属性的时候，就代表了当前元素已经创建了一个 BFC。
 
 对浮动定位与清除浮动都很重要。
-浮动定位和清除浮动时只会应用于同一个BFC内的元素。
-浮动不会影响其他BFC中元素的布局，清除浮动只能清除同一BFC内的元素。
-外边距折叠（margin collapsing）也只会发生在同一个BFC的块级元素之间。
+浮动定位和清除浮动时只会应用于同一个 BFC 内的元素。
+浮动不会影响其他 BFC 中元素的布局，清除浮动只能清除同一 BFC 内的元素。
+外边距折叠（margin collapsing）也只会发生在同一个 BFC 的块级元素之间。
 
 主要解决的问题：
 
@@ -216,18 +216,18 @@ box 的两个元素的实际外边距只有 10px 。让其中一个形成BFC就�
 
 将p标签变为新的BFC就可以解决
 
-# padding-top 设置百分比时是基于什么计算的
+## padding-top 设置百分比时是基于什么计算的
 
 padding 使用百分比时是基于内容的宽度计算的
 
-## css 参照百分比
+### css 参照百分比
 
 * 参照父元素**宽度**的元素： padding margin width text-indent
 * 参照父元素**高度**的元素： height
 * 参照父元素**属性**的元素： font-size line-height
 特殊： **相对定位时**时，top(bottom) left(right) 参照父元素内容区域的**高度**和**宽度**，而**绝对定位**时，参照最近的定位元素包含 Padding 的高度与宽度。
 
-# 通过 CSS 实现图片宽高比固定为 4:3( 图片占满容器的宽度， 但容器宽度并不固定)
+## 通过 CSS 实现图片宽高比固定为 4:3( 图片占满容器的宽度， 但容器宽度并不固定)
 
 或者：图片在自适应过程中，图片的长宽比要保持不变。
 
@@ -256,9 +256,21 @@ padding 使用百分比时是基于内容的宽度计算的
     left:0;
 }
 ```
-还需要要求 .img 的父级元素也是 block 元素。
+还需要要求 .img 的父级元素也是 **块级** 元素。
 
-# postion 的取值
+## 最大的正方形
+
+和上个题目一样
+块级元素+padding 来确定元素大小
+
+```
+div{
+    width:100%;
+    padding-top/padding-bottom:100%;
+}
+```
+
+## postion 的取值
 
 postion:
 * relative: 生成相对定位的元素，相对于其正常位置进行定位。left等生效。
@@ -267,7 +279,189 @@ postion:
 * static: 没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
 * inherit: 规定应该从父元素继承 position 属性的值。
 
-<script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.0.4/lib/L2Dwidget.min.js"></script>
-<script type="text/javascript">
-L2Dwidget.init();
-</script>
+## rem
+em 相对 父元素的属性
+rem 相对  html 根元素/css3 新增的一个相对单位
+
+## border 简写
+
+border: 1px solid red;
+
+## textarea 相关属性
+
+texteara webkit 内核的浏览器会默认设置 resize: both 用户可以调节元素的宽度和高度
+resize 的属性包括
+none: 不能调节元素的尺寸
+horizontal: 调节元素的宽度
+vertical: 调节元素的高度
+
+## 列举伪元素
+
+css2 
+:before
+:after
+css1
+:first-line 向文本的第一行添加特殊样式。
+:first-letter 向文本的第一个字母添加特殊样式。
+
+## 伪类
+
+:first-child 首个子对象
+:last-child 最后一个对象
+:link 未访问的链接
+:visited 已访问的链接
+:hover 鼠标移动到链接上
+:active 选定的链接
+
+注意：hover 必须在 link 和 visited 之后才能生效
+注意：active 必须在 hover 之后才能生效
+
+
+## 浮动到底是什么
+
+浮动是元素脱离文档流。
+
+清除浮动的方式:
+
+```
+// 现代浏览器clearfix方案，不支持IE6/7
+.clearfix:after {
+    display: table;
+    content: " ";
+    clear: both;
+}
+
+// 全浏览器通用的clearfix方案
+// 引入了zoom以支持IE6/7
+.clearfix:after {
+    display: table;
+    content: " ";
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+
+// 全浏览器通用的clearfix方案【推荐】
+// 引入了zoom以支持IE6/7
+// 同时加入:before以解决现代浏览器上边距折叠的问题
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: " ";
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+```
+
+## 盒模型
+
+content padding border margin
+
+## box-sizing
+
+border-box: width = content+padding+border
+content-box: width = content
+
+## 水平垂直居中
+
+[水平垂直居中](https://juejin.im/post/58f818bbb123db006233ab2a)
+
+## css gpu加速的属性有哪些
+
+## 重绘和回流
+
+重绘：元素的样式改变不影响布局时，浏览器使用重绘更新元素，只需要 UI 层面的像素重新绘制，因此损耗较少。
+回流：元素的布局改变，需要重新渲染。
+
+引起回流的操作：
+元素的添加和移除
+元素的大小、位置、内容、字体大小发生改变。
+激活伪类(:hover)
+
+## flex 布局
+
+display: flex 开启，自动建立 BFC 。
+
+容器属性：
+
+### flex-direction 主轴的方向,项目的排列方向
+```
+.box {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+```
+
+### flex-wrap 轴线上如何换行
+
+```
+.box{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+```
+
+### flex-flow 是flex-direction和flex-wrap的简写形式
+
+```
+.box {
+  flex-flow: <flex-direction> <flex-wrap>;
+}
+```
+
+### justify-content 主轴的对其方式
+
+```
+.box {
+  justify-content: flex-start(默认值) | flex-end | center | space-between | space-around;
+}
+// space-between 项目之间的距离都相等
+// space-around 项目两侧的间隔都相等，所以项目之间的间隔比与边框的间隔大一倍
+```
+
+### align-items 交叉轴上如何对齐
+
+```
+.box {
+  align-items: flex-start | flex-end | center | baseline | stretch(默认值));
+}
+// baseline 项目的第一行文字的基线对齐
+// stretch 如果项目未设置高度或设为auto，将占满整个容器的高度。
+```
+
+### align-conetent align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+
+## flex 项目的属性
+
+### order 
+项目的顺序，数字越小，排列越靠前，默认值是0
+
+### flex-grow 
+定义项目的放大的比例，默认为0，保持自身，即使还有剩余空间，也不放大。
+如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+
+### flex-shrink 
+定义项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+
+### flex-basis 属性
+
+定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值是 auto ,即项目的本来大小。
+
+可以设置和 width 一样的值。
+
+### flex 属性
+
+flex-grow,flex-shrink,flex-basis 属性的简写
+
+### align-self 属性
+
+align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+
+```
+.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+```
