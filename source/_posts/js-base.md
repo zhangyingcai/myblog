@@ -638,5 +638,30 @@ node.addEventListener('click', onClick);
 
 ## 闭包
 
+## 函数声明和函数表达式的区别
+
+函数声明：以 function 关键字开头，接着必须是函数名，然后是参数列表，然后是花括号封装的函数体。
+函数表达式：通常情况下是其他 JavaScript 语句的一部分。(比如赋值表达式 = 的右侧)
+
+函数声明与函数表达式除了以代码放的位置不同区别，还有一点不同，那就是函数声明必须有函数名，而函数表达式的函数名可以省略。
+```
+//函数声明
+function myFn(){
+  function fn() {}
+}
+//以下为函数表达式
+var myFunc = function(){};
+myFunc(function(){
+  return function(){};
+});
+
+(function myFfn () { })();
+
++function(){}();
+-function(){}();
+!function(){}();
+~function(){}();
+
+```
 
 
