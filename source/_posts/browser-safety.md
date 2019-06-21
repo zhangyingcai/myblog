@@ -99,4 +99,39 @@ Content-Security-Policy: child-src 'none'
 [CSP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
 [更多请查看相关文档](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
 
+总结
+
+输入输出过滤，长度限制。
+
+加载资源限制（http添加资源策略，添加白名单），cookie 操作限制，用户身份令牌+时间戳，https，参数加密解密
+
 # CSRF
+
+跨站请求伪造：诱导用户进入第三方网站，携带当前网站的登录凭证 cookie ，然后使用用户的身份信息进行请求的操作。
+添加额外的用户凭证是为了放在
+
+## 防御手段
+
+### 添加验证码
+
+一般在转账，交易，登录等操作使用
+
+### 检查 Referer
+
+> Referer 可以作为一种辅助手段，来判断请求的来源是否是安全的，但是鉴于 Referer 本身是可以被修改的，因为不能仅依赖于  Referer
+
+### token 令牌
+
+普通是 将令牌加密，用户请求携带，服务端校验
+
+高级版要加上时间戳，每个请求的时间都是不一样的
+
+# ddos 攻击
+
+# js 接口调用安全
+
+身份验证+时间戳
+参数加密
+https(http+ssl)
+
+http 存在中间人攻击威胁，跳转过程可能被恶意网站利用来直接接触用户信息。
