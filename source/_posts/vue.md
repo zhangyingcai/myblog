@@ -298,3 +298,33 @@ let p = onWatch(
 p.a = 2 // 监听到属性a改变
 p.a // 'a' = 2
 ```
+
+# 内置过滤器
+
+2.0 已经移除了内置过滤器
+
+# vue的核心
+
+数据驱动和组件化
+
+然后就是：数据驱动的实现是 数据劫持 + 发布订阅者 模式
+组件化：
+
+# 路由懒加载写法
+
+```
+// 我所采用的方法
+const router = new VueRouter({
+  routes: [
+    path: '/app',
+    component: () => import('./app'),  // 引入组件
+  ]
+})
+// Vue路由文档的写法:
+const app = () => import('./app.vue') // 引入组件
+const router = new VueRouter({
+  routes: [
+    { path: '/app', component: app }
+  ]
+})
+```
