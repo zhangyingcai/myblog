@@ -40,6 +40,33 @@ arr.prototype​.includes(valueToFind[, fromIndex])
 * fromIndex 从 fromIndex 索引处开始查找 valueToFind 。如果为负值，则按升序从 array.length + fromIndex 的索引开始搜 （即使从末尾开始往前跳 fromIndex 的绝对值个索引，然后往后搜寻）。默认为 0。
 
 注意：对象数组不能使用includes方法来检测。
+
+实现数组去重
+
+```
+const arr = [1,2,4,5,1,2,3];
+function myFn(arr){
+  if (!Array.isArray(arr)) return false;
+  const myarr = [];
+  for( let a of arr){
+    if (!Array.prototype.includes.call(myarr,a)) {
+      myarr.push(a);
+    }
+  }
+  return myarr;
+}
+function myFn1(arr){
+  if (!Array.isArray(arr)) return false;
+  const myarr = [];
+  for( let a of arr){
+    if (Array.prototype.indexOf.call(myarr,a) === -1) {
+      myarr.push(a);
+    }
+  }
+  return myarr;
+}
+```
+
 # Array​.prototype​.sort() 对数组进行排序
 
 方法用原地算法对数组的元素进行排序，并返回数组。排序算法现在是稳定的。默认排序顺序是根据字符串Unicode码点。
@@ -133,3 +160,17 @@ const myMap = new Map(arr);
 console.log(Array.from(myMap))
 ```
 [Array.from()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+
+# Array.prototype.indexOf() 
+
+在数组找到给定元素的第一个索引（和 String.prototype.indexOf()相同），如果不存在，返回 -1。
+
+## 语法
+
+arr.indexOf(searchElement[, fromIndex = 0])
+
+### searchElement 要查找的元素
+### fromIndex 开始查找的位置
+
+大于 0 的数: 在 0 - length-1 范围内正常查找
+负数: -n 表示在倒数 第 n 个元素开始查找 n > length 时从 0 开始查找
