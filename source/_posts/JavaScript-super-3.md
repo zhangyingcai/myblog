@@ -78,3 +78,24 @@ new String(123) instanceof String // true
 问题：理解值类型和引用类型？
 
 问题：至少可以说出三种判断 JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型？
+
+答： 
+* typeof
+
+undefined, string, number, boolean, symbol, function, object
+
+能够正确判断 除 null 以外的 原始类型，但是无法区分 Object
+
+* instanceof
+
+通过原型链来检查是哪种类型
+
+* Object.prototype.toString()
+
+基本所有的对象类型都可以通过这个方法来判断。
+
+```
+const mytypeof = type => arg => Object.prototype.toString.call(arg) === `[object ${type}]`
+const isArray = mytypeof('Array')
+isArray([])
+```
