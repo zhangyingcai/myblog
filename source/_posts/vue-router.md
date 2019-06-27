@@ -110,3 +110,71 @@ beforeEnter
 beforeRouteEnter 进入路由前, 在路由独享守卫后调用 不能 获取组件实例 this，组件实例还没被创建
 beforeRouteUpdate (2.2) 路由复用同一个组件时, 在当前路由改变，但是该组件被复用时调用 可以访问组件实例 this
 beforeRouteLeave 离开当前路由时, 导航离开该组件的对应路由时调用，可以访问组件实例 this
+
+# <router-link>
+
+通过 tag 属性生成别的标签。
+
+# <router-link> to
+
+string | location
+
+内部实现是在点击之后，立刻将 to 的值传递到 router.push()
+
+
+replace 调用 router.replace() 导航后不会留下 history 记录。
+append 是否添加基路径
+
+# histroy
+
+hash 模式
+
+history 利用 histroy.pushState API 来完成 URL 跳转而无需重新加载页面
+
+## history api
+
+使用 history API 与浏览器历史记录进行交互
+
+注：下载也被当做一个 HistoryItem 对象，因此，history.onVisited等事件也会被下载所触发。
+
+### history.search()
+
+在浏览器历史记录里查找符合给定条件的 history.HistroyItem 
+
+### history.getVistits()
+
+获取指定页面的访问集信息。
+
+### history.addUrl()
+
+添加指定页面的访问
+
+### history.deleteUrl()
+
+移除浏览器历史记录中所有对指定URL的访问
+
+### history.deleteRange()
+
+移除指定时间段内对用户指定页面的访问。
+
+### history.deleteAll()
+
+移除浏览器历史记录中的所有访问
+
+### back()
+
+back() 方法可加载历史列表中的前一个 URL（如果存在）。
+
+调用该方法的效果等价于点击后退按钮或调用 history.go(-1)。
+
+### forward()
+
+forward() 方法可加载历史列表中的下一个 URL。
+
+调用该方法的效果等价于点击前进按钮或调用 history.go(1)。  
+
+### go()
+
+go() 方法可加载历史列表中的某个具体的页面。
+
+该参数可以是数字，使用的是要访问的 URL 在 History 的 URL 列表中的相对位置。（-1上一个页面，1前进一个页面)。或一个字符串，字符串必须是局部或完整的URL，该函数会去匹配字符串的第一个URL。
