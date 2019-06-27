@@ -59,3 +59,29 @@ for(let item of arr){
 }
 ```
 ## 不可新建数组
+
+# 最长重复的字符 可以有多个
+
+str = 'abwwwcwwwwwwbccccc'; 输出 w
+
+```
+function myFn(str){
+  const arr = str.split('');
+  let myMap = new Map();
+  for(let i = 1; i<arr.length; i++){
+    if (arr[i] === arr[i-1]){
+      let num = myMap.get(arr[i]) || 0;
+      myMap.set(arr[i], num + 1);
+    }else{
+      myMap.set(arr[i], 0);
+    }
+  }
+  const maxArr = [];
+  let max = 0;
+  myMap.forEach((index, value)=>{
+    if (value > max){
+      
+    }
+  })
+}
+```
