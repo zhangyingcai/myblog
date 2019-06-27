@@ -260,3 +260,51 @@ css1
 #### 说说项目中遇到的问题有哪些？如何解决？
 #### 浏览器如何做兼容？
 
+
+# http 三次握手和四次挥手
+
+
+# 题目
+假设有一个userList
+  userList = [
+      {
+        name: '张三',
+        age: 18
+      },
+      {
+        name: '李四',
+        age: 19
+      },
+      {
+        name: '王五',
+        age: 20
+      },
+      {
+        name: '赵六',
+        age: 30
+      }
+    ]
+
+    请用尽可能简短的代码，将userList转换成如下形式
+    userList = [
+      {
+        name: '张三',
+        age: 18,
+        index: 1
+      },
+      {
+        name: '赵六',
+        age: 30,
+        index: 4
+      },
+      {
+        name: '王五',
+        age: 20,
+        index: 3
+      },
+      {
+        name: '李四',
+        age: 19,
+        index: 2
+      }
+    ]
