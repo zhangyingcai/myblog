@@ -424,7 +424,20 @@ JavaScript
 
 ## 浏览器渲染原理
 
-浏览器把 html 解析成 Dom , CSS 解析成 CSSOM 将 Dom 和 CSSOM 合并产生了 RenderTree.
+### 浏览器解析
+
+浏览器把 html 解析成 Dom , CSS 解析成 CSSOM ， 解析完成后将 Dom 和 CSSOM 合并产生了 RenderTree.
+
+Javascript 脚本，主要是通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 CSS Rule Tree.
+
+
+Rendering Tree 渲染树并不等同于 DOM 树，因为一些像 Header 或 display:none 的东西就没必要放在渲染树中了。
+
+CSS 的 Rule Tree主要是为了完成匹配并把CSS Rule附加上Rendering Tree上的每个Element。也就是DOM结点。也就是所谓的Frame。
+
+然后，计算每个 Frame（也就是每个Element）的位置，这又叫 layout 和 reflow(回流) 过程
+
+最后通过调用操作系统 Native GUI 的 API 绘制。
 
 ## flex 布局
 
@@ -508,3 +521,26 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
   align-self: auto | flex-start | flex-end | center | baseline | stretch;
 }
 ```
+
+## css 加载顺序
+
+css 样式渲染顺序
+
+```
+<style>
+.blue{
+color: blue;
+}
+.red{
+color: red;
+}
+</style>
+<div class="blue red">123</div>
+<div class="red blue">123</div>
+```
+
+两个 div 的字体分别是什么颜色？
+
+答案是：都是红色
+
+因为在 css 样式表中 red 后于 blue，red 中的 color 样式 的优先级比 blue 中 color 高
