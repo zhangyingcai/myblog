@@ -308,3 +308,103 @@ css1
         index: 2
       }
     ]
+
+
+#应用缓存和浏览器缓存有什么区别？
+
+HTML5 引入了应用程序缓存，这意味着 web 应用可进行缓存，并可在没有因特网连接时进行访问。
+应用程序缓存为应用带来三个优势：
+离线浏览 - 用户可在应用离线时使用它们
+速度 - 已缓存资源加载得更快
+减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。
+
+实现借助manifest文件
+
+<html manifest="demo.appache">
+
+# 实现多个标签页之间通信的几种方法
+
+[暂时](https://www.jianshu.com/p/31facd4934d7)
+
+# 请写出减少页面加载时间的方法
+
+## 服务端
+
+### 使用分发网络（Content Delivery Network，CDN）
+
+分发网络（CDN），就是将我们的静态文件放到缓存服务器上，用户访问网站时就近缓存服务器获取资源。
+
+解决发布的问题？hash 版本号
+
+###  静态资源缓存，移动端离线缓存
+
+缓存利用可包括：添加 Expires 头，配置 ETag，使 Ajax 可缓存等。其实，恰当的缓存设置可以大大的减少 HTTP请求，也可以节省带宽 。
+
+#### 协商缓存
+
+配置 ETag：即 If-None-Match: 上次 ETag 的内容。浏览器会发出请求询问服务端，资源是否过期；服务端发现,没有过期，直接返回一个状态码为 304、正文为空的响应，告知浏览器使用本地缓存；如果资源有更新，服务端返回状态码 200、Etag 和正文。这个过程被称之为 HTTP 的协商缓存，通常也叫做弱缓存。
+
+# js 异步加载方案有哪些？
+
+## $(document).ready()
+
+需要引入 jquery
+兼容所有浏览器
+```
+$(document).ready(function() {
+    alert("加载完成！");
+});
+```
+## `<script>` 标签的 async="async" 属性
+
+async 属性是 HTML5 新增属性，需要 Chrome、FireFox、IE9+ 浏览器支持
+async 属性规定一旦脚本可用，则会异步执行
+async 属性仅适用于外部脚本 (只有在使用 src 时使用)
+
+此方法不能保证脚本按顺序执行
+```
+<script type="text/javascript" src="xxx.js" async="async"></script>
+```
+## `<script>` 标签的 defer="defer" 属性
+
+注意： 只有 Internet Explorer 支持 defer 属性。
+
+defer 属性规定是否对脚本执行进行延迟，直到页面加载为止。
+如果脚本不会改变文档的内容，可将 defer 属性加入到 `<script>` 标签中，以便加快处理文档的速度
+兼容所有浏览器
+此方法可以确保所有设置了 defer 属性的脚本按顺序执行
+
+## 动态创建`<script>`标签
+
+兼容所有浏览器
+(function(){
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "http://code.jquery.com/jquery-1.7.2.min.js";
+    var tmp = document.getElementsByTagName('script')[0];
+    tmp.parentNode.insertBefore(script, tmp);
+})();
+
+# web worker?
+
+web worker
+
+当在 HTML 中执行脚本时，页面的状态是不可响应的，直到脚本结束。这时候如果有比较耗时的操作就会阻塞主线程。
+
+web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。
+
+## new Worker(url)
+
+创建一个 web worker
+
+## Worker.onmessage
+
+接收 postMessage 传递消息，从执行者发送到父页面对象，消息保存在事件对象的 data 属性中. 
+
+## Worker.postMessage()
+
+发送一条消息到最近的外层对象，消息可由任何 JavaScript 对象组成。
+
+## Worker.terminate()
+
+立即终止 worker。该方法不会给 worker 留下任何完成操作的机会；就是简单的立即停止。Service Woker 不支持这个方法。
