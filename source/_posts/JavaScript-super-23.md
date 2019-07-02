@@ -45,8 +45,8 @@ console.log(tiger instanceof Animal); //true
 console.log(tiger instanceof Tiger); //true
 var tiger1 = new Tiger();
 tiger1.friends.push('a');
-console.log(tiger.friends)
-console.log(tiger1.friends)
+console.log(tiger.friends) // ["a", "b", "a"]
+console.log(tiger1.friends) // ["a", "b", "a"]
 ```
 
 ## 判断原型和实例的继承关系
@@ -55,6 +55,7 @@ console.log(tiger1.friends)
 * Object.prototype.isPrototypeOf()
 
 ## 原型继承的问题
+
 > 当原型链中包含引用类型值的属性时,该引用类型值会被所有实例共享;
 > 创建子类时，不能向父类的构造函数传递参数。
 
@@ -306,7 +307,7 @@ Person.prototype = {
 
 const person1 = new Person("dd", 28, "Engineer");
 const person2 = new Person("tt", 29, "Teacher");
-person2.friends=[]
+person2.friends.push('mm');
 person1.friends  //  ["ZhangSan", "LiSi"]
 ```
 

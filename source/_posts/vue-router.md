@@ -178,3 +178,7 @@ forward() 方法可加载历史列表中的下一个 URL。
 go() 方法可加载历史列表中的某个具体的页面。
 
 该参数可以是数字，使用的是要访问的 URL 在 History 的 URL 列表中的相对位置。（-1上一个页面，1前进一个页面)。或一个字符串，字符串必须是局部或完整的URL，该函数会去匹配字符串的第一个URL。
+
+## router
+
+你也许注意到 router.push、 router.replace 和 router.go 跟 window.history.pushState、 window.history.replaceState 和 window.history.go好像， 实际上它们确实是效仿 window.history API 的。
