@@ -174,3 +174,48 @@ arr.indexOf(searchElement[, fromIndex = 0])
 
 大于 0 的数: 在 0 - length-1 范围内正常查找
 负数: -n 表示在倒数 第 n 个元素开始查找 n > length 时从 0 开始查找
+
+
+# Array.prototype.filter()
+
+var newArray = arr.filter(callback(element[, index[, array]]))[, thisArg]
+
+return 返回测试通过的元素组成的新数组。
+
+element 数组中当前正在处理中的元素。
+
+index 正在处理的元素在数组中的索引
+
+thisArg 执行 callback 时， 用于 this 的值。
+
+## 筛选 age 大于 30 的人
+
+```
+const people = [
+  {name : 'ziksang1',age:21},
+  {name : 'ziksang2',age:10},
+  {name : 'ziksang3',age:30},
+  {name : 'ziksang4',age:40},
+  {name : 'ziksang5',age:50},
+  {name : 'ziksang6',age:30},
+  {name : 'ziksang7',age:80}
+];
+
+const mypeople = people.filter((element)=>{ return element.age > 30 })
+
+```
+
+## filter 实现 ToDo
+
+```
+if (!Array.prototype.filter) {
+  // func: callback 
+  // thisArg: this
+  Array.prototype.filter = function(func, thisArg) {
+    'use strict';
+  }
+}
+```
+
+
+

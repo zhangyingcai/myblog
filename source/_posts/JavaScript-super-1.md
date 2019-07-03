@@ -89,6 +89,76 @@ Event Loop 的执行顺序
 
 事件循环模型的特性，永不阻塞
 
+# 当 eventloop 遇到了  promise
+
+```
+function testSometing() {
+    console.log("2");
+    return "5";
+}
+function testAsync() {
+    console.log("7");
+    return Promise.resolve("8");
+}
+function test() {
+    console.log("1");
+    new Promise((resolve) => {
+        resolve(Promise.resolve(testSometing()));
+    }).then((val) => {
+        const v1 = val
+        console.log(v1);
+        new Promise((resolve) => {
+            resolve(Promise.resolve(testAsync()));
+        }).then((val) => {
+            const v2 = val
+            console.log(v2);
+            console.log(v1, v2,'5,8');
+        })
+    })
+}
+test();
+var promise = new Promise(
+    (resolve) => {
+        console.log("3");
+        resolve("6");
+    });//3
+promise.then((val) => console.log(val));
+console.log("4")
+```
+```
+function testSometing() {
+    console.log("2");
+}
+function testAsync() {
+    console.log("7");
+    return Promise.resolve("8");
+}
+function test() {
+    console.log("1");
+    new Promise((resolve) => {
+        resolve(Promise.resolve(testSometing()));
+    }).then((val) => {
+        const v1 = val
+        console.log(v1);
+        new Promise((resolve) => {
+            resolve(Promise.resolve(testAsync()));
+        }).then((val) => {
+            const v2 = val
+            console.log(v2);
+            console.log(v1, v2,'5,8');
+        })
+    })
+}
+test();
+var promise = new Promise(
+    (resolve) => {
+        console.log("3");
+        resolve("6");
+    });//3
+promise.then((val) => console.log(val));
+console.log("4")
+```
+
 [总结：JavaScript异步、事件循环与消息队列、微任务与宏任务](https://juejin.im/post/5be5a0b96fb9a049d518febc)
 
 问题：为何 try里面放 return， finally还会执行，理解其内部机制？

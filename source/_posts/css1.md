@@ -10,7 +10,8 @@ description:
 
 <!-- more -->
 
-## 写出你所知道的 Block Elements(Block-level Elements) 、 inline Elements 、 Replaced Elements / Empty Elements
+## 问题
+写出你所知道的 Block Elements(Block-level Elements) 、 inline Elements 、 Replaced Elements / Empty Elements ?
 
 CSS 中的元素类型
 
@@ -67,7 +68,9 @@ html 中大部分元素是不可替换元素，即其内容直接展示。
 
 其实就是对 display 属性的考察，因为 diplay 可以改变，所以元素的形态是经常可以切换的。
 
-#### inline-block 将元素呈现为内联元素，但是对象的内容作为块级元素。
+#### inline-block 
+
+将元素呈现为内联元素，但是对象的内容作为块级元素。
 
 然后，同级的元素作为内联元素排在一行上，允许空格。
 
@@ -365,6 +368,7 @@ content padding border margin
 ## box-sizing
 
 border-box: width = content+padding+border
+
 content-box: width = content
 
 ## 水平垂直居中
@@ -488,7 +492,9 @@ display: flex 开启，自动建立 BFC 。
 // stretch 如果项目未设置高度或设为auto，将占满整个容器的高度。
 ```
 
-### align-conetent align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+### align-conetent 
+
+align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
 
 ## flex 项目的属性
 
