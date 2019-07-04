@@ -62,26 +62,40 @@ for(let item of arr){
 
 # 最长重复的字符 可以有多个
 
-str = 'abwwwcwwwwwwbccccc'; 输出 w
+## 最长重复字符
+
+str = 'abwwwcwwwwwwbwwwwccccc'; 输出 w
 
 ```
 function myFn(str){
   const arr = str.split('');
-  let myMap = new Map();
-  for(let i = 1; i<arr.length; i++){
-    if (arr[i] === arr[i-1]){
-      let num = myMap.get(arr[i]) || 0;
-      myMap.set(arr[i], num + 1);
-    }else{
-      myMap.set(arr[i], 0);
+  let tempObj = {};
+  let finObj = {};
+  for(let i=1; i<arr.length; i++){
+    if(arr[i]===arr[i-1]){// 重复
+      if(!tempObj[arr[i]]){ // 不存在
+        tempObj[arr[i]] = 2
+      }else{// 存在
+        tempObj[arr[i]]++
+      }
+    } else { // 重复断裂
+       if(!finObj[arr[i-1]]){ //
+         finObj[arr[i-1]] = 1
+       }
+       if(tempObj[arr[i-1]]>finObj[arr[i-1]]){ //存在
+        finObj[arr[i-1]] = tempObj[arr[i-1]]
+       } 
+       tempObj[arr[i-1]] = 1
     }
   }
-  const maxArr = [];
   let max = 0;
-  myMap.forEach((index, value)=>{
-    if (value > max){
-      
+  let maxKey = '';
+  for (let key in finObj) {
+    if (finObj[key] > max) {
+      max = finObj[key]
+      maxKey = key
     }
-  })
+  }
+  return maxKey
 }
 ```
