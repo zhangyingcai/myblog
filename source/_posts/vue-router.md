@@ -182,3 +182,41 @@ go() 方法可加载历史列表中的某个具体的页面。
 ## router
 
 你也许注意到 router.push、 router.replace 和 router.go 跟 window.history.pushState、 window.history.replaceState 和 window.history.go好像， 实际上它们确实是效仿 window.history API 的。
+
+# $router
+
+# $route
+
+路由对象，表示当前激活的路由的状态信息，包含了当前 URL 解析得到的信息，还有 URL 匹配到的路由记录 (route records)。
+
+路由对象是不可变 (immutable) 的，每次成功的导航后都会产生一个新的对象。
+
+路由对象出现在多个地
+
+## 导航守卫的参数
+
+```
+router.beforeEach((to, from, next) => {
+  // `to` 和 `from` 都是路由对象
+})s
+```
+
+## $route.path
+
+绝对路径
+
+## $route.params
+
+路由参数
+
+## $route.query
+
+查询参数
+
+## $route.hash
+
+带 `#` 的 hash
+
+## $route.fullPath
+
+完整路径
