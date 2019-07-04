@@ -225,3 +225,41 @@ function author_init() {
 }
 add_action( 'init', 'author_init' );
 ```
+
+# 短代码
+
+## 创建回调函数
+
+当发现短代码的时候，它会被一个称作回调函数的一段代码所代替。所以我们先创建一个函数，从数据库中获取最新的文章。
+
+```php
+function recent_posts_function() {
+   query_posts(array('orderby' => 'date', 'order' => 'DESC' , 'showposts' => 1));
+   if (have_posts()) :
+      while (have_posts()) : the_post();
+         $return_string = '<a href="'.get_permalink().'">'.get_the_title().'</a>';
+      endwhile;
+   endif;
+   wp_reset_query();
+   return $return_string;
+}
+```
+
+如上所示，我们查询数据库，获取最新的文章，并返回一个带有链接的字符串。值得注意的是，回调函数并不打印任何内容，而是返回一个字符串。
+
+## 注册短代码
+现在，我们告诉Wordpress这个函数是一个短代码：
+```php
+function register_shortcodes(){
+   add_shortcode('recent-posts', 'recent_posts_function');
+}
+```
+
+当在文章的内容中发现短代码 [recent-posts] 时，将会自动调用 recent_posts_function() 函数，我们需要确保短代码的名字是唯一的，以避免重复。
+
+## Hook into WordPress
+
+为了能够执行 recent_posts_function() 函数，我们需要把它绑定在 WordPress 的初始化钩子中。
+```php
+add_action( 'init', 'register_shortcodes');
+```
