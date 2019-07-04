@@ -57,11 +57,11 @@ console.log(tiger1.friends) // ["a", "b", "a"]
 ## 原型继承的问题
 
 > 当原型链中包含引用类型值的属性时,该引用类型值会被所有实例共享;
-> 创建子类时，不能向父类的构造函数传递参数。
+> 创建子类时,不能向父类的构造函数传递参数。
 
 # 构造函数实现继承
 
-要点就是在子类构造函数中调用父类的构造函数通过 call，apply 来重新绑定 this 来继承父类的属性，并且可以传递参数。
+要点就是在子类构造函数中调用父类的构造函数通过 call,apply 来重新绑定 this 来继承父类的属性，并且可以传递参数。
 
 ```
 function Animal(name){
@@ -80,7 +80,7 @@ Animal.prototype.eat = function(food){
 
 // 子类
 function Tiger(){
-    Animal.call(this, value);
+    Animal.call(this, 'tiger');
     this.tag = "wing";
 }
 Tiger.prototype.name = "Tiger";
@@ -99,6 +99,8 @@ console.log(tiger1.friends)
 解决了原型继承的两个问题。
 
 但是又有了新的问题，我们很多时候无法知道并修改父类的构造函数。
+
+每次生成子类的时候都会调用父类的构造函数。同时，可以看到 `tiger instanceof Animal = false`
 
 # 原型链
 
@@ -132,7 +134,7 @@ Animal.prototype.eat = function(food){
 
 // 子类
 function Tiger(value){
-    Animal.call(this, value)
+    Animal.call(this, 'tiger')
 }
 Tiger.prototype = new Animal();
 Tiger.prototype.name = "Tiger";
@@ -142,7 +144,9 @@ console.log(tiger.name);
 
 ```
 
-组合继承避免了原型链和借用构造函数的缺陷,融合了它们的优点,成为 JavaScript 中最常用的继承模式. 而且, instanceof 和 isPrototypeOf( )也能用于识别基于组合继承创建的对象.
+组合继承避免了原型链和借用构造函数的缺陷,融合了它们的优点,成为 JavaScript 中最常用的继承模式. 而且, instanceof 和 isPrototypeOf() 也能用于识别基于组合继承创建的对象.
+
+但是这种实现方式调用了两次父类的构造函数，同时也在子类中生成了 继承父类的 属性
 
 ## class 关键字实现
 
@@ -313,6 +317,20 @@ person1.friends  //  ["ZhangSan", "LiSi"]
 
 可以看到共享属性都是备份的。
 
-总结：
-如图
-![]()
+# 扩展
+
+new 实现
+
+* 创建一个空对象
+* 空对象的原型指向原型，和 构造函数 的原型一致
+* 绑定 this
+* 返回新对象
+
+```
+function myNew(constructor){
+    let obj = {}
+    obj.__proto__ = constructor.prototype
+    let result = constructor.call(obj,[...arguments].slice(1))
+    return result instanceof Object ? result : obj
+}
+```
