@@ -112,6 +112,9 @@ var new_array = arr.map(function callback(currentValue[, index[, array]]) {
 * array
 * thisArg
 
+ToDo
+## map 实现
+
 # Array.isArray 判断是否是 Array 引用类型类型
 
 注意：是 Array 对象实现的方法，不在原型链上。
@@ -178,7 +181,7 @@ arr.indexOf(searchElement[, fromIndex = 0])
 
 # Array.prototype.filter()
 
-var newArray = arr.filter(callback(element[, index[, array]]))[, thisArg]
+>var newArray = arr.filter(callback(element[, index[, array]]))[, thisArg]
 
 return 返回测试通过的元素组成的新数组。
 
@@ -217,5 +220,42 @@ if (!Array.prototype.filter) {
 }
 ```
 
+# Array.prototype.reduce
 
+执行一个函数将结果汇总为单个返回值。
 
+>arr.reduce(callback(accumulator, currentValue[, currentIndex[, array]])[, initialValue])
+
+* **callback** 操作数组中每个值的函数 有四个参数
+* **accumulator** 累计函数上次返回值，第一次是初始值initialValue
+* **currentValue** 数组中正在处理的元素
+* **currentIndex** 数组中正在处理的元素的索引
+* **initialValue** 作为第一次调用 callback函数时的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用 reduce 将报错。
+
+主要使用场景
+
+数组求和，对象属性求和
+二维数组转换为一维数组
+```js
+[[0,1],[2,3],[4,5]].reduce((accumulator, currentValue)=> accumulator.concat(currentValue), [])
+```
+计算数组中每个元素出现的次数
+```
+['w','w','w','a','b'].reduce((accumulator, currentValue)=> {
+  if (currentValue in accumulator){
+    accumulator[currentValue]++
+  }else{
+    accumulator[currentValue] = 1
+  }
+  return accumulator
+}, {})
+```
+数组去重
+```
+['w','w','w','a','b'].reduce((accumulator, currentValue)=> {
+  if (!accumulator.includes(currentValue)){
+    accumulator.push[currentValue]
+  }
+  return accumulator
+}, [])
+```
