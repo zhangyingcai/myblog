@@ -483,3 +483,159 @@ web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影�
 ## Worker.terminate()
 
 立即终止 worker。该方法不会给 worker 留下任何完成操作的机会；就是简单的立即停止。Service Woker 不支持这个方法。
+
+# 水滴筹题目
+
+## 下面会打印什么？
+```js
+var a = 5;
+function todo(){
+    var a = 9
+    return function(){
+        a = 7
+    }
+}
+todo()()
+console.log(a)
+```
+
+答：5
+
+## 测试文本的字符大小
+```html
+<style>
+* {
+    font-size: 12px !important;
+}
+#test {
+    font-size: 14px;
+}
+.test1 {
+    font-size: 10px;
+}
+</style>
+<div id="test" class="test1">123123</div>
+```
+
+答：12px
+
+## 变量提升
+```js
+console.log(foo())
+function foo(){
+    return bar()
+    var bar = (function(){return 7})()
+    function bar(){return 8}
+}
+```
+
+答：8
+
+## Array.prototype.filter
+
+```js
+(function(){
+    var greet='Hello Shuidi'
+    var togreet = [].filter.call(greet, function(e,i){
+        return i>5
+    })
+    console.log(togreet)
+})()
+```
+答： ["S", "h", "u", "i", "d", "i"]
+
+* 自执行函数
+* Array.prototype.filter
+* call
+
+## 点击 li 输出索引值
+```html
+<ul id="test">
+    <li>第一条</li>
+    <li>第二条</li>
+    <li>第三条</li>
+  </ul>
+  <script>
+    let testEl = document.getElementById('test')
+    let liArray = document.getElementsByTagName('li');
+    testEl.addEventListener('click', function(e){
+      var liEl = e.target;
+      var i = Array.prototype.indexOf.call(liArray, liEl);
+      console.log(i)
+    })
+  </script>
+```
+
+## 实现 get 函数
+
+```js
+let obj = {foo: {bar: {name:'dd'}}}
+get(obj, 'foo.bar.name') // 输出 dd
+obj = {}
+get(obj, 'foo.bar.name') // 输出 undefined
+get(obj, 'foo.bar.name', 'dd') // 输出 dd
+
+// 函数如下
+function get(obj, path, defaultvalue){}
+```
+答：
+```js
+// path 默认 string
+function get(obj, path, defaultvalue){
+    let key = path.split('.').shift()
+    if (obj[key]) {
+        return get(obj[key], path, defaultvalue)
+    } else {
+        return defaultvalue
+    }
+}
+```
+
+主要考察递归
+
+## localStorage 相关
+
+```js
+localStorage.setItem('show', false)
+console.log(localStorage.show || '显示') // false
+```
+
+* 第一点 localStorage.show 可以直接拿到 show
+* 第二点 localStorage 只能保存字符串
+
+### 给缓存添加时效
+
+请设计 localSrorage 添加时效
+
+## 请解码被多次编码的URl
+
+例子：https%253A%252F%252Fwww.baidu.com%252Ftest%253D1
+结果：https://www.baidu.com/test=1
+
+
+转义函数：
+### encodeURIComponent
+
+转义除了字母、数字、(、)、.、!、~、*、'、-和_之外的所有字符。
+
+包括 : / 
+
+### encodeURI
+
+转义除了 ; , / ? : @ & = + $ 之外的所有字符。
+
+不能转义 : /
+
+### escape
+
+转义除了 @ * _ + - . / 之外的字符
+
+## http
+
+一次完整的 http 请求，期间需要多少次握手？（tcp?）
+
+* 建立连接 三次 断开连接 四次
+
+## 0.1+0.2 ? 0.3
+
+答：>
