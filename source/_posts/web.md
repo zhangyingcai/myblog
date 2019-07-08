@@ -639,3 +639,28 @@ console.log(localStorage.show || '显示') // false
 ## 0.1+0.2 ? 0.3
 
 答：>
+
+## 代码题
+用 JavaScript 写一个函数，输入 int 型，返回整数逆序后的字符串。如：输入整型 1234，返回字符串“4321”。要求必须使用递归函数调用，不能用全局变量，输入函数必须只有一个参数传入，必须返回字符串。
+
+```
+function intToStr(num){
+    let num1 = num / 10;
+    let num2 = num % 10
+    if (num1 < 1) { // 只有一位数字
+        return num
+    } else {
+        return `${num2}${intToStr(Math.floor(num1))}`
+    }
+}
+```
+```
+function reverse(num){
+    const str = String(num)
+    return str ? `${num % 10}${reverse(str.slice(0,str.length-1))}` : ''
+}
+```
+
+```es6
+const reverse = num => [...num.toString()].reverse().join('')
+```
