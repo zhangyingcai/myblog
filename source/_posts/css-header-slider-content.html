@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现⼀一个头部 header 高度固定宽度自适应，左下侧 sidebar 宽度固定、高度自适应。右下侧 content 自适应的布局。</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            height: 60px;
+            background-color: red;
+        }
+        .aside{
+            float: left;
+            width: 60px;
+            /* height: 100%; */
+            height: calc( 100vh - 60px );
+            background-color: greenyellow;
+        }
+        .content{
+            margin-left: 60px;
+            /* width: calc( 100vw - 60px ); */
+            height: calc( 100vh - 60px );
+            background-color: blue;
+        }
+    </style>
+    <header class="header"></header>
+    <aside class="aside"></aside>
+    <div class="content"></div>
+</body>
+</html>
