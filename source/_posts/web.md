@@ -664,3 +664,38 @@ function reverse(num){
 ```es6
 const reverse = num => [...num.toString()].reverse().join('')
 ```
+
+面试题2
+
+# 压轴题
+
+```
+(function(){
+    var a = b = 1;
+})()
+console.log(window.a,window.b)
+```
+## 传参
+
+```
+function fn(obj){
+    obj.bar = 'zyc'
+}
+function fn1(obj){
+    obj={
+        bar: 'zyc1'
+    }
+}
+var obj = {
+    bar:'bar'
+}
+console.log(obj.bar); // bar
+fn(obj)
+console.log(obj.bar); // zyc
+fn1(obj)
+console.log(obj.bar); // zyc
+```
+
+## 闭包以及解决异步的问题
+
+## 回调地狱
