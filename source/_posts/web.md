@@ -699,3 +699,5 @@ console.log(obj.bar); // zyc
 ## 闭包以及解决异步的问题
 
 ## 回调地狱
+
+## object in es5 map in es6
