@@ -190,3 +190,64 @@ Persion.prototype.getAge = function(){
 ```
 
 现在统一将 callback 函数换成了 promise 。
+
+# 面试题
+
+## 1
+闭包和变量提升
+
+```
+(function(){var a = b =1;})()
+console.log(a,b)
+```
+
+## 2
+
+```
+const arr = [10,12,11,21];
+for (var i=0; i<arr.length; i++) {
+  setTimeout(function(){
+    console.log(i, arr[i])
+  }, 300)
+}
+// 4个相同的 4 undefined
+```
+如何解决
+
+ES5
+
+### 1
+```
+const arr = [10,12,11,21];
+for (var i=0; i<arr.length; i++) {
+  (function(j){
+    setTimeout(function(){
+        console.log(j, arr[j])
+    }, 300)
+  })(i)
+}
+```
+
+### 2
+
+```
+const arr = [10,12,11,21];
+for (var i=0; i<arr.length; i++) {
+    setTimeout(function(j){
+        console.log(j, arr[j])
+    }, 300, i)
+}
+```
+
+ES6
+
+```
+const arr = [10,12,11,21];
+for (let i=0; i<arr.length; i++) {
+  setTimeout(function(){
+    console.log(i, arr[i])
+  }, 300)
+}
+```
+
+
