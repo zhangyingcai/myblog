@@ -700,4 +700,60 @@ console.log(obj.bar); // zyc
 
 ## 回调地狱
 
+回调地狱是由于回调函数嵌套太多引起的
+
+* 代码难以阅读和维护
+* 代码无法定位到错误，回调函数总会将错误抛出到顶层
+
 ## object in es5 map in es6
+
+* 一个 Object 的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值。
+* Map 中的键值是有序的（FIFO 原则），而添加到对象中的键则不是。
+* Map 的键值对个数可以从 size 属性获取，而 Object 的键值对个数只能手动计算。
+* Object 都有自己的原型，原型链上的键名有可能和你自己在对象上的设置的键名产生冲突。
+
+引申
+
+map set 
+
+set 存储的值是唯一的(想当与一维数组去重)
+
+## 不获取原型链的属性
+
+Object.hasOwnProperty()
+
+所有继承了 Object 的对象都会继承到 hasOwnProperty 方法。这个方法可以用来检测一个对象是否含有特定的自身属性；和 in 运算符不同，该方法会忽略掉那些从原型链上继承到的属性。
+
+### 遍历一个对象
+
+Iterating over the properties of an object
+
+遍历一个对象
+
+注：之前有过面试是英文题目
+
+```javascript
+var obj = {}
+for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+        console.log(key, obj[key])
+    }
+}
+```
+## this
+
+```
+var obj = {
+    bar: 'bar',
+    foo: function(){
+        let that = this;
+        console.log(this.bar, that.bar); // bar bar
+        (function(){
+            let that = this;
+            console.log(this.bar, that.bar); // bar bar
+        })();
+    }
+}
+obj.foo()
+```
+
