@@ -204,3 +204,24 @@ typeof f;//"number"
 ```
 
 自执行函数和 **分组选择符** 的使用, 分组选择符通过 , 隔开取最后一个值
+
+## 常见面试题
+
+```
+null == undefined // true
+null === undefined // false
+
+0 == '0'// true
+false == '0'// true
+[] == '0' // false
+[] == '' // true
+
+```
+
+typeof null == 'object'
+
+有时候会让你判断下面代码有什么问题
+```
+if (typeof obj === 'object')
+```
+obj 为 null 时为真
