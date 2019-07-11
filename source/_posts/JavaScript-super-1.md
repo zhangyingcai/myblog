@@ -158,6 +158,7 @@ var promise = new Promise(
 promise.then((val) => console.log(val));
 console.log("4")
 ```
+# 问题
 
 [总结：JavaScript异步、事件循环与消息队列、微任务与宏任务](https://juejin.im/post/5be5a0b96fb9a049d518febc)
 
@@ -174,3 +175,21 @@ console.log("4")
 问题：Node与浏览器 EventLoop的差异
 
 问题：如何在保证页面运行流畅的情况下处理海量数据
+
+# 面试题
+
+## 1
+```
+console.log(1)
+setTimeout(function(){
+    console.log(2)
+}, 1000)
+setTimeout(function(){
+    console.log(3)
+}, 0)
+console.log(4)
+// 1
+// 4
+// 3
+// 2
+```
