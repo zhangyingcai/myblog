@@ -87,3 +87,9 @@ console.log(target.foo);  // 1，只读属性不能被覆盖，所以第二个�
 console.log(target.foo3); // undefined，异常之后 assign 方法就退出了，第三个属性是不会被拷贝到的。
 console.log(target.baz);  // undefined，第三个源对象更是不会被拷贝到的。
 ```
+
+## Object.hasOwnProperty()
+
+>hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是是否有指定的键
+
+>所有继承了 Object 的对象都会继承到 hasOwnProperty 方法。这个方法可以用来检测一个对象是否含有特定的自身属性；和 in 运算符不同，该方法会忽略掉那些从原型链上继承到的属性。
