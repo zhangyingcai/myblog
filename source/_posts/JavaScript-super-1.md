@@ -72,7 +72,7 @@ func()
 
 宏任务包括 script (同步代码) ， setTimeout ，setInterval ，setImmediate ，I/O ，UI rendering。
 
-微任务包括 process.nextTick ，promise ，MutationObserver，其中 process.nextTick 为 Node 独有。
+微任务包括 process.nextTick ，promise.then ，MutationObserver，其中 process.nextTick 为 Node 独有。
 
 Event Loop 的执行顺序
 
@@ -164,13 +164,13 @@ console.log("4")
 
 问题：为何 try里面放 return， finally还会执行，理解其内部机制？
 
-问题：JavaScript如何实现异步编程，可以详细描述 EventLoop机制
+问题：JavaScript如何实现异步编程，可以详细描述 EventLoop 机制
 
 问题：宏任务和微任务分别有哪些？
 
 问题：可以快速分析一个复杂的异步嵌套逻辑，并掌握分析方法
 
-问题：使用 Promise实现串行
+问题：使用 Promise 实现串行
 
 问题：Node与浏览器 EventLoop的差异
 
