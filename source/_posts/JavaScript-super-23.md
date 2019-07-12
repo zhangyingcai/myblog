@@ -299,23 +299,25 @@ function Person(name, age, job){
     this.name = name;
     this.age = age;
     this.job = job;
-    this.friends = ["ZhangSan", "LiSi"];
 }
 
 Person.prototype = {
     constructor : Person,
     sayName : function(){
         console.log(this.name);
-    }
+    },
+    a:[1,2]
 }
 
 const person1 = new Person("dd", 28, "Engineer");
 const person2 = new Person("tt", 29, "Teacher");
-person2.friends.push('mm');
+person2.friends.push('zyc');
+person2.a.push('zyc');
 person1.friends  //  ["ZhangSan", "LiSi"]
+person1.a  //  [1,2,'zyc']
 ```
 
-可以看到共享属性都是备份的。
+可以看到共享的父级引用属性是相同地址。
 
 # 扩展
 
