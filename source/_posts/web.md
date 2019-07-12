@@ -686,6 +686,11 @@ function fn1(obj){
         bar: 'zyc1'
     }
 }
+function fn2(){
+    obj={
+        bar: 'zyc2'
+    }
+}
 var obj = {
     bar:'bar'
 }
@@ -694,7 +699,11 @@ fn(obj)
 console.log(obj.bar); // zyc
 fn1(obj)
 console.log(obj.bar); // zyc
+fn2(obj)
+console.log(obj.bar); // zyc2
 ```
+
+函数在处理引用传参的时候，在函数当前作用域下，
 
 ## 闭包以及解决异步的问题
 
@@ -716,7 +725,7 @@ console.log(obj.bar); // zyc
 
 map set 
 
-set 存储的值是唯一的(想当与一维数组去重)
+set 存储的值是唯一的(想当于一维数组去重)
 
 ## 不获取原型链的属性
 
@@ -742,7 +751,7 @@ for (var key in obj) {
 ```
 ## this
 
-```
+```javascript
 var obj = {
     bar: 'bar',
     foo: function(){
@@ -757,3 +766,170 @@ var obj = {
 obj.foo()
 ```
 
+# 快手笔试题
+
+## 请写出一下代码执行结果。
+
+```js
+var a = {x: 1}
+var b = a;
+a.x = a = {n: 1};
+console.log(a); // {n:1}
+console.log(b); // {x:{n:1}}
+```
+
+引申
+
+```js
+function test(){
+    var a = b = 1;
+}
+a // ReferebceError
+b // ReferebceError
+```
+
+## 请写出以下代码执行结果
+
+```js
+Function.prototype.a = ()=> alert(1);
+Object.prototype.b = () => alert(2);
+function A(){};
+const a = new A();
+a.a(); // TypeError a is not a function
+a.b(); // alert(2)
+```
+
+## 请写出以下代码执行结果
+
+```js
+let a = 0;
+console.log(a); // 0
+console.log(b); // 暂时性死区 ReferenceError
+let b = {};
+console.log(c); // function c() {}
+function c() {};
+```
+
+## 请写出以下代码执行结果
+
+```js
+var x = 10;
+function a(y) {
+  var x = 20;
+  return b(y);
+}
+function b(y) {
+  return x+y;
+}
+a(20); // 30
+```
+
+## 请写出以下代码执行结果
+
+```nodejs
+console.log(1);
+setTimeout(()=> {
+  console.log(2)
+});
+process.nextTick(()=> {
+  console.log(3);
+});
+setImmedite(()=> {
+  console.log(4);
+});
+new Promise(resolve=> {
+  console.log(5);
+  resolve();
+  console.log(6);
+}).then(()=> {
+  console.log(7);
+});
+Promise.resolve().then(()=> {
+  console.log(8);
+  process.nextTick(()=> {
+    console.log(9);
+    })
+})
+// 1
+// 5
+// 6
+// 3
+// 7
+// 8
+// 9
+// 2
+// 4
+```
+
+## 请写出以下代码执行结果
+
+```js
+[1,2,3,4,5].map(parseInt);
+// callback(item, index, array)
+// parseInt(num, index)
+// [1,NaN,NaN,NaN,NaN]
+```
+
+## 请写出最后一个值
+
+```js
+1,3,2,3,4,9,?
+
+//32
+```
+
+## 请写出以下代码执行结果
+
+```js
+typeof typeof typeof [];
+// string
+```
+
+## 以下CSS最后是什么颜色
+
+```css
+<style>
+div {color: red}
+#title {color: yellow}
+div.title {color: blue}
+</style>
+<div class="title" id="title">abc</div>
+// yellow
+```
+
+```css
+<style>
+div {color: red};
+#title {color: yellow};
+div.title {color: blue};
+</style>
+<div class="title" id="title">abc</div>
+// red
+```
+
+```css
+<style>
+.classA {color: blue}
+.classB {color: red}
+</style>
+<p class="classB classA">123</p>
+// red
+```
+
+##  请解释一下什么BFC，IFC，FFC。
+
+## visibility: hidden 和 display: none 有什么区别？
+
+visibility: hidden 占用的空间还在，
+display: none 都隐藏了
+
+## css中你所知道的长度单位有哪些？有哪些区别？
+
+px(Pixel) 相对长度单位。
+像素 px 是相对与显示器屏幕分辨率而言的。
+
+em 相对长度单位 相对于父级元素设定字体大小
+
+rem 现对于 html 根元素设定字体大小
+
+## img 的 alt 和 title有何不同
