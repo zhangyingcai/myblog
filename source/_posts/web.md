@@ -583,8 +583,12 @@ function get(obj, path, defaultvalue){}
 // path 默认 string
 function get(obj, path, defaultvalue){
     let key = path.split('.').shift()
+    path =path.split('.').splice(1).join('.')
     if (obj[key]) {
-        return get(obj[key], path, defaultvalue)
+        if(path){
+            return get(obj[key], path, defaultvalue)
+        }
+        return obj[key]
     } else {
         return defaultvalue
     }
@@ -673,7 +677,7 @@ const reverse = num => [...num.toString()].reverse().join('')
 (function(){
     var a = b = 1;
 })()
-console.log(window.a,window.b)
+console.log(window.a,window.b) // undefined 1
 ```
 ## 传参
 
@@ -785,7 +789,7 @@ function test(){
     var a = b = 1;
 }
 a // ReferebceError
-b // ReferebceError
+b // 1
 ```
 
 ## 请写出以下代码执行结果
@@ -808,6 +812,16 @@ console.log(b); // 暂时性死区 ReferenceError
 let b = {};
 console.log(c); // function c() {}
 function c() {};
+```
+
+## 
+
+```js
+var myMap = new Map();
+myMap.set('k1','value1');
+myMap.set('k2','value2');
+console.log('%s', myMap) // Map(2)
+console.log('%s', Array.from(myMap)) // Array(2)
 ```
 
 ## 请写出以下代码执行结果
@@ -933,3 +947,24 @@ em 相对长度单位 相对于父级元素设定字体大小
 rem 现对于 html 根元素设定字体大小
 
 ## img 的 alt 和 title有何不同
+
+## this
+
+```
+let x = 10;
+var obj = {
+    x: 20,
+    f:function(){
+        const that = this;
+        console.log(this.x)
+        console.log(that.x)
+        test()
+        function test(){
+            const that = this;
+            console.log(this.x)
+            console.log(that.x)
+        }
+    }
+}
+obj.f()
+```
