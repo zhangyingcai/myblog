@@ -2,7 +2,8 @@
 title: String对象的方法
 abbrlink: 2527
 date: 2019-05-13 18:08:01
-tags:
+tags: String
+categories: String
 ---
 
 String对象的方法
