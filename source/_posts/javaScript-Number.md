@@ -1,7 +1,7 @@
 ---
 title: 每天一个知识点之Number
 tags: Number
-categories: Number
+categories: JavaScript进阶系列
 abbrlink: 4093
 date: 2019-04-28 15:39:48
 ---

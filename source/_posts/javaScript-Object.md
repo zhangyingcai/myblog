@@ -1,7 +1,7 @@
 ---
 title: 每天一个知识点之Object
 tags: Object
-categories: Object
+categories: JavaScript进阶系列
 abbrlink: 51899
 date: 2019-04-24 14:33:47
 ---
