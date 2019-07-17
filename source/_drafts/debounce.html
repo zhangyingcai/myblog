@@ -16,6 +16,9 @@ abbrlink: 2
     <button id="button">点我防抖</button>
     <button id="button1">点我立即执行</button>
     <button id="button2">点我立即执行防抖</button>
+    <button id="button6">es5防抖函数</button>
+    <button id="button7">es5节流</button>
+    <button id="button8">es5节流</button>
     <button id="button3">节流</button>
     <button id="button4">简易节流</button>
 
@@ -70,15 +73,70 @@ var watchExampleVM = new Vue({
         })
     }
   }
-})
+});
 </script>
 <script>
-
+    // es6 写法
     const debounce = (func, wait = 500) => {
         let timer = null
         return function (...args) {
             if (timer) clearTimeout(timer);
             timer = setTimeout(() => { func.apply(this, args) }, wait)
+        }
+    }
+
+    const debounce3 = (func, wait = 500, flag) => { // 立即执行 开始边界 结束边界 代理
+        let timer = null
+        return function (...args) {
+            if (timer) clearTimeout(timer);
+            if(flag){
+                // 开始边界 先执行 后计时
+                timer = setTimeout(() => {
+                    timer = null
+                }, wait);
+                if (!timer) {
+                    func.call(this, args)
+                }
+            }else{
+                timer = setTimeout(() => { func.call(this, args) }, wait)
+            }
+        }
+    }
+
+    // es5 
+    function debounce2 (func, wait){
+        let timer = null;
+        return function(){
+            var self = this;
+            if(timer) clearTimeout(timer);
+            timer = setTimeout(function(){
+                func.call(self)
+            }, wait);
+        }
+    }
+
+    // es5 
+    function throttle2 (func, wait){
+        let timer;
+        return function(){
+            var self = this;
+            if(timer) return;
+            timer = setTimeout(function(){
+                func.call(self)
+                timer = null
+            }, wait);
+        }
+    }
+    // es5 节流 计时器 
+    function throttle4 (func, wait){
+        var previous = 0;
+        return function(){
+            var self = this;
+            var now = +new Date();
+            if(now - previous > wait) {
+                func.call(self)
+                previous = now
+            }
         }
     }
 
@@ -198,6 +256,15 @@ var watchExampleVM = new Vue({
     }
     document.getElementById("button3").addEventListener("click", throttle(() => { console.log("节流成功！") },1000));
     document.getElementById("button4").addEventListener("click", throttle1(() => { console.log("简易节流成功！") },1000));
+    document.getElementById("button6").addEventListener("click", debounce2(function(){
+        console.log(this)
+    },1000));
+    document.getElementById("button7").addEventListener("click", throttle4(function(){
+        console.log(this)
+    },1000));
+    document.getElementById("button8").addEventListener("click", throttle2(function(){
+        console.log(this)
+    },1000));
 </script>
 
 </html>
