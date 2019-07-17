@@ -40,3 +40,9 @@ retrun  索引 未找到返回 -1
 
 str.substr(start[, length])
 
+# String.prototype.trim()
+
+> remove whitespace from both ends of a string
+
+字符串
+
