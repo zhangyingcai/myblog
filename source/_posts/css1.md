@@ -280,6 +280,7 @@ postion:
 * absolute: 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
 * fixed: 生成绝对定位的元素，相对于浏览器窗口进行定位。
 * static: 没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
+* sticky: 粘性定位，基于用户滚动的位置。常用**吸顶**盒子。在目标区域滚动，行为和 position:relative 相同，当页面滚动超出目标区域时，他的表现想 position:fixed.
 * inherit: 规定应该从父元素继承 position 属性的值。
 
 ## rem
