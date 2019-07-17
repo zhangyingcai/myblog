@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>promise</title>
+</head>
+<body>
+  
+</body>
+<script>
+  const state = {
+    PENDING: 'pending',
+    REJECTED: 'rejected',
+    RESOLVED: 'resolved'
+  }
+  function myPromise(fn){
+    let self = this;
+    self.value = undefined;
+    self.state = state.PENDING;
+    self.rejectedCallbacks = [];
+    self.resolvedCallbacks = [];
+    function reject(value){
+      if(self.state === state.PENDING){
+        self.value = value
+        self.state = state.rejected
+        self.rejectedCallbacks.map(cb=>cb(self.value))
+      }
+    }
+    function resolve(value){
+      if(self.state === state.PENDING){
+        self.value = value
+        self.state = state.resolved
+        self.resolvedCallbacks.map(cb=>cb(self.value))
+      }
+    }
+    try {
+      fn(resolve, reject)
+    } catch (error) {
+      reject(error)
+    }
+  }
+
+  myPromise.prototype.then = function(onFulfilled, onRejected){
+    const self = this;
+    // 初始化
+    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value=>value;
+    onRejected = typeof onRejected === 'function' ? onRejected : error=>{ throw error };
+    if (self.state === state.PENDING) {
+      self.rejectedCallbacks.push(onRejected);
+      self.resolvedCallbacks.push(onFulfilled);
+    }
+    if (self.state === state.REJECTED){
+      onRejected(self.value)
+    }
+    if (self.state === state.RESOLVED){
+      onFulfilled(self.value)
+    }
+  }
+</script>
+</html>
