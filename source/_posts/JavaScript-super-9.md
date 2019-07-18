@@ -11,6 +11,12 @@ JavaScript进阶系列 - 变量提升
 
 <!-- more -->
 
+# 常识
+
+现在已经达成共识：默认情况下应当使用 let 而不是 var ，对需要受到保护的变量使用 const 。
+在声明之后使用变量。
+const 必须 赋值。
+
 # 变量的作用域与变量提升
 
 在 ES6 之前，JavaScript 中只存在着函数作用域。
@@ -46,6 +52,35 @@ function foo() {
 ```
 
 可以看到 不管会不会被执行 JavaScript 引擎都会将 var 修饰的变量声明找出来放到作用域的顶部，但是不会提升 **赋值** 语句
+
+```
+function foo() {
+    if(true) {
+        var temp = 5;
+         console.log(temp);
+    }
+    
+    console.log(temp);
+}
+
+function bar(） {
+    if(true) {
+        let temp = 5;
+        console.log(temp);
+    }
+    
+    console.log(temp);
+}
+
+foo(); // 5 和 5
+bar(); // 5 和 "ReferenceError: temp is not defined
+```
+
+## 暂时性死区
+
+当 JavaScript 引擎检视下面的代码块有变量声明时，对于 var 声明的变量，会将声明提升到函数或全局作用域的顶部，而对 let 或 const 的时候会将声明放在暂时性死区内。
+
+任何在暂时性死区内访问变量的企图都会导致"运行时"错误(runtime error)。只有执行到变量的声明语句时，该变量才会从暂时性死区内被移除并可以安全使用。
 
 ## 函数提升
 
