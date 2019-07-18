@@ -31,7 +31,7 @@ description:
 
 常识：
 
-ECMAScript6之前只有全局作用域和函数作用域，let const 之后才有块级作用域
+ECMAScript6 之前只有全局作用域和函数作用域，let const 之后才有块级作用域
 
 词法作用域也成为静态作用域是在代码编写时已经确定了作用域。
 
@@ -56,7 +56,7 @@ ECMAScript6之前只有全局作用域和函数作用域，let const 之后才�
 
 在函数体内，局部变量相对于同名全局变量拥有高优先级。
 
-```es5
+```ECMAScript5
 var name = 'zyc';
 var firstname = 'z';
 function showName(){
@@ -116,7 +116,7 @@ console.log(myname) // ReferenceError myname is not defined
 
 ## 变量提升
 
-变量未声明但是我们可以使用叫变量提升。
+>函数声明和变量声明总是被 JavaScript 解释器隐式地提升 (hoist) 到包含他们的作用域的最顶端。很明显的，语言自身定义和函数形参已经处于作用域顶端, 并被赋值为 undefined。
 
 # 函数作用域
 
@@ -180,7 +180,7 @@ checkscope()(); // 这里执行
 // local scope
 ```
 
-两段代码都会打印'local scope'。
+两段代码都会打印 'local scope' 。
 
 > JavaScript 函数的执行用到了作用域链，这个作用域链是在函数定义的时候创建的。嵌套的函数 f() 定义在这个作用域链里，其中的变量 scope 一定是局部变量，不管何时何地执行函数 f() ，这种绑定在执行 f() 时依然有效。
 
@@ -212,7 +212,7 @@ checkscope()(); // 这里执行
 # 块级作用域
 
 什么是块级作用域？
-ES6 怎么引入的块级作用域？哪些？
+ECMAScript6 怎么引入的块级作用域？哪些？
 
 相信这些问题都是在看块级作用域的疑惑。
 
@@ -220,6 +220,6 @@ ES6 怎么引入的块级作用域？哪些？
 
 块级作用非常严格，就是作用域之外无法访问作用域内的变量。
 
-ES6 中规定了 let 和 const 来支持块级作用域。
+ECMAScript5 中规定了 let 和 const 来支持块级作用域(只是效果一样)。
 
-同时 ES5 之前 for if switch 是不会产生作用域的，ES6 之后有些不同，需要我去查一些资料。
+同时 ECMAScript5 之前 for if switch 是不会产生作用域的，ECMAScript6 之后有些不同，需要我去查一些资料。
