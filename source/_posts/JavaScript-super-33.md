@@ -1,10 +1,11 @@
 ---
 title: 防抖和节流
+categories: JavaScript进阶系列
+abbrlink: 8a2f
 date: 2019-07-18 15:05:59
 tags:
 keywords:
 description:
-categories: JavaScript进阶系列
 ---
 
 防抖和节流
