@@ -21,6 +21,7 @@ abbrlink: 2
     <button id="button8">es5节流</button>
     <button id="button3">节流</button>
     <button id="button4">简易节流</button>
+    <button id="button9">节流立即执行</button>
 
     <div id="watch-example">
     <p>vue 防抖应用</p>
@@ -91,12 +92,12 @@ var watchExampleVM = new Vue({
             if (timer) clearTimeout(timer);
             if(flag){
                 // 开始边界 先执行 后计时
-                timer = setTimeout(() => {
-                    timer = null
-                }, wait);
                 if (!timer) {
                     func.call(this, args)
                 }
+                timer = setTimeout(() => {
+                    timer = null
+                }, wait);
             }else{
                 timer = setTimeout(() => { func.call(this, args) }, wait)
             }
@@ -116,15 +117,21 @@ var watchExampleVM = new Vue({
     }
 
     // es5 
-    function throttle2 (func, wait){
-        let timer;
+    function throttle2(func, wait, flag){
+        let timer = null
         return function(){
-            var self = this;
             if(timer) return;
-            timer = setTimeout(function(){
-                func.call(self)
-                timer = null
-            }, wait);
+            if(flag){
+                func.call(this)
+                timer = setTimeout(()=>{
+                    timer = null
+                }, wait);
+            }else{
+                timer = setTimeout(()=>{
+                    func.call(this)
+                    timer =null
+                }, wait)
+            }
         }
     }
     // es5 节流 计时器 
@@ -135,6 +142,17 @@ var watchExampleVM = new Vue({
             var now = +new Date();
             if(now - previous > wait) {
                 func.call(self)
+                previous = now
+            }
+        }
+    }
+
+    function throttle5 (func, wait){
+        var previous = 0;
+        return ()=>{
+            var now = +new Date();
+            if(now - previous > wait) {
+                func.call(this)
                 previous = now
             }
         }
@@ -248,7 +266,7 @@ var watchExampleVM = new Vue({
         }
     }
 
-    document.getElementById("button").addEventListener("click", debounce(() => { console.log("防抖成功") }));
+    document.getElementById("button").addEventListener("click", debounce(function() { console.log(this) }));
     document.getElementById("button1").addEventListener("click", debounce(() => { console.log("立即执行成功！") }));
     document.getElementById("button2").addEventListener("click", debounce(() => { console.log("立即防抖成功！") },1000, false));
     function down(){
@@ -256,15 +274,18 @@ var watchExampleVM = new Vue({
     }
     document.getElementById("button3").addEventListener("click", throttle(() => { console.log("节流成功！") },1000));
     document.getElementById("button4").addEventListener("click", throttle1(() => { console.log("简易节流成功！") },1000));
-    document.getElementById("button6").addEventListener("click", debounce2(function(){
+    document.getElementById("button6").addEventListener("click", debounce3(function(){
         console.log(this)
-    },1000));
+    },1000,true));
     document.getElementById("button7").addEventListener("click", throttle4(function(){
         console.log(this)
     },1000));
     document.getElementById("button8").addEventListener("click", throttle2(function(){
         console.log(this)
     },1000));
+    document.getElementById("button9").addEventListener("click", throttle2(function(){
+        console.log(this)
+    },1000,true));
 </script>
 
 </html>
