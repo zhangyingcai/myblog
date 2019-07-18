@@ -501,6 +501,9 @@ console.log(a)
 
 答：5
 
+原因： console.log(window.a) 访问的是全局变量 a ， todo()() 作用链中的 a 都是局部变量。
+
+
 ## 测试文本的字符大小
 ```html
 <style>
@@ -564,6 +567,24 @@ function foo(){
       console.log(i)
     })
   </script>
+```
+
+```事件代理
+<ul>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+</ul>
+<script>
+    var ul = document.querySelectorAll('ul')[0]
+    ul.addEventListener('click',function(e){
+        var ev = ev || window.event;
+        var target = ev.target || ev.srcElement;
+        if(target.nodeName.toLocaleLowerCase() == 'li'){
+            alert(target.innerHTML)
+        }
+    })
+</script>
 ```
 
 ## 实现 get 函数
