@@ -18,7 +18,10 @@ description:
 # 基本知识
 
 >作用域：作用域是程序源代码中定义变量的区域。
+
 >作用域目的：作用域规定了如何查找、在哪查找变量的规则，也就是确定了当前执行代码对变量的访问权限。
+
+> 作用域（Scope）即代码执行过程中的变量、函数或者对象的可访问区域，作用域决定了变量或者其他资源的可见性
 
 ```
 //权威指南 3.10
@@ -35,6 +38,8 @@ ECMAScript6 之前只有全局作用域和函数作用域，let const 之后才�
 
 词法作用域也成为静态作用域是在代码编写时已经确定了作用域。
 
+JavaScript 是基于词法作用域的语言。
+
 好了，这些是我们需要知道的知识，接下来会讲解每一个知识点。
 
 # 作用域
@@ -48,8 +53,11 @@ ECMAScript6 之前只有全局作用域和函数作用域，let const 之后才�
 还有全局变量和局部变量的区分
 
 >在全局声明的变量拥有全局作用域，在 JavaScript 代码中的任何地方都是有定义。
+
 >在函数内声明的变量只在函数体内有定义，他们是局部变量，作用域是局部的。
+
 >函数参数也是局部变量，他们只在函数体内有定义。
+
 >JavaScript 是基于词法作用域的语言：通过阅读包含变量定义在内的源码就能知道变量的作用域，也就是说在写出来的时候已经确定了变量的作用域
 
 ## 注意点
@@ -80,11 +88,11 @@ firstname // da
 
 ```js
 function test(){
-  myname = 'zyc'
+  name = 'zyc'
   var tom = 'Tom'
 }
 test()
-console.log(myname) // zyc
+console.log(name) // zyc
 console.log(tom) // ReferenceError tom is not defined
 ```
 
@@ -92,31 +100,33 @@ console.log(tom) // ReferenceError tom is not defined
 
 ```js
 function test(){
-  myname = 'zyc'
+  name = 'zyc'
 }
-console.log(myname) // ReferenceError myname is not defined
+console.log(name) // ReferenceError name is not defined
 ```
 ```js
 'use strict';
 function test(){
-  myname = 'zyc'
+  name = 'zyc'
 }
 test()
-console.log(myname) // ReferenceError myname is not defined
+console.log(name) // ReferenceError name is not defined
 ```
 
 ```js
 function test(){
   'use strict';
-  myname = 'zyc'
+  name = 'zyc'
 }
 test()
-console.log(myname) // ReferenceError myname is not defined
+console.log(name) // ReferenceError name is not defined
 ```
 
 ## 变量提升
 
 >函数声明和变量声明总是被 JavaScript 解释器隐式地提升 (hoist) 到包含他们的作用域的最顶端。很明显的，语言自身定义和函数形参已经处于作用域顶端, 并被赋值为 undefined。
+
+变量赋值不会被提升。
 
 # 函数作用域
 
@@ -223,3 +233,18 @@ ECMAScript6 怎么引入的块级作用域？哪些？
 ECMAScript5 中规定了 let 和 const 来支持块级作用域(只是效果一样)。
 
 同时 ECMAScript5 之前 for if switch 是不会产生作用域的，ECMAScript6 之后有些不同，需要我去查一些资料。
+
+# 题目
+
+## 下面会打印什么？
+```js
+var a = 5;
+function todo(){
+    var a = 9
+    return function(){
+        a = 7
+    }
+}
+todo()()
+console.log(a)
+```
