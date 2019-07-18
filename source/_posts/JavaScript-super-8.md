@@ -157,6 +157,62 @@ for (var i = 1; i <= 5; i++) {
 }
 ```
 
+变种：
+
+```
+<body>
+    <ul>
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+    <script>
+        var node = document.querySelectorAll('ul li')
+        for(var i = 0;i<node.length;i++){
+            node[i].addEventListener('click',function(){
+                alert('click'+i)
+            })
+        }
+    </script>
+</body>
+```
+
+addEventListener 是异步事件 所以最后都是 3 ，是因为没有块级作用用域导致，最后循环出来每个事件输出的都是全局 i
+
+解决办法1：
+
+```
+var node = document.querySelectorAll('ul li')
+for(var i = 0;i<node.length;i++){
+    (function(i){
+        node[i].addEventListener('click',function(){
+            alert('click'+i)
+        })
+    })(i)
+}
+```
+
+解决办法2：
+```
+ <body>
+    <ul>
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+    <script>
+        var node = document.querySelectorAll('ul li')
+        Array.from(node).forEach(function(nodeItem,index){
+            nodeItem.addEventListener('click',function(){
+                alert('click'+index)
+            })
+        })
+    </script>
+</body>
+```
+
+这里用 forEach 也行成了一个所谓的闭包， forEach 里的执行函数也行成了一个闭包，每个执行体里，index 都是一局部作用域，那为什么用 array,from 呢，我们也可以用 [].slice.call(node) 我们类数组对象转化成真正的数组，因为有些低版本的浏览器不支持摆了。
+
 ### 性能
 
 闭包在处理速度和内存消耗方面都有比较大的开销。
