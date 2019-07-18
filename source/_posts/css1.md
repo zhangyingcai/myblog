@@ -1,5 +1,6 @@
 ---
 title: css1
+abbrlink: 7b0b
 date: 2019-06-09 22:58:43
 tags:
 keywords:

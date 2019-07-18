@@ -1,9 +1,10 @@
 ---
 title: SQL
-date: 2019-06-11 10:47:26
 tags: SQL
 keywords: SQL
 description: SQL
+abbrlink: 74cc
+date: 2019-06-11 10:47:26
 ---
 
 SQL 学习记录

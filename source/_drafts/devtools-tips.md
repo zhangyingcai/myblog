@@ -1,6 +1,7 @@
 ---
 title: devtools tips
 tags: 前端调试技巧
+abbrlink: 8ed2
 ---
 
 前端调试技巧

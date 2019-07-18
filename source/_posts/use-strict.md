@@ -1,9 +1,10 @@
 ---
 title: use-strict
-date: 2019-07-11 15:17:58
 tags: 严格模式
 keywords: 严格模式
 description: 严格模式
+abbrlink: a700
+date: 2019-07-11 15:17:58
 ---
 
 ES5 严格模式都做了哪些事？

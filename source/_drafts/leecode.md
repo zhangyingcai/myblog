@@ -1,6 +1,7 @@
 ---
 title: leetcode
 tags: leetcode
+abbrlink: 374e
 ---
 
 leetcode

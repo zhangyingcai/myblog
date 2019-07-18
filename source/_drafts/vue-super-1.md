@@ -1,6 +1,7 @@
 ---
 title: vue-super-1
 tags: vue
+abbrlink: 9b98
 ---
 
 vue 常见面试内容

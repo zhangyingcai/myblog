@@ -1,9 +1,10 @@
 ---
 title: scss and less
-date: 2019-06-28 11:08:59
 tags: scss lass
 keywords: scss less
 description: scss less
+abbrlink: 4c58
+date: 2019-06-28 11:08:59
 ---
 
 scss and less

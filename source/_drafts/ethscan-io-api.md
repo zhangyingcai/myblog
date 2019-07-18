@@ -1,6 +1,7 @@
 ---
 title: ethscan_io_api
 tags: ethscan.io
+abbrlink: 9d15
 ---
 
 ethscan.io api 使用总结
