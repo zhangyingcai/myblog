@@ -3,7 +3,7 @@ title: 算法题目
 abbrlink: 36608
 date: 2019-04-23 18:30:39
 tags: leetcode
-categories：leetcode
+categories: leetcode
 ---
 
 # 给定两个数组，写一个方法来计算它们的交集。
