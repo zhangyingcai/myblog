@@ -17,13 +17,18 @@ JavaScript进阶系列 - 变量提升
 在声明之后使用变量。
 const 必须 赋值。
 
+var、let 都有变量提升，不过 let 是放到暂时性死区中
+
 # 变量的作用域与变量提升
 
-在 ES6 之前，JavaScript 中只存在着函数作用域。
-ES6 之后引入 let const 两个变量声明关键字 和 块级作用域。
+在 ECMAScript6 之前，JavaScript 中只存在着函数作用域和全局作用域。
+ECMAScript6 之后引入 let const 两个变量声明关键字 和 块级作用域。
+
 > ES5 之前 if switch for 语句是不会产生作用域的，能够产生作用域的有 **函数** ，ES6 之后可以
+
 > 作用域（Scope）即代码执行过程中的变量、函数或者对象的可访问区域，作用域决定了变量或者其他资源的可见性
->JavaScript 中的作用域主要分为**全局作用域**（Global Scope）与**局部作用域**（Local Scope）两大类，在 ES5 中定义在函数内的变量即是属于某个局部作用域，而定义在函数外的变量即是属于全局作用域
+
+>JavaScript 中的作用域主要分为**全局作用域**（Global Scope）与**局部作用域**（Local Scope）两大类，在 ECMAScript5 中定义在函数内的变量即是属于某个局部作用域，而定义在函数外的变量即是属于全局作用域
 
 在 JavaScript 中，所有绑定的声明在控制流到达他们出现的作用域时被初始化。这里的作用域就是 执行上下文(Execution Context)
 每个执行上下文分为 内存分配（Memory Creation Phase）与 执行（Execution）这两个阶段
@@ -137,7 +142,7 @@ if (true){
 ## 1
 ```
 (function(){var a = b =1;})()
-console.log(typeof)
+console.log(a,b)
 ```
 ## 2
 ```
