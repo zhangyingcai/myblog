@@ -9,12 +9,16 @@ tags:
 
 高阶函数的使用
 
-## map
+# map
 
 返回一个新数组。
 
-## filter
+# filter
 
 返回一个新数组，通常用来过滤数组。
 
-## reduce
+# reduce
+
+# es5新增
+
+ECMAScript5 新增 Array 方法

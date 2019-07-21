@@ -23,7 +23,11 @@
 
 7.[闭包](https://zhangyingcai.github.io/articles/7415.html)
 
-8.[JavaScript进阶系列-偏函数、柯里化、Compose 和 Pipe](https://zhangyingcai.github.io/articles/7919.html)
+8.[偏函数、柯里化、Compose 和 Pipe](https://zhangyingcai.github.io/articles/7919.html)
+
+9.[变量提升](https://zhangyingcai.github.io/articles/30046.html)
+
+33.[防抖和节流](https://zhangyingcai.github.io/articles/8a2f.html)
 
 ### ES6
 

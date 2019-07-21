@@ -260,3 +260,6 @@ if (!Array.prototype.filter) {
   return accumulator
 }, [])
 ```
+# Array.prototype.forEach()
+
+> arr.forEach(callback(currentValue [, index [, array]])[, thisArg]);
