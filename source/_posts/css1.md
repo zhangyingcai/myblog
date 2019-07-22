@@ -552,3 +552,5 @@ color: red;
 答案是：都是红色
 
 因为在 css 样式表中 red 后于 blue，red 中的 color 样式 的优先级比 blue 中 color 高
+
+## 

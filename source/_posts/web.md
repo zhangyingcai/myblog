@@ -974,6 +974,24 @@ rem 现对于 html 根元素设定字体大小
 ## this
 
 ```
+var x = 10;
+var obj = {
+    x: 20,
+    f:function(){
+        const that = this;
+        console.log(this.x)
+        console.log(that.x)
+        test()
+        function test(){
+            const that = this;
+            console.log(this.x) // 10
+            console.log(that.x) // 10
+        }
+    }
+}
+obj.f()
+```
+```
 let x = 10;
 var obj = {
     x: 20,
@@ -984,10 +1002,25 @@ var obj = {
         test()
         function test(){
             const that = this;
-            console.log(this.x)
-            console.log(that.x)
+            console.log(this.x) // undefined
+            console.log(that.x) // undefined
         }
     }
 }
 obj.f()
+```
+
+# 深拷贝实现
+
+```
+function deepCopy(obj){
+    let copy;
+    copy = obj instanceof Array ? [] : {};
+    for(let key in obj){
+        if(obj.hasOwnProperty(key)){
+            copy[key] = obj[key] instanceof Object ? deepCopy(obj[key]) : obj[key];
+        }
+    }
+    return copy;
+}
 ```

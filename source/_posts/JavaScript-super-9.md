@@ -13,11 +13,54 @@ JavaScript进阶系列 - 变量提升
 
 # 常识
 
-现在已经达成共识：默认情况下应当使用 let 而不是 var ，对需要受到保护的变量使用 const 。
+es6写法：默认情况下应当使用 let 而不是 var ，对需要受到保护的变量使用 const 。
 在声明之后使用变量。
-const 必须 赋值。
+const 声明必须 赋值，并且声明的基本类型无法更改。
 
-var、let 都有变量提升，不过 let 是放到暂时性死区中
+var、let 都有变量提升，不过 let 是放到暂时性死区中。
+
+# 重要
+
+>var 在全局声明的变量会挂载到 window 上，let/const 不会。
+
+```
+var x = 10;
+var obj = {
+    x: 20,
+    f:function(){
+        const that = this;
+        console.log(this.x) // 20
+        console.log(that.x) // 20
+        test()
+        function test(){
+            const that = this;
+            console.log(this.x) // 10
+            console.log(that.x) // 10
+        }
+    }
+}
+obj.f()
+```
+```
+let x = 10;
+var obj = {
+    x: 20,
+    f:function(){
+        const that = this;
+        console.log(this.x) // 20
+        console.log(that.x) // 20
+        test()
+        function test(){
+            const that = this;
+            console.log(this.x) // undefined
+            console.log(that.x) // undefined
+        }
+    }
+}
+obj.f()
+```
+
+>函数提升优于变量提升，函数提升会将整个函数提升到作用域的顶部，变量提升会将变量声明提升到作用域顶部，赋值不会。
 
 # 变量的作用域与变量提升
 
