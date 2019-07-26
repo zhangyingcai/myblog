@@ -553,4 +553,10 @@ color: red;
 
 因为在 css 样式表中 red 后于 blue，red 中的 color 样式 的优先级比 blue 中 color 高
 
-## 
+## display:none 和 visibility:hiddden 的区别
+
+* display: none 的元素不占据任何空间，visibility: hidden 的元素空间保留；
+* display: none 会影响 CSS3 的 transition 过渡效果，visibility: hidden 不会；
+* display: none 会产生重绘 ( repaint ) 和回流 ( relfow )，visibility: hidden 只会触发重绘；
+* 株连性：display: none 的节点和子孙节点元素全都不可见，visibility: hidden 的节点的子孙节点元素可以设置 visibility: visible 显示。visibility: hidden 属性值具有继承性，所以子孙元素默认继承了 hidden 而隐藏，但是当子孙元素重置为 visibility: visible 就不会被隐藏。
+

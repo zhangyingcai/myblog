@@ -16,7 +16,8 @@ abbrlink: '0'
     <li>第三条</li>
   </ul>
   <script>
-    let testEl = document.querySelector('#test')
+    let testEl = document.querySelector('ul')
+    // let testEl = document.querySelector('#test')
     // let testEl = document.getElementById('test')
     let liArray = document.getElementsByTagName('li');
     // testEl.onclick = function(e){
@@ -25,6 +26,7 @@ abbrlink: '0'
     //   console.log(i)
     // }
     testEl.addEventListener('click', function(e){
+      console.log(e)
       var liEl = e.target;
       var i = Array.prototype.indexOf.call(liArray, liEl);
       console.log(i)

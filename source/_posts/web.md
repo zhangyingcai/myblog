@@ -665,6 +665,8 @@ console.log(localStorage.show || '显示') // false
 
 答：>
 
+0.1 和 0.2 是比较特殊的两个值
+
 ## 代码题
 用 JavaScript 写一个函数，输入 int 型，返回整数逆序后的字符串。如：输入整型 1234，返回字符串“4321”。要求必须使用递归函数调用，不能用全局变量，输入函数必须只有一个参数传入，必须返回字符串。
 
@@ -1023,4 +1025,19 @@ function deepCopy(obj){
     }
     return copy;
 }
+```
+
+# 作用域 + 变量提升
+
+```
+var name = 123;
+(function(){
+    console.log(typeof name)
+    if(typeof name === 'undefined'){
+        var name = 'jack';
+        console.log(typeof name)
+    } else {
+        console.log(name)
+    }
+})()
 ```
