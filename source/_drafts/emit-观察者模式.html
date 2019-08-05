@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>emit</title>
+</head>
+<body>
+  <script>
+    let evenBus = {};
+    evenBus.list = {};
+    evenBus.on = function(key, fn){
+      const self = this;
+      // 初始化
+      // fn 放到数组里
+      if (!self.list[key]) {
+        self.list[key] = []
+      }
+
+      self.list[key].push(fn)
+    }
+    evenBus.emit = function(){
+      const self = this;
+      const key = [].shift.call(arguments);
+      self.list[key].forEach(fn => {
+        fn.apply(self, arguments)
+      });
+    }
+    // 注册时间
+    evenBus.on('updatetitle', function(arg1, arg2){
+      console.log('arg1:'+arg1)
+      console.log('arg2:'+arg2)
+    })
+    evenBus.emit('updatetitle', '12', '23')
+  </script>
+</body>
+</html>
