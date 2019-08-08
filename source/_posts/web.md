@@ -1041,3 +1041,10 @@ var name = 123;
     }
 })()
 ```
+
+# 图片翻转
+
+css3 transform:scale
+```
+transform:scale(-1,1)
+```
