@@ -1048,3 +1048,15 @@ css3 transform:scale
 ```
 transform:scale(-1,1)
 ```
+
+# 文本最大三行省略号
+
+-webkit-line-clamp 是一个不规范属性
+
+需要和下面的属性配合使用：
+
+display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。
+text-overflow: ellipsis 可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。
+
+# 事件代理
