@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>new</title>
+</head>
+<body>
+  <script>
+  const new1 = function(func) {
+    let obj = {};
+    obj.__proto__ = func.prototype;
+    let result = func.apply(obj)
+    return typeof result === 'object' ? result : obj;
+  }
+  const new2 = function(func){
+    let obj = Object.create(func.prototype);
+    let result = func.call(obj)
+    return typeof result === 'object' ? result : obj;
+  }
+  const ZYC = function(){this.name = 'zyc'}
+  let z1 = new ZYC;
+  </script>
+</body>
+</html>
