@@ -9,7 +9,10 @@ Array 对象的方法
 
 <!-- more -->
 
-# Array.prototype​.splice() 删除或者替换现有元素
+# Array.prototype​.splice() 删除或者替换现有元素 
+
+**修改了数组**
+**返回删除的元素**
 
 array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
 
@@ -24,6 +27,9 @@ return 返回由删除的元素组成的一个数组。
 注意：直接操作原数组
 
 # Array.prototype​.concat() 合并数组
+
+**没有修改数组**
+**返回一个新的数组**
 
 var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])
 
@@ -66,9 +72,22 @@ function myFn1(arr){
   }
   return myarr;
 }
+let arr1 = new Set(arr);
+// 利用过滤器实现数组去重
+let arr2 = arr.filter((item,index)=>arr.indexOf(item) === index)
+// 合并两个数组并去重
+function distinct(a, b) {
+    let arr = a.concat(b);
+    return arr.filter((item, index)=> {
+        return arr.indexOf(item) === index
+    })
+}
 ```
 
 # Array​.prototype​.sort() 对数组进行排序
+
+**修改了数组**
+**返回被修改的数组**
 
 方法用原地算法对数组的元素进行排序，并返回数组。排序算法现在是稳定的。默认排序顺序是根据字符串Unicode码点。
 

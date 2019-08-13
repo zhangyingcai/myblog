@@ -106,7 +106,7 @@ BFC 是 块级格式化上下文 （block fromatting context）是按照块级�
 形成 BFC 的条件：
 * 根元素或者其他包含它的元素。
 * float 不为 none
-* position 的值是 absolute 或 fixed。
+* position 的值不是 static 或者 relative。
 * display 的值是 inline-block、table-cell、flex、table-caption、grid 或者 inline-flex 
 * overflow 的值不是 visible。
 
@@ -116,6 +116,15 @@ BFC 是 块级格式化上下文 （block fromatting context）是按照块级�
 浮动定位和清除浮动时只会应用于同一个 BFC 内的元素。
 浮动不会影响其他 BFC 中元素的布局，清除浮动只能清除同一 BFC 内的元素。
 外边距折叠（margin collapsing）也只会发生在同一个 BFC 的块级元素之间。
+
+**重点**
+1. 子元素一个接一个的垂直排列
+2. box 垂直方向的距离由 margin 决定。属于同一个 BFC 的两个相邻 box 的 margin 会发生重叠。
+3. 每个元素的左外边缘（margin-left）与包含块的左边（contain box left）相接触（对于从左往右的格式化，否则相反）。即使存在浮动也是如此，除非这个元素自己形成了一个新的BFC。
+4. BFC 的区域不会与 float box 重叠。
+5. BFC 就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之也是如此。
+6. 计算BFC的高度时，浮动元素也参与计算。
+
 
 主要解决的问题：
 

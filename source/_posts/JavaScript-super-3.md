@@ -15,6 +15,8 @@ JavaScript进阶系列-引用类型
 有句话叫万物皆对象不是没有道理的。现在来了解下 JavaScript 的 Object 对象。
 ECMAScript 中的所有对象都由这个对象继承而来，Object 对象中的所有属性和方法都会出现在其他对象中，所以理解了 Object 对象，就可以更好地理解其他对象。
 
+JavaScript 除了基本类型都是 引用类型。
+
 属性
 * **constructor** 对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始 Object() 函数
 * **Prototype** 对该对象的原型对象的引用。 通常用来获取对象的原型对象,默认返回 Object 对象的一个实例。

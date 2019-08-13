@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>instanceof</title>
+</head>
+<body>
+  <p>instanceof实现</p>
+  <script>
+    // obj 对象
+    // con 构造函数
+  function myInstanceof(obj, con){
+    // 异常判断 默认是正确的
+    let __proto = obj.__proto__;
+    const proto = con.prototype
+    while(true){
+      if(__proto === null) return false;
+      if(__proto === proto) return true;
+      __proto = __proto.__proto__;
+    }
+
+  }
+  </script>
+</body>
+</html>

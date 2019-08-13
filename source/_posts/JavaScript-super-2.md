@@ -15,6 +15,7 @@ boolean
 null
 undefined
 symbol [ES6新增]
+bigInt [ES10]
 
 * number  9527
 * string '9527',"9527"

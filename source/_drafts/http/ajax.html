@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax</title>
+</head>
+<body>
+  <p>XMLHttpRequest使用</p>
+  <script>
+  // 浏览器特征检查
+  let xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
+  // open
+
+  xhr.open("get", 'url', true);
+  //
+  xhr.send();
+  </script>
+</body>
+</html>

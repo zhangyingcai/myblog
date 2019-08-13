@@ -569,7 +569,7 @@ function foo(){
   </script>
 ```
 
-```事件代理
+```事件委托
 <ul>
     <li>0</li>
     <li>1</li>
@@ -1060,3 +1060,29 @@ display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子
 text-overflow: ellipsis 可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。
 
 # 事件代理
+
+# css 盒模型
+
+标准模型 + ie 模型
+标准模型和ie模型的区别
+css如何设置这两种模型
+js如何设置获取盒模型对应的宽和高
+根据盒模型解释边距重叠
+
+## content+padding+border+margin
+## 标准模型
+box-sizing:content-box
+width = content.width
+## ie 模型
+box-sizing:border-box
+## css如何设置这两种模型
+
+DOM.style.width/heiht
+是否能获得所有的元素的 width heiht 不能
+只能获取内联
+
+Dom.currentStyle.width/height (仅 ie 支持)
+
+window.getComputedStyle(DOM).width/height(即时运行完)
+
+DOM.getBoundingClientRect().width/height(即时运行完)
