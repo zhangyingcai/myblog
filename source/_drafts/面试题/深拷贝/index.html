@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>deep</title>
+</head>
+<body>
+  <p>jsonCopy</p>
+  <p>会忽略 undefined
+      会忽略 symbol
+      不能序列化函数
+      不能解决循环引用的对象</p>
+  <script>
+    function deepCopy(obj){
+      const _obj = obj instanceof Array ? [] : {};
+      Object.keys(obj).forEach(key=>{
+        if(obj.hasOwnProperty(key)){
+          _obj[key] = obj[key] instanceof Object ? deepCopy(obj[key]) : obj[key]
+        }
+      })
+      return _obj;
+    }
+
+    function jsonCopy(obj){
+      return JSON.parse(JSON.stringify(obj))
+    }
+  </script>
+</body>
+</html>
