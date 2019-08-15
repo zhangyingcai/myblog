@@ -15,6 +15,11 @@ date: 2019-01-24 16:40:52
 # vue的双向绑定？怎么实现的？
 # vue响应式原理
 
+通过数据劫持+订阅发布者模式实现的。
+首先是数据劫持：数据劫持就是 Vue 在实例化的时候，将 data 和 props 属性进行深度遍历，通过 Object.defineProperty() 来给所有的属性添加 set 和 get 方法。在 get 中进行数据的依赖收集，在 set 里数据更新时触发通知。
+
+然后是 complice 解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，并将更新函数绑定到订阅者的 update 函数当中。
+
 vue 内部使用 Object.defineProperty() 来实现数据响应式，通过这个函数将 vue 实例 data 对象的所有属性全部转为 getter/setter 。然后在属性被访问和修改时通知变化。监听这个变化的是 watcher 实例对象，在渲染组件的过程中
 把属性记录为依赖，在 setter 被调用时，会通知 watcher 重新计算，从而导致它关联的组件更新。
 
@@ -329,3 +334,36 @@ const router = new VueRouter({
   ]
 })
 ```
+
+# 项目总结
+
+## 首先要考虑的是权限验证和安全性
+
+不同的权限对应不同的路由，同时侧边栏也需要根据不同的权限异步生成。
+
+登录： 登录，验证用户名密码正确之后返回 token，然后根据 token 获取用户信息和对应的role。动态算出其应有权限的路由，通过 router.addRoutes 动态挂载这些路由。
+
+关键点1：保证刷新之后能够记录用户的当前登录状态，通过将 token 缓存，比如放到 cookie 中。
+关键点2：动态挂载路由的时候，有时候挂载时没有执行 next() 方法
+关键点3：动态添加的路由，并不能动态的删除，这就导致一个问题，当用户的权限发生变化的时候，或者用户登出的时候，我们只能通过刷新页面的方式，才能清空我们之前注册的路由。
+
+
+所有的 vue-router 注册的路由信息都是存放在 matcher 之中的，所以当我们想清空路由时，只需要新建一个空的 router 对象，并将 router.matcher 值赋值给 之前的路由，
+```
+import Router from 'vue-router'
+const router = new Router()
+export function resetRoute(){
+  const newRouter = new Router()
+  router.matcher = newRouter.mathcer
+}
+```
+
+实现通过不刷新页面更新路由
+
+## 解决跨域问题：
+
+前端使用 代理 mock-server
+
+后端配置 cors origin 头是 通配符或者指定域名
+
+## jest 单元测试
