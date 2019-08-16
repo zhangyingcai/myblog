@@ -342,6 +342,7 @@ const router = new VueRouter({
 不同的权限对应不同的路由，同时侧边栏也需要根据不同的权限异步生成。
 
 登录： 登录，验证用户名密码正确之后返回 token，然后根据 token 获取用户信息和对应的role。动态算出其应有权限的路由，通过 router.addRoutes 动态挂载这些路由。
+根据 token 白名单
 
 关键点1：保证刷新之后能够记录用户的当前登录状态，通过将 token 缓存，比如放到 cookie 中。
 关键点2：动态挂载路由的时候，有时候挂载时没有执行 next() 方法
@@ -367,3 +368,10 @@ export function resetRoute(){
 后端配置 cors origin 头是 通配符或者指定域名
 
 ## jest 单元测试
+
+## MVVM
+
+Model-View-ViewModel 的缩写
+Model:代表数据模型，也可以在 Model 中定义数据修改和操作的业务逻辑。被称为是数据层，只关注数据本身。
+View:用户操作界面。当 View-Model 对 Model 进行更新的时候，会通过数据绑定更新到 View。
+View-Model: 业务逻辑层，View 需要什么数据，ViewModel就要提供这个数据，View有某些操作，ViewModel就要响应这些操作，所以它是 Model for View。
