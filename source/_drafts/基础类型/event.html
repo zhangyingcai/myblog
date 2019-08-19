@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>event</title>
+</head>
+<body>
+  <div id="event" onclick="console.log('123')">点我</div>
+  <script>
+  let eventEl = document.getElementById('event');
+  eventEl.onclick = function(e){
+    console.log('click2', e)
+  }
+  eventEl.addEventListener('click', function(){
+    console.log('click3')
+  })
+  </script>
+</body>
+</html>

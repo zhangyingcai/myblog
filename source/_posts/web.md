@@ -1089,3 +1089,5 @@ DOM.getBoundingClientRect().width/height(即时运行完)
 
 
 # 性能优化
+
+# node 与 JavaScript 的区别
