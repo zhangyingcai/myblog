@@ -1086,3 +1086,6 @@ Dom.currentStyle.width/height (仅 ie 支持)
 window.getComputedStyle(DOM).width/height(即时运行完)
 
 DOM.getBoundingClientRect().width/height(即时运行完)
+
+
+# 性能优化
