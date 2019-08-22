@@ -1105,3 +1105,15 @@ http 会通过 Tcp 建立一个到服务器的连接，当本次请求需要的�
 # 去重数组并返回重复的元素
 
 # 原生js 插入一个div
+
+# 性能优化
+
+# node 与 JavaScript 的区别
+
+# 浏览器缓存
+
+session、cookie、sessionStorage、localStorage区别
+cookie:一般是服务器生成，可以设置过期时间。4k
+localStorage：除非被清理否则一直存在。5M
+sessionStorage: 页面关闭就会被清理。
+从client和Server中区分回答session是什么以及一般session如何使用注意事项以及安全策略，cookie、sessionStorage和localStorage等分别从概念和异同处回答。最后补充项目中的使用情况

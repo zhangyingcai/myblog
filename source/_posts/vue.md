@@ -375,3 +375,16 @@ Model-View-ViewModel 的缩写
 Model:代表数据模型，也可以在 Model 中定义数据修改和操作的业务逻辑。被称为是数据层，只关注数据本身。
 View:用户操作界面。当 View-Model 对 Model 进行更新的时候，会通过数据绑定更新到 View。
 View-Model: 业务逻辑层，View 需要什么数据，ViewModel就要提供这个数据，View有某些操作，ViewModel就要响应这些操作，所以它是 Model for View。
+
+
+# 组件化
+
+组件化，就是将页面拆分成多个组件，每个组件依赖的 CSS、JavaScript、模板、图片等资源放在一起开发和维护。组件的资源是相互独立的，组件在系统内部可复用，组件和组件之间可以嵌套。
+# 组件注册
+
+组件注册有两种方式
+
+## 全局注册
+Vue.component(tagName, options)
+## 局部注册
+

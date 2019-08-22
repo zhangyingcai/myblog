@@ -10,12 +10,15 @@
   <div id="event" onclick="console.log('123')">点我</div>
   <script>
   let eventEl = document.getElementById('event');
-  eventEl.onclick = function(e){
-    console.log('click2', e)
-  }
   eventEl.addEventListener('click', function(){
     console.log('click3')
   })
+  eventEl.addEventListener('click', function(){
+    console.log('click4')
+  })
+  eventEl.onclick = function(e){
+    console.log('click2', e)
+  }
   </script>
 </body>
 </html>

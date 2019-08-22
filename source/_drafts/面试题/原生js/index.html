@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js</title>
+</head>
+<body>
+  <p>原生api练习</p>
+  <div>
+    我是div
+  </div>
+  <script>
+    // 插入
+    let divElArr = document.getElementsByTagName('div');
+    let divEl = divElArr[0]
+    console.log(divEl)
+    // 插入到前面
+    let  newdivEl = document.createElement('div');
+    newdivEl.innerHTML = "插入到前面"
+    divEl.parentNode.insertBefore(newdivEl,divEl);
+    // 插入到后面
+    let  newdivEl1 = document.createElement('div');
+    newdivEl1.innerHTML = "插入到后面"
+    divEl.appendChild(newdivEl1);
+
+    let  newdivEl2 = document.createElement('div');
+    newdivEl2.innerHTML = "插入到后面"
+    divEl.parentNode.insertBefore(newdivEl2, divEl.nextSibling);
+  </script>
+</body>
+</html>
