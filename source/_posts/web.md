@@ -1117,3 +1117,6 @@ cookie:一般是服务器生成，可以设置过期时间。4k
 localStorage：除非被清理否则一直存在。5M
 sessionStorage: 页面关闭就会被清理。
 从client和Server中区分回答session是什么以及一般session如何使用注意事项以及安全策略，cookie、sessionStorage和localStorage等分别从概念和异同处回答。最后补充项目中的使用情况
+
+# 改变div位置的方式以及性能比较
+#

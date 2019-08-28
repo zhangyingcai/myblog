@@ -10,10 +10,20 @@
     <p>洗牌算法</p>
     <p>sort 原地排序</p>
     <script>
-        let arr = [1,2,3,6,6,7,9,0];
+        let arr = [1,2,3,6,6,7,9,0,1];
         // Math.random() 0.01~0.99
-        arr.sort(Math.random()>0.5)
+        arr.sort(function(){
+            return Math.random()>0.5
+        })
         console.log(arr)
+    </script>
+    <script>
+        let arr1 = [1,2,3,6,6,7,9,0];
+        arr1.sort(()=>Math.random() - 0.5)
+        console.log(arr1)
+    </script>
+    <script>
+        
     </script>
 </body>
 </html>
