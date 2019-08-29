@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>水平居中与垂直居中</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <p>行内元素水平居中：设置父元素text-align:center</p>
+            <section style="text-align: center">
+                <span>我是一个行内元素</span>
+            </section>
+        </li>
+        <li>
+            <p>块级元素：元素设置 margin:0 auto</p>
+            <section style="width: 100%;border:1px solid red;height: 100px;">
+                <div style="width:100px;height:50px;background-color:greenyellow;margin:0 auto;"></div>
+            </section>
+        </li>
+        <li>
+            <p>flex布局,将容器属性设置为：display:flex;justify-content: center;</p>
+            <section style="width: 100%;border:1px solid red;height: 100px;display:flex;justify-content:center;">
+                <div style="width:100px;height:50px;background-color:greenyellow;"></div>
+            </section>
+        </li>
+        <li>
+            <p>css3 新增属性 transform,子元素设置</p>
+            <section style="width: 100%;border:1px solid red;height: 100px;display:flex;justify-content:center;">
+                <div style="width:100px;height:50px;background-color:greenyellow;position: absolute;left: 50%;transform: translate(-50%,0)"></div>
+            </section>
+        </li>
+    </ul>
+</body>
+</html>
