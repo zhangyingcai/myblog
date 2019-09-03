@@ -9,15 +9,25 @@
 <body>
   <p>jsonCopy</p>
   <p>会忽略 undefined
-      会忽略 symbol
+      会忽略 symbolgit
       不能序列化函数
       不能解决循环引用的对象</p>
+      <p> 怎么解决这些问题？</p>
+      <p>什么是浅拷贝？ 浅拷贝和赋值的区别？</p>
+      <P>浅拷贝：新建一个对象，这个对象有着原始对象的一份精确copy, 如果属性是 基本类型 ，copy 的是属性的值，如果属性是引用类型，copy 的是内存地址，这样修改现有对象的内容，也会影响到原始对象。</P>
+      <p>深拷贝：新建一个对象，从内存中完整的 copy 一份出来。从堆栈中开辟一个新的区域存放新对象，修改新对象不会影响原始对象。</p>
+      <p>如何解决循环引用的问题？ 单独开辟一个空间用来存储当前对象和 copy 对象的对应关系。通常使用 Map weakMap</p>
+      <p>优化 copy 函数的执行性能</p>
   <script>
-    function deepCopy(obj){
+    function deepCopy(obj, map = new Map()){
       const _obj = obj instanceof Array ? [] : {};
+      if (map.get(obj)){
+        return map.get(obj)
+      }
+      map.set(obj, _obj)
       Object.keys(obj).forEach(key=>{
         if(obj.hasOwnProperty(key)){
-          _obj[key] = obj[key] instanceof Object ? deepCopy(obj[key]) : obj[key]
+          _obj[key] = obj[key] instanceof Object ? deepCopy(obj[key], map) : obj[key]
         }
       })
       return _obj;
@@ -26,6 +36,8 @@
     function jsonCopy(obj){
       return JSON.parse(JSON.stringify(obj))
     }
+
+
   </script>
 </body>
 </html>
