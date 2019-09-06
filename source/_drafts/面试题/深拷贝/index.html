@@ -1,43 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>deep</title>
 </head>
+
 <body>
   <p>jsonCopy</p>
   <p>会忽略 undefined
-      会忽略 symbolgit
-      不能序列化函数
-      不能解决循环引用的对象</p>
-      <p> 怎么解决这些问题？</p>
-      <p>什么是浅拷贝？ 浅拷贝和赋值的区别？</p>
-      <P>浅拷贝：新建一个对象，这个对象有着原始对象的一份精确copy, 如果属性是 基本类型 ，copy 的是属性的值，如果属性是引用类型，copy 的是内存地址，这样修改现有对象的内容，也会影响到原始对象。</P>
-      <p>深拷贝：新建一个对象，从内存中完整的 copy 一份出来。从堆栈中开辟一个新的区域存放新对象，修改新对象不会影响原始对象。</p>
-      <p>如何解决循环引用的问题？ 单独开辟一个空间用来存储当前对象和 copy 对象的对应关系。通常使用 Map weakMap</p>
-      <p>优化 copy 函数的执行性能</p>
+    会忽略 symbolgit
+    不能序列化函数
+    不能解决循环引用的对象</p>
+  <p> 怎么解决这些问题？</p>
+  <p>什么是浅拷贝？ 浅拷贝和赋值的区别？</p>
+  <P>浅拷贝：新建一个对象，这个对象有着原始对象的一份精确copy, 如果属性是 基本类型 ，copy 的是属性的值，如果属性是引用类型，copy 的是内存地址，这样修改现有对象的内容，也会影响到原始对象。</P>
+  <p>深拷贝：新建一个对象，从内存中完整的 copy 一份出来。从堆栈中开辟一个新的区域存放新对象，修改新对象不会影响原始对象。</p>
+  <p>如何解决循环引用的问题？ 单独开辟一个空间用来存储当前对象和 copy 对象的对应关系。通常使用 Map weakMap</p>
+  <p>优化 copy 函数的执行性能</p>
+  <ul>
+    <p>要点</p>
+    <li>
+      <p>处理 基本类型与引用类型</p>
+      <p>基本类型 typeof null === 'object', object 和 function 处理</p>
+    </li>
+  </ul>
   <script>
-    function deepCopy(obj, map = new Map()){
+    // 要点
+    // 处理 基本类型与引用类型
+    // 对常见可继续遍历结构处理、以及不可继续遍历的结构进行处理
+    // 解决循环引用
+    // 性能优化
+
+    // 判断引用类型 object
+    // how to copy function
+    function isObject(target) {
+      const type = typeof target
+      return (target !== null) && (target === 'object' || target === 'function')
+    }
+    // 判断数据的基本类型
+    function getType(target){
+      return Object.prototype.toString.call(target)
+    }
+    // 可以继续遍历的类型 ToDo 可不可以继续遍历通过什么来进行判断。
+
+    // 防止循环引用， 通过 Map weakMap 进行处理，解决办法：通过一个存储空间来保存与拷贝对象的对应关系，当需要拷贝当前对象时，先去存储空间中找，如果有直接返回，没有的话继续拷贝。
+    // 为什么使用 Map Map 是一种键值结构，键可以用来放对象
+    // 为什么使用 weakMap , Map 的引用是一种强引用的关系，需要我们手动控制内存，在有些场景我们可以使用弱引用，方便内存的自动回收。
+    function deepCopy(obj, map = new Map()) {
       const _obj = obj instanceof Array ? [] : {};
-      if (map.get(obj)){
+      if (map.get(obj)) {
         return map.get(obj)
       }
       map.set(obj, _obj)
-      Object.keys(obj).forEach(key=>{
-        if(obj.hasOwnProperty(key)){
+      Object.keys(obj).forEach(key => {
+        if (obj.hasOwnProperty(key)) {
           _obj[key] = obj[key] instanceof Object ? deepCopy(obj[key], map) : obj[key]
         }
       })
       return _obj;
     }
 
-    function jsonCopy(obj){
+    function jsonCopy(obj) {
       return JSON.parse(JSON.stringify(obj))
     }
 
 
   </script>
 </body>
+
 </html>
