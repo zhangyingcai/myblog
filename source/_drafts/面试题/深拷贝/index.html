@@ -49,6 +49,8 @@
     // 防止循环引用， 通过 Map weakMap 进行处理，解决办法：通过一个存储空间来保存与拷贝对象的对应关系，当需要拷贝当前对象时，先去存储空间中找，如果有直接返回，没有的话继续拷贝。
     // 为什么使用 Map Map 是一种键值结构，键可以用来放对象
     // 为什么使用 weakMap , Map 的引用是一种强引用的关系，需要我们手动控制内存，在有些场景我们可以使用弱引用，方便内存的自动回收。
+    
+    // 性能优化 foreach
     function deepCopy(obj, map = new Map()) {
       const _obj = obj instanceof Array ? [] : {};
       if (map.get(obj)) {
