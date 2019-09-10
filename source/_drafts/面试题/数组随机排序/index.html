@@ -21,9 +21,24 @@
         let arr1 = [1,2,3,6,6,7,9,0];
         arr1.sort(()=>Math.random() - 0.5)
         console.log(arr1)
+
+        // 执行多次会发现每个元素有很大几率在它原来的位置出现
+        // 如果排序是随机的，那么每个元素在每个位置出现的概率都应该一样
     </script>
     <script>
-        
+        // 为什么会比上面的好一些
+        function shuffle(arr){
+            let i = arr.length
+            while(i){
+                let j = Math.floor(Math.random() * i--);
+                let t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+        }
+        let arr2 = [1,2,3,6,6,7,9,0];
+        shuffle(arr2)
+        console.log(arr2)
     </script>
 </body>
 </html>
