@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>不重复的随机数</title>
+</head>
+<body>
+    <script>
+    getRandomNum = function (max, len) {
+  /**
+   * max 随机范围0-max
+   * len 随机数数量(len<=max);
+   */
+  var list = new Array();
+  var rndList = new Array();
+  //产生0~(i-1)的不重复的i个随机数
+  for (var i = 0; i < max; i++) {
+   list.push(i);
+  }
+  for (var j = 0; j < len; ++j) {
+   var index = Math.floor(Math.random() * list.length);//当前list数组下get一个随机索引值。
+   //trace(list[index]);   
+   rndList.push(list[index]);//向数组添加新元素。
+   list.splice(index, 1);//删除元素。
+  }
+  return rndList;
+  /**
+   * utils.getRandomNum(9,2);
+   * list=[0,1,2,3,4,5,6,7,8];
+   * rndList = [7,1];//random
+   */
+ };
+ </script>
+</body>
+</html>
