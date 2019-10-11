@@ -7,7 +7,7 @@ description:
 ---
 ## TypeScript 学习记录
 
-[传送门--TypeScript 入门教程 (墙裂推荐)](https://ts.xcatliu.com/basics/primitive-data-types)
+[传送门--TypeScript 入门教程 (墙裂推荐)](https://ts.xcatliu.com)
 <!-- more -->
 
 ## 原始数据类型
@@ -94,3 +94,20 @@ let tom: Person = {
 在 变量名称前添加 readonly
 
 注意，只读的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候：
+
+## 数组
+
+```
+let arr: number []
+```
+
+类型 + [] 来表示一个数组，数组的元素会被限制类型
+
+```
+let arr: number | string [] = ['123','12']
+```
+
+并且数组的类型会被限制为同一类型。
+
+### 数组泛型
+

@@ -1120,3 +1120,7 @@ sessionStorage: 页面关闭就会被清理。
 
 # 改变div位置的方式以及性能比较
 # 
+
+# +new Date()
+
+是什么意思 相当于 +(new Date()) 将对象转换为 number  调用 prototype.valueOf 方法
