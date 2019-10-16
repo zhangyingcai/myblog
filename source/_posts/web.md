@@ -1124,3 +1124,37 @@ sessionStorage: 页面关闭就会被清理。
 # +new Date()
 
 是什么意思 相当于 +(new Date()) 将对象转换为 number  调用 prototype.valueOf 方法
+
+
+# scroll 更顺滑 TODO
+
+```
+var body = document.body,
+        timer;
+
+        window.addEventListener('scroll', function() {
+            clearRequestTimeout(timer);
+            if (body.classList)  {
+                if (!body.classList.contains('disable-hover')) {
+                    body.classList.add('disable-hover')
+                }
+
+                timer = requestTimeout(function() {
+                    body.classList.remove('disable-hover')
+                }, 300);
+            }
+        }, false);
+```
+```
+window.clearRequestTimeout = function(handle) {
+	if ( typeof handle !== 'undefined' ) {
+		window.cancelAnimationFrame ? window.cancelAnimationFrame(handle.value) :
+		window.webkitCancelAnimationFrame ? window.webkitCancelAnimationFrame(handle.value) :
+		window.webkitCancelRequestAnimationFrame ? window.webkitCancelRequestAnimationFrame(handle.value) : /* Support for legacy API */
+		window.mozCancelRequestAnimationFrame ? window.mozCancelRequestAnimationFrame(handle.value) :
+		window.oCancelRequestAnimationFrame	? window.oCancelRequestAnimationFrame(handle.value) :
+		window.msCancelRequestAnimationFrame ? window.msCancelRequestAnimationFrame(handle.value) :
+		clearTimeout(handle);
+	}
+};
+```

@@ -132,6 +132,14 @@ var new_array = arr.map(function callback(currentValue[, index[, array]]) {
 * array
 * thisArg
 
+用法
+
+map 不会改变原数组，会返回一个新的数组，当你不打算使用返回的新数组的时候，应该使用 foreach 或者 for of 替代。
+不应该适用 map 的情况： 不打算使用返回的新数组；callback 没有 return 值。
+map 不修改调用它的 原数组 本身，但是可以在 callback 执行时改变原数组。
+
+
+
 ToDo
 ## map 实现
 
