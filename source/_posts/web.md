@@ -1158,3 +1158,27 @@ window.clearRequestTimeout = function(handle) {
 	}
 };
 ```
+
+
+# 1.hybird jsbrige 如何通信的,JSBridge 的原理 2.做 sdk 是怎么做的，有哪些讲究
+
+JSBridge 是 Native 代码与 JS 代码通信的桥梁。 目前的一种统一方案：h5 页面触发 url scheme -> native 捕获 url scheme -> 原生分析 url scheme 调用哪个方法？ -> 调用原生方法
+
+3.js 在面向对象里面的体现 ， 继承 ，es5 和 es6 继承的区别
+# js 的垃圾回收机制
+
+垃圾回收的概念
+
+## 引用
+
+垃圾回收算法主要依赖于引用的概念。在内存管理的环境中，一个对象如果有访问另外一个对象的权限（隐性或者显性），叫做一个对象引用另外一个对象。
+
+一个 JavaScript 
+
+
+5.闭包 的原理 和使用场景
+6.webpack 执行流程， loader 执行顺序， 写过 loader 和 plugin 么
+7.vue 源码阅读过么
+8，mvvm 在 vue 里的体现
+9.data 为什么是个函数
+10.proxy 比 object.defineProperty 优势，执行效率为什么高 11.虚拟 dom 的 diff 算法是怎样的 2，3，4，5 如果 34 换 45，怎么改变

@@ -211,7 +211,7 @@ arr.indexOf(searchElement[, fromIndex = 0])
 
 >var newArray = arr.filter(callback(element[, index[, array]]))[, thisArg]
 
-return 返回测试通过的元素组成的新数组。
+return 返回测试通过的元素组成的新数组。不会改变旧数组。
 
 element 数组中当前正在处理中的元素。
 
@@ -290,3 +290,5 @@ if (!Array.prototype.filter) {
 # Array.prototype.forEach()
 
 > arr.forEach(callback(currentValue [, index [, array]])[, thisArg]);
+
+数组的每个元素都会执行这个函数
