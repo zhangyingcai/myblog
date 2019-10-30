@@ -1182,3 +1182,36 @@ JSBridge 是 Native 代码与 JS 代码通信的桥梁。 目前的一种统一�
 8，mvvm 在 vue 里的体现
 9.data 为什么是个函数
 10.proxy 比 object.defineProperty 优势，执行效率为什么高 11.虚拟 dom 的 diff 算法是怎样的 2，3，4，5 如果 34 换 45，怎么改变
+
+#  浏览器存储
+
+## localStorage & sessionStorage & cookie
+
+localStorage 和 sessionStorage 的区别主要是 存储的有效期 和 作用域 不同。
+
+localStorage 有效期： 永久存在 除非手动删除
+sessionStorage 有效期：窗口（顶级窗口）或者浏览器标签页关闭之后被删除，现代浏览器实现了 浏览记录恢复的功能 有效期会延长一段时间
+localStorage 作用域： document origin 必须一致，要求 **域名** **协议** **端口**都一致 才被认为是同一 **文档源**
+sessionStorage 作用域： document origin 必须一致，同时要求 **必须是同一窗口（顶级窗口）或者标签页下，只有相同的窗口（顶级窗口）或者标签页下才能共享同一数据，如果 同一窗口（顶级窗口）或者标签页下 的不同 iframe 的文档源是相同的，那么这两个 iframe 是可以共享 sessionStorage
+
+cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览器的进程有关，如果想要延长可以设置， max-age 必须要设置有效期是多少，一旦设置有效期，就会将cookie存储在一个文件中
+作用域： document origin 和 文档路径 ，可以通过 cookie 的 path 和 domain 属性进行配置，默认是 同 path下 同 domain
+
+## 存储事件
+
+无论什么时间， localStorage 或者 sessionStorage 中的数据发生变化， 浏览器都会在**其他**对该数据可见的窗口（顶级窗口）或者标签页触发存储事件，但是在数据进行改变的窗口对象上不会被触发。
+
+只有当存储数据真正发生改变的时候会发送消息触发存储事件，给已经存在的存储项（key）设置一个一模一样的值，或者是删除一个本来就不存在的存储项，不会触发存储事件。
+
+存储事件采用广播机制，浏览器会对目前正在访问同样站点的所有窗口发送消息。
+
+# （网易2019秋招）
+
+## 你怎么理解模块化编程？
+
+什么是模块化编程？ 为什么要模块化编程？怎么做？
+
+有哪些实例？ AMD/Common/ES6 module
+
+=》了解他们的运作原理
+
