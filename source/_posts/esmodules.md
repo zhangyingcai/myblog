@@ -20,6 +20,7 @@ date: 2019-03-07 13:33:51
 })
 ```
 * AMD：使用requireJS来编写模块化（依赖必须提前声明好）
+异步模块加载
 ```
 define('./index.js', function(code){
     // code 是index返回的内容
@@ -32,6 +33,7 @@ define(function(require, exports, module) {
 });
 ```
 * CommonJS：node中带的模块化
+同步加载
 ```
 var fs = require('fs');
 ```
@@ -51,3 +53,5 @@ var fs = require('fs');
 封装文件之后，文件相互依赖的问题不好做
 
 最原始的是 立即执行函数。
+
+NodeJs 采用的是 Common 规范
