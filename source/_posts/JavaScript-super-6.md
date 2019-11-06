@@ -176,3 +176,78 @@ button 的监听函数是箭头函数，所以监听函数里面的 this 指向�
 [参见this详解](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this)
 
 [ call、apply 和 bind 的原生实现 —— github](https://github.com/Abiel1024/blog/issues/16)
+
+# this 总结
+
+# 题目
+
+请分析以下代码会打印什么？
+
+```javascript
+var obj = {
+    bar: 'bar',
+    foo: function(){
+        let that = this;
+        console.log(this.bar, that.bar); // bar bar
+        (function(){
+            let that = this;
+            console.log(this.bar, that.bar); // undefined undefined
+        })();
+    }
+}
+obj.foo()
+```
+
+```javascript
+var number = 10;
+function fn() {
+  console.log(this.number);
+}
+var obj = {
+  number: 2,
+  show: function(fn) {
+    this.number = 3;
+    fn(); // 10
+    console.log(arguments, arguments[0])
+    arguments[0](); // undefind
+  }
+};
+obj.show(fn);
+```
+
+```javascript
+var x = 10;
+var obj = {
+    x: 20,
+    f:function(){
+        const that = this;
+        console.log(this.x)
+        console.log(that.x)
+        test()
+        function test(){
+            const that = this;
+            console.log(this.x) // 10
+            console.log(that.x) // 10
+        }
+    }
+}
+obj.f()
+```
+```javascript
+let x = 10;
+var obj = {
+    x: 20,
+    f:function(){
+        const that = this;
+        console.log(this.x)
+        console.log(that.x)
+        test()
+        function test(){
+            const that = this;
+            console.log(this.x) // undefined
+            console.log(that.x) // undefined
+        }
+    }
+}
+obj.f()
+```

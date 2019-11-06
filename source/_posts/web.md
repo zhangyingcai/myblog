@@ -778,22 +778,7 @@ for (var key in obj) {
     }
 }
 ```
-## this
 
-```javascript
-var obj = {
-    bar: 'bar',
-    foo: function(){
-        let that = this;
-        console.log(this.bar, that.bar); // bar bar
-        (function(){
-            let that = this;
-            console.log(this.bar, that.bar); // bar bar
-        })();
-    }
-}
-obj.foo()
-```
 
 # 快手笔试题
 
@@ -907,7 +892,15 @@ Promise.resolve().then(()=> {
 // callback(item, index, array)
 // parseInt(num, index)
 // [1,NaN,NaN,NaN,NaN]
+['1', '3', '10'].map(parseInt);
+[1, NaN, 2]
 ```
+
+parseInt(string, radix)
+string: 要转换的字符串
+radix: 基数，进制基数，string 的值不能超过 进制基数 否则无法计算
+
+将不同基数的 数 转换成以 10 为底的数
 
 ## 请写出最后一个值
 
@@ -973,44 +966,6 @@ rem 现对于 html 根元素设定字体大小
 
 ## img 的 alt 和 title有何不同
 
-## this
-
-```
-var x = 10;
-var obj = {
-    x: 20,
-    f:function(){
-        const that = this;
-        console.log(this.x)
-        console.log(that.x)
-        test()
-        function test(){
-            const that = this;
-            console.log(this.x) // 10
-            console.log(that.x) // 10
-        }
-    }
-}
-obj.f()
-```
-```
-let x = 10;
-var obj = {
-    x: 20,
-    f:function(){
-        const that = this;
-        console.log(this.x)
-        console.log(that.x)
-        test()
-        function test(){
-            const that = this;
-            console.log(this.x) // undefined
-            console.log(that.x) // undefined
-        }
-    }
-}
-obj.f()
-```
 
 # 深拷贝实现
 
@@ -1194,8 +1149,8 @@ sessionStorage 有效期：窗口（顶级窗口）或者浏览器标签页关�
 localStorage 作用域： document origin 必须一致，要求 **域名** **协议** **端口**都一致 才被认为是同一 **文档源**
 sessionStorage 作用域： document origin 必须一致，同时要求 **必须是同一窗口（顶级窗口）或者标签页下，只有相同的窗口（顶级窗口）或者标签页下才能共享同一数据，如果 同一窗口（顶级窗口）或者标签页下 的不同 iframe 的文档源是相同的，那么这两个 iframe 是可以共享 sessionStorage
 
-cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览器的进程有关，如果想要延长可以设置， max-age 必须要设置有效期是多少，一旦设置有效期，就会将cookie存储在一个文件中
-作用域： document origin 和 文档路径 ，可以通过 cookie 的 path 和 domain 属性进行配置，默认是 同 path下 同 domain
+cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览器的进程有关，如果想要延长可以设置 max-age ,使用的时候必须要设置有效期是多少，一旦设置有效期，就会将cookie存储在一个文件中
+作用域： document origin 和 文档路径 ，可以通过 cookie 的 path 和 domain 属性进行配置，默认是 同 path下 同 domain 共享 cookie
 
 ## 存储事件
 
@@ -1204,6 +1159,26 @@ cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览�
 只有当存储数据真正发生改变的时候会发送消息触发存储事件，给已经存在的存储项（key）设置一个一模一样的值，或者是删除一个本来就不存在的存储项，不会触发存储事件。
 
 存储事件采用广播机制，浏览器会对目前正在访问同样站点的所有窗口发送消息。
+
+## 应用程序存储 和 离线 Web 应用
+
+为了方便在没有网络的情况下也能访问网站-》应用程序存储，除非被用户卸载或者删除，否则他们一直存在。
+
+应用程序存储 包括 应用的所有文件。
+
+应用程序清单包括 应用程序存储依赖的所有URL列表，json 文件，通过在主 HTML 页面的 <html> 标签设置 manifest 属性，指向该清单文件就可以了。 添加 manifest 标签，并设置文件路径。
+
+manifest json 文件规则
+
+CACHE MANIFEST 字符串开始
+每行一个 URL
+相对路径的 URL 都相对清单文件的 URL
+`#` 开头是注释行
+
+一旦一个web应用首次下载下来并缓存，之后的任何加载请求都来自缓存。从缓存中载入一个应用资源的时候，就要求请求的任何资源都在清单中。不会载入不在清单中的资源。
+
+缓存的更新，在在线状态下，会异步的检查清单文件是否有更新，但是有一点要注意的是，浏览器只会检查清单文件是否更新，不会去检查缓存的文件是否有更新。
+浏览器检查清单文件以及更新缓存的操作是异步的，可能是在从缓存中载入应用之前，也有可能是用时进行。因此，对于简单的 web 应用,在更新 清单文件之后，用户必须载入应用两次才能保证最新的版本生效。
 
 # （网易2019秋招）
 
@@ -1214,4 +1189,3 @@ cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览�
 有哪些实例？ AMD/Common/ES6 module
 
 =》了解他们的运作原理
-
