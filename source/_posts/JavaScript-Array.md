@@ -292,3 +292,8 @@ if (!Array.prototype.filter) {
 > arr.forEach(callback(currentValue [, index [, array]])[, thisArg]);
 
 数组的每个元素都会执行这个函数
+
+# Array.prototype.findIndex()
+
+returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating that no element passed the test.
+
