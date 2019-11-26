@@ -159,3 +159,38 @@ css calc 动态计算
 }
 ```
 ## 5
+
+jquery.closest(selector) 实现
+
+```js
+closest(el, selector) {
+    if(!el || !selector) {
+        return undefined
+    }
+    const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    while (el) {
+        if (matchesSelector.call(el, selector)) {
+            break;
+        }
+        el = el.parentElement;
+    }
+    return el;
+}
+```
+
+react 中如何获取列表 dom 元素
+
+问题是 antd Dropdown 菜单渲染父节点。默认渲染到 body 上，如果你遇到菜单滚动定位问题，试试修改为滚动的区域，并相对其定位。 
+
+方法一
+
+getPopupContainer={triggerNode => triggerNode.parentNode}
+
+容易引起定位的问题
+
+方法二
+
+jquery.closest  放到没有问题的父元素中,可以通过 jquery.closest 
+
+
+# redux 的使用方法
