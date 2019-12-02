@@ -194,3 +194,26 @@ jquery.closest  放到没有问题的父元素中,可以通过 jquery.closest
 
 
 # redux 的使用方法
+
+# css 滚动条占用内容宽度引起的内容布局改变
+
+解决方案：
+
+添加一个父容器来包装要展示的内容，这样滚动条占用的是**最外层的宽度**。
+
+```css
+.ant-modal-content{ // 最外层
+  width: 500px;
+}
+.ant-modal-body { // 父容器
+  padding: 10px;
+  height: 190px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.container { // 内容
+  display: flex;
+  flex-wrap: wrap;
+  width: 517px;
+}
+```
