@@ -217,3 +217,17 @@ jquery.closest  放到没有问题的父元素中,可以通过 jquery.closest
   width: 517px;
 }
 ```
+
+# ts 装饰器
+
+
+# 文字和字母对齐
+
+
+# 微信绑定页面css 外链的问题
+
+可以通过将css转换成base64通过参数传入
+
+```js
+href: `data:text/css;base64,${base64}
+```
