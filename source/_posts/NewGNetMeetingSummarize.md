@@ -231,3 +231,41 @@ jquery.closest  放到没有问题的父元素中,可以通过 jquery.closest
 ```js
 href: `data:text/css;base64,${base64}
 ```
+
+# 去除移动端按钮阴影
+
+当我们在移动端给元素添加点击事件时我们会发现点击时元素会默认出现一个背景色框或者高亮显示，这个时候我们就需要使用-webkit-tap-highlight-color属性来解决，它的原理是使用用户自定义颜色值覆盖原先的高亮色，使用如下：
+-webkit-tap-highlight-color：transparent/color；
+用户可以自定义取值，当取值transparent时将不会出现背景色，等同于阻止了默认高亮色显示事件。
+
+# 文本选中
+
+```css
+.noselect {
+
+-webkit-touch-callout: none; /* iOS Safari */
+
+-webkit-user-select: none; /* Chrome/Safari/Opera */
+
+-khtml-user-select: none; /* Konqueror */
+
+-moz-user-select: none; /* Firefox */
+
+-ms-user-select: none; /* Internet Explorer/Edge */
+
+user-select: none; /* Non-prefixed version, currently
+
+not supported by any browser */
+
+}
+
+在 IE < 10 和Opera < 15中我们需要在需要禁止选中的元素上面添加一个属性
+
+unselectable="on"
+```
+
+# react render 中 空内容如何处理
+
+return ''
+
+undefined/null 有什么问题？

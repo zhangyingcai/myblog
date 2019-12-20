@@ -39,3 +39,10 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
+
+
+
+# VScode 快捷键
+
+折叠所有区域代码的快捷： ctrl + k      ctrl + 0 ;
+展开所有折叠区域代码的快捷：ctrl +k      ctrl + J ;
