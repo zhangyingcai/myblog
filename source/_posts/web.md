@@ -1189,3 +1189,15 @@ CACHE MANIFEST 字符串开始
 有哪些实例？ AMD/Common/ES6 module
 
 =》了解他们的运作原理
+
+## 杭州滴滴一面
+React的setState是同步还是异步
+immutable.js和pureComponent有什么关系
+vue响应式的原理
+webpack现在有100个入口，编了5分钟怎么办
+101状态码是什么意思
+302和304分别表示什么
+async/defer的区别
+css三角形怎么画
+输入url到渲染都发生什么
+最近的新技术都了解哪些
