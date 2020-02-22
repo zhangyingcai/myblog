@@ -7,8 +7,10 @@
 </head>
 <body>
     <script>
-        // json JSON.parse('\t') 会报错
+        // json JSON.parse('\t') 会报错  对多个\的解析会报错
+        // 解决办法   先将单个数据 JSON.stringify() 然后JSON.parse()解析之后去除多余的“
         JSON.parse()
+        // 几种转义方法
     </script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Http协议</title>
+</head>
+<body>
+    <script>
+        // http 协议的主要特点
+            // 缓存
+            // 1.无连接  
+            // 2.无状态  
+            // 3.简单快速  URI
+            // 4.灵活  
+        // http 报文的组成部分
+            // 请求报文
+                // 请求行  http方法 页面地址 协议  版本号
+                // 请求头
+                // 空行
+                // 请求体
+            // 响应报文
+                // 状态行
+                // 响应头
+                // 空行
+                // 响应体
+        // http 方法
+            // get 
+            // post
+            // put 更新资源
+            // delete 删除资源 （业务一般不删除资源）
+            // head 获得报文首部
+                // post get 的区别
+                    // get *在浏览器中回退是无害的，post 会再次提交
+                    // get 产生的URL地址是可以被收藏，而post 不可以
+                    // get *请求会被浏览器主动缓存，而post不会，除非手动设置
+                    // get 请求只能进行URL编码，而post支持多种编码方式
+                    // get *请求的参数会完整的保留在浏览器历史记录中，而post的参数不会被保留
+                    // get *请求在URL中传送的参数是有长度限制的（2kb不同的浏览器限制不一样），而post没有限制。
+                    // get 对参数的数据类型，get 只接受ASC字符，而POST没有限制。
+                    // get *参数通过URL传递，post放在Request body 中
+        // post get 的区别
+        // http 状态码
+            // 1 指示信息，表示请求已接收，继续处理
+            // 2 成功，表示请求已被成功接收
+                // 200 0k 请求成功
+                // 206 partial content 客户端发送了一个带有 Range 头的GET请求，服务器完成了它，只会响应 range 头请求的这部分，通常用在文件/视频传输
+            // 3 重定向-要完成请求必须进行更近一步的操作
+                // 301 所请求的页面指向一个新的URL（永久重定向）
+                // 302 所请求的页面临时转移至新的URL
+                // 304 not modified 客户端有缓存的文档并发出一个条件性的请求，服务器告诉客户端，原来缓存的文档还可以继续使用
+            // 4 客户端错误
+                // 400 Bad request 客户端请求有语法错误
+                // 401 Unauthorized 请求未经授权，这个状态代码必须和 WWW - Authenrticate 报头域一起使用
+                // 403 禁止访问
+                // 404 Not Found 访问的资源不存在
+            // 5 服务器错误
+                // 500 Internal Server error  服务器发生不可预期的错误原来缓存的文档可以继续使用
+                // 503 Server Unavailable 服务器过载或者当机
+        // 什么是持久链接
+        // 什么是管线化
+    </script>
+</body>
+</html>
