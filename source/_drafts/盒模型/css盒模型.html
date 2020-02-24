@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒模型</title>
+</head>
+<body>
+    <script>
+        //content padding border margin
+        // 标准模型  + IE模型  不同：宽度和高度
+        // box-sizing: border-box
+        // box-sizing: content-box
+        // JS 如何设置和获取盒模型对应的宽和高
+            // 几种方式？
+            // Dom.style.width/height  (获取的内联属性，不准确)
+            // Dom.currentStyle.width/height (获取即时运行之后的，只有IE浏览器支持)
+            // window.getComputedStyle(dom).width/heigth
+            // Dom.getBoundingClientRect().width/height
+        // 根据盒模型解释边距重叠
+        // BFC (边距重叠解决办法) 块级格式化上下文
+            // 渲染规则
+            // 1.BFC 垂直方向的边距会发生重叠
+            // 2.BFC 的区域不会和浮动元素的box重叠
+            // 3.BFC 在页面上是一个独立的容器，外面的元素不会影响里面的元素，里面的元素也不会影响外面的元素。
+            // 4.BFC 搞定，浮动元素也会参与计算
+            // 怎么创建一个BFC
+            // overflow: 不为visiable
+            // float 不为none
+            // position: 不为 static 或者 relative
+            // display : inline-block, table-cell(table相关的)
+    </script>
+</body>
+</html>

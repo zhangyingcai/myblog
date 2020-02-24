@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>性能优化</title>
+    <!-- 作用，https协议是默认关闭DNS prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on"> 
+    <link rel="dns-prefetch" href="//baidu.com">
+</head>
+<body>
+    <script src="" defer></script>
+    <script src="" async></script>
+    <script>
+        const dom = document.createElement('script')
+        dom.type="text/javascript"
+        dom.src = '123'
+        document.head.appendChild(dom)
+    </script>
+    <script>
+        // 1.资源文件的合并压缩，减少http请求   开启gzip
+        // 2.非核心代码的异步加载-》异步加载的方式-》异步加载的区别
+            // 脚本动态加载
+            // defer async 是属性
+            // script defer 在html解析完成之后按照加载顺序执行 async 在脚本加载完成之后立即执行，执行顺序和加载顺序无关
+        // 3.浏览器缓存
+            // 强缓存
+                // Expires(过期时间) 绝对时间
+                // Cache-control 相对时间
+            // 协商缓存
+                // last-modified (强缓存时间，服务器下发) if-Modified-Since (请求时携带过期时间，放在请求头中)
+                // Etag（时间变更之后，内容不变不请求,服务器下发） if-None-Match (过了强缓存的时间，请求头中携带    )
+        // 4.CDN
+        // 5.DNS预解析
+            // 强制打开 x-dns-prefetch-control  on
+    </script>
+</body>
+</html>

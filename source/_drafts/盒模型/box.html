@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒模型</title>
+</head>
+<body>
+    <style>
+        /* 清除浏览器默认样式 */
+        html *{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <section id="sec">
+        <style>
+            .child{
+                width: 100px;
+                height: 100px;
+                margin-top: 10px;
+                background-color: red;
+            }
+        </style>
+        <article class="child">
+
+        </article>
+    </section>
+
+    <!-- BFC垂直方向边距重叠 -->
+    <!-- 需要给子元素添加一个父元素，创建一个BFC -->
+    <section id="margin">
+        <style>
+            #margin p{
+                margin: 10px;
+            }
+        </style>
+        <div style="overflow: auto;">
+            <p>1</p>
+        </div>
+        <p>2</p>
+        <p>3</p>
+    </section>
+    <!-- 清除浮动 -->
+    <!-- 即使浮动元素也会参与计算 -->
+    <section>
+        
+    </section>
+    <script>
+        // 子元素100px
+        //
+    </script>
+</body>
+</html>
