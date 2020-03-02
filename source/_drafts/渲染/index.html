@@ -8,6 +8,24 @@
 <body>
     <script>
         // 渲染机制
+            // doctype的作用
+                // 作用 校验文档的正确性，浏览器根据文档类型进行解析
+                // <!DOCTYPE html> html5s
+            // 浏览器渲染过程
+                // html-> dom tree
+                // css-> cssom tree
+                    // 样式计算 -》 页面布局 -》 生成分层树 -》 栅格化
+                // render-tree + layout
+                // painting
+            // reflow 重排
+                // 增加、删除、修改DOM节点的时候，会导致reflow 或者 repaint
+                // 移动DOM的位置，或是动画
+                // 修改 CSS 样式
+                // resize 窗口(移动端没有这个问题)，窗口滚动
+                // 修改网页默认字体时
+            // repaint 重绘
+                // 当各种盒子的位置、大小以及其他属性，列如颜色、字体大小等都确定之后，浏览器按照各自的特性绘制一遍。
+            // 布局 layout 浏览器渲染方式
         // js运行机制
         // 页面性能
         // 错误监控

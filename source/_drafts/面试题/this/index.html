@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This</title>
+</head>
+<body>
+    <script>
+        // this 当前运行的环境对象
+        const person = {name: "zyc"}
+        function isSay(age){
+            return `${this.name} age is ${age}`
+        }
+
+        console.log(isSay.call(person, 5))
+        console.log(isSay.bind(person, 5))
+        // call/apply 会立即执行
+        // bind 绑定上下文
+    </script>
+</body>
+</html>
