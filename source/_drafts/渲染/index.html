@@ -26,6 +26,28 @@
             // repaint 重绘
                 // 当各种盒子的位置、大小以及其他属性，列如颜色、字体大小等都确定之后，浏览器按照各自的特性绘制一遍。
             // 布局 layout 浏览器渲染方式
+
+
+            //极客时间
+            // 构建DOM树
+            // 1. 输入HTML文件，通过HTML解析器解析，最终输出树状结构的Dom树
+            // 样式计算
+                // css 解析成styleSheets document.styleSheets。
+                // 转换样式中的属性值使其标准化 em   color:red bold。
+                // 计算出DOM中每个节点的具体样式。
+            // 布局树
+                // 根据css计算DOM节点的布局生成布局树
+            //  然后是生成图层树
+            //  为每个图层生成绘制列表，并将其提交到合并线程
+            //  合成线程将图层分成图块，并在光栅化线程池中将图块转换成位图
+
+            // 减少重排重绘, 方法很多：
+            // 1. 使用 class 操作样式，而不是频繁操作 style
+            // 2. 避免使用 table 布局
+            // 3. 批量dom 操作，例如 createDocumentFragment，或者使用框架，例如 React
+            // 4. Debounce window resize 事件
+            // 5. 对 dom 属性的读写要分离 
+            // 6. will-change: transform 做优化
         // js运行机制
         // 页面性能
         // 错误监控

@@ -7,10 +7,11 @@
     <!-- 作用，https协议是默认关闭DNS prefetch -->
     <meta http-equiv="x-dns-prefetch-control" content="on"> 
     <link rel="dns-prefetch" href="//baidu.com">
+    <link rel="dns-prefetch" href="//qq.com">
 </head>
 <body>
-    <script src="" defer></script>
-    <script src="" async></script>
+    <script src="a.js" defer></script>
+    <script src="b.js" async></script>
     <script>
         const dom = document.createElement('script')
         dom.type="text/javascript"
@@ -25,14 +26,14 @@
             // script defer 在html解析完成之后按照加载顺序执行 async 在脚本加载完成之后立即执行，执行顺序和加载顺序无关
         // 3.浏览器缓存
             // 强缓存
-                // Expires(过期时间) 绝对时间
-                // Cache-control 相对时间
+                // Expires(响应头, 过期时间, 格式日期) 绝对时间
+                // Cache-control  (通用消息头，指令：max-age，缓存指令是单向的，格式 秒) 相对时间
             // 协商缓存
-                // last-modified (强缓存时间，服务器下发) if-Modified-Since (请求时携带过期时间，放在请求头中)
-                // Etag（时间变更之后，内容不变不请求,服务器下发） if-None-Match (过了强缓存的时间，请求头中携带    )
+                // last-modified (响应首部，最后一次更改时间，服务器下发，精度相对于Etag低，是一个备用机制) if-Modified-Since (请求时携带最后一次更改时间，放在请求头中， 如果资源没有变更，返回304)
+                // Etag（响应头，相当于文件指纹，时间变更之后，内容不变不请求,服务器下发） if-None-Match （Etag对比之后不一致，请求头中携带    )
         // 4.CDN
         // 5.DNS预解析
-            // 强制打开 x-dns-prefetch-control  on
+            // a标签默认打开dns预解析， https 时好多浏览器默认是关闭的，如何打开？ 强制打开 添加 mate x-dns-prefetch-control  on
     </script>
 </body>
 </html>

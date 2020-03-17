@@ -21,6 +21,35 @@
   }
   const ZYC = function(){this.name = 'zyc'}
   let z1 = new ZYC;
+  // 原型链
+    // 创建对象的几种方法
+    var a = {a:1} // 字面量生成object
+    var b = new Object({b:1}) // new 生成object
+    var C = function(){this.name = 'c'}
+    var c = new C() // 构造函数和new操作符生成object
+    var d = Object.create({d:1}) // 用原型链连接的
+
+    // 原型 原型对象
+    // 原型链   原型对象  一直到 Object.prototype
+    // 构造函数 __proto__ === Function.prototype
+
+    // c instaceof Object  true 所以不严谨
+    // c.__proto__.constructor === C 更加严谨
+
+  // instanceof 的原理
+  // new 运算符
+    // 原理
+
+    var new3 = function(func){
+      // 创建空对象 并 关联原型对象
+      var obj = Object.create(func.prototype)
+      // 执行构造函数并绑定上下文
+      var obj2 = func.call(obj)
+      if (typeof obj2 === 'object') {
+        return obj2
+      }
+      return obj
+    }
   </script>
 </body>
 </html>

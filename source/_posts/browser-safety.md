@@ -108,9 +108,12 @@ Content-Security-Policy: child-src 'none'
 # CSRF
 
 跨站请求伪造：诱导用户进入第三方网站，携带当前网站的登录凭证 cookie ，然后使用用户的身份信息进行请求的操作。
-添加额外的用户凭证是为了放在
+添加额外的用户凭证
 
 ## 防御手段
+
+token验证，服务器存储token，因为不会自动携带cookie
+检测 referer 来源
 
 ### 添加验证码
 
