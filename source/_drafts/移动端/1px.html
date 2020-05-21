@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id=“WebViewport content="width=device-width, initial-scale=1.0,">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html {
+            font-size: 0.0013333vw;
+        }
+    </style>
+    <h1>1px解决方案</h1>
+    <h2>首先是1px怎么实现</h2>
+    <p>.fixborder{
+        height: 1px;
+        background-color: #000;
+        transform: scaleY(0.5);
+        -webkit-transform: scaleY(0.5);
+        }</p>
+    <div class="fixborder">
+        <style>
+            .fixborder {
+                height: 1px;
+                background-color: #000;
+                transform: scaleY(0.5);
+                -webkit-transform: scaleY(0.5);
+            }
+        </style>
+    </div>
+    <h2>怎么适配</h2>
+    <p>rem ,元素设定字体大小时，相对根元素HtML的大小，只修改根元素就可以成比例的调整所有字体大小</p>
+    <h2>伪元素实现</h2>
+    <div class="setBorderAll" lang="scss">
+        <style>
+            .setBorderAll {
+                position: relative;
+            }
+            .setBorderAll:after {
+                    content: " ";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 200%;
+                    height: 200%;
+                    transform: scale(0.5);
+                    transform-origin: left top;
+                    box-sizing: border-box;
+                    border: 1px solid #E5E5E5;
+                    border-radius: 4px;
+                }
+        </style>
+        <p>优点，全机型兼容，实现了真正的1px，可以圆角；缺点是用来伪元素，可能会影响清除浮动</p>
+    </div>
+    <h2>设置viewport的scale值</h2>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包引出的高阶函数</title>
+</head>
+<body>
+    <script>
+        // 斐波那契数列
+        const fn = (n)=>{
+            if(n<=1){
+                return 0;
+            }
+            if(n==2){
+                return 1;
+            }
+            return fn(n-1) + fn(n-2)
+        }
+        // 缓存功能的高阶函数
+        const memoizeFn = (fn)=>{
+            const obj = {1:0, 2:1}
+            return (n)=>{
+                if(obj.hasOwnProperty(n)) return obj[n];
+                return obj[n] = fn(n)
+            }
+        }
+        //  尾递归优化
+        const tailFn = (n, re1 = 0, re2 = 1)=>{
+            if(n==1){
+                return re1;
+            }
+            return tailFn(n-1, re2, re1 + re2)
+        }
+    </script>
+</body>
+</html>

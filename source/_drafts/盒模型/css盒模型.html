@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>盒模型</title>
 </head>
+
 <body>
+    <style type="text/css">
+        section {
+            margin-top: 13px;
+            margin-bottom: 87px;
+        }
+
+        header {
+            margin-top: 87px;
+        }
+
+        footer {
+            margin-bottom: 13px;
+        }
+    </style>
+
+    <section>
+        <header>上边界重叠 87</header>
+        <main></main>
+        <footer>下边界重叠 87 不能再高了</footer>
+    </section>
+
+    <section>
+        <style>
+            ​​​​​​p {
+                margin: 0;
+            }
+
+            div {
+                margin-top: 13px;
+                margin-bottom: 87px;
+            }
+        </style>
+
+        <p>上边界范围是 87 ...</p>
+        <div></div>
+        <p>... 上边界范围是 87</p>
+    </section>
     <script>
         //content padding border margin
         // 标准模型  + IE模型  不同：宽度和高度
@@ -20,7 +59,7 @@
         // 根据盒模型解释边距重叠
         // BFC (边距重叠解决办法) 块级格式化上下文
             // 渲染规则
-            // 1.BFC 垂直方向的边距会发生重叠
+            // 1.BFC 靠左垂直排列，垂直方向的边距会发生重叠
             // 2.BFC 的区域不会和浮动元素的box重叠
             // 3.BFC 在页面上是一个独立的容器，外面的元素不会影响里面的元素，里面的元素也不会影响外面的元素。
             // 4.BFC 高度，浮动元素也会参与计算
@@ -29,6 +68,33 @@
             // float 不为none
             // position: 不为 static 或者 relative
             // display : inline-block, table-cell(table相关的)
+
+            // display: flow-root 可以创建无副作用的BFC
+
+            // 清除边距重叠，将子元素都变成BFC
+
+            // 怎么画三角形
+
+        // 为什么会形成边距重叠
+          // 因为 块级元素 的 margin-top 和 margin-bottom 同时都有设定时，只会保留最大边距，这种行为称为边界折叠，有时也翻译为外边距重叠。
+          // 设定  float 和 position=absolute 的元素不会产生外边距重叠行为
+          // 怎么解决  1.创建bfc
+            // 相邻的两个元素之间的外边距重叠，除非后一个元素加上clear-fix清楚浮动
+            // 没有内容将父元素和后代元素分开
+            // 空的块级元素 当一个块元素上边界 margin-top 贴到元素下边界 margin-bottom 会发生 边界折叠
+
+        // position
+        // fixed是相对于谁定位的？如果加上transform会出现问题吗？窗口定位，会以父元素作为参考
+        // 既然会降级为 absolute 效果，我们该怎么解决这个问题呢？我们就改考虑什么情况下 fixed 和 absolute 的表现效果会是一样的。
+        // 即当使用 fixed 的直接父元素的高度和屏幕的高度相同时 fixed 和 absolute 的表现效果会是一样的。
+        // 如果这个直接父级内的元素存在滚动的情况，那就加上 overflow-y: auto
+
+        // 为什么不推荐用style样式？内联样式有什么缺点？
+        // 开发者，方便开发者阅读维护。方便浏览器缓存，有助于性能提升。
+
+        // html 非同源策略的标签有哪些？
+        // html 中所有 tagname 的元素，不能重复？如何统计页面上用了多少HTML标签元素？
     </script>
 </body>
+
 </html>

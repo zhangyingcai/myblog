@@ -18,6 +18,8 @@
         console.log(isSay.bind(person, 5))
         // call/apply 会立即执行
         // bind 绑定上下文
+        var a={b:{c:{d:function(){console.log(this)}}}} // d
+        var a={b:{c:{d:()=>{console.log(this)}}}}
     </script>
 </body>
 </html>

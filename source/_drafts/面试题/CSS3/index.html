@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3</title>
+</head>
+<body>
+    <p>CSS3 新增内容</p>
+    <ul>
+        <li>
+            <p>转换 transform</p>
+        </li>
+    </ul>
+    <style>
+        .main{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <div class="main half-circle">
+        <style>
+            .half-circle{
+                height: 50px;
+                border-radius: 50px 50px 0 0;
+                background-color: greenyellow;
+            }
+        </style>
+    </div>
+    <div class="main sector">
+        <style>
+            .sector{
+                border-radius: 100px 0 0;
+                background-color: hotpink;
+            }
+        </style>
+    </div>
+    <div class="main triangle">
+        <style lang="">
+            .triangle{
+                height: 0;
+                width: 0;
+                /* border: 50px solid red;
+                border-color: red transparent transparent transparent; */
+                border-top: 50px solid red;
+                border-bottom: 0;
+                border-right: 50px solid transparent;
+                border-left: 50px solid transparent;
+            }
+        </style>
+    </div>
+</body>
+</html>

@@ -12,7 +12,7 @@ Array 对象的方法
 # Array.prototype​.splice() 删除或者替换现有元素 
 
 **修改了数组**
-**返回删除的元素**
+**3**
 
 array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
 
@@ -179,7 +179,10 @@ Array.isArray = function(value){
 creates a new , shallow-copied Array instance from an array-like or iterable object
 
 ## Array.from(arrayLike[, mapFn[, thisArg]])
-## arrayLike 产生数组的来源
+## arrayLike 产生数组的来源 
+
+类似数组的对象和可遍历的对象（部署了Iterator接口的，String，ES6新增的Map和Set）
+
 ## mapFn 数组的每个函数都会调用，返回的结果将组成新数组
 ## thisArg  mapFn 需要的参数
 ```
@@ -191,6 +194,23 @@ const myMap = new Map(arr);
 console.log(Array.from(myMap))
 ```
 [Array.from()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+
+## 将集合转换成数组的方法？
+
+Array.from
+
+slice()
+
+展开运算符 把A集合的元素展开后，用数组[]承载，返回新的数组
+
+```js
+[].map.call(obj,)
+```
+map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+map() 方法按照原始数组元素顺序依次处理元素。
+注意： map() 不会对空数组进行检测。
+注意： map() 不会改变原始数组。
+所以map方法返回了一个新的数组，并且数组中每个元素是A里面的元素
 
 # Array.prototype.indexOf() 
 
@@ -236,10 +256,14 @@ const mypeople = people.filter((element)=>{ return element.age > 30 })
 
 ```
 
+## filter 实现 交集
+
+
+
 ## filter 实现 ToDo
 
 ```
-if (!Array.prototype.filter) {
+if (!Array.prototype.`filter`) {
   // func: callback 
   // thisArg: this
   Array.prototype.filter = function(func, thisArg) {

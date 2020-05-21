@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包</title>
+</head>
+<body>
+    <script>
+        // 利用匿名函数立即执行的特点 创建一个计数器
+        let Counter = (function(){
+            let num = 0;
+            function func(value){
+                num = num + value
+            }
+            return{
+                increment: function(){
+                    func(1)
+                },
+                decrement: function(){
+                    func(-1)
+                },
+                value: function(){
+                    return num
+                },
+                reset: function(){
+                    num = 0
+                }
+            }
+        })()
+        // 创建多个计数器
+        var makeCounter = function(){
+            let num = 0;
+            function changeBy(value){
+                num =+ value
+            }
+            return{
+                increment: function(){
+                    changeBy(1)
+                },
+                decrement: function(){
+                    changeBy(-1)
+                },
+                value: function(){
+                    return num
+                },
+                reset: function(){
+                    num = 0
+                }
+            }
+        }
+        var counter1 = makeCounter()
+        var counter2 = makeCounter()
+        counter1.increment(1)
+        console.log(counter1.value())
+        console.log(counter2.value())
+        // 生成的实例都有各自的数据
+
+        // 实际考题
+        var g = 0;
+        let counter3 = (function(){
+            var i = 1;
+            return function(){
+                g=i++
+            }
+        })()
+        for(var i=0; i<10; i++){
+            counter3()
+        }
+        // g 的值 10
+        // 应用场景
+            // 访问函数内部的变量
+            // 缓存函数内部变量并保护
+
+            // 缺点  占用内存
+    </script>
+</body>
+</html>

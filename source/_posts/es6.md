@@ -168,7 +168,7 @@ bind(this, ...args) // 以上两种都支持 es5实现
 为了方便从对象数组中提取需要的值
 ... 剩余运算符
 
-数组模型的解构
+## 数组模型的解构
 
 ```
 var a, b, rest;
@@ -176,12 +176,15 @@ var a, b, rest;
 console.log(a); // 10
 console.log(b); // 20
 
+// 剩余运算符
+// 适合场景：
 [a, b, ...rest] = [10, 20, 30, 40, 50];
 console.log(a); // 10
 console.log(b); // 20
 console.log(rest); // [30, 40, 50]
 ```
-可忽略
+// 数组对象解析
+## 可忽略
 ```
 let [a, ,b] = [1, 2, 3]
 // a=1

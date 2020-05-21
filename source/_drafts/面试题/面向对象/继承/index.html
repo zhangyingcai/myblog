@@ -75,6 +75,23 @@
           }
           child3.prototype = Object.create(parent3.prototype);
           child3.prototype.constructor = child3;
+
+          // 题目
+          function parent4(){}
+          parent4.prototype.name = 'Bob'
+          parent4.prototype.age = 20
+
+          function child4(age){
+              this.age = age
+          }
+          child4.prototype = new parent4()
+          var childnew = new child4(22)
+          for (var key in childnew){
+              console.log(childnew[key])
+          }
+          // for in 遍历可枚举属性 包括自有属性和继承原型的属性
+          // 原型链查找顺序
+          // 打印顺序   22 Bob
     </script>
 </body>
 </html>

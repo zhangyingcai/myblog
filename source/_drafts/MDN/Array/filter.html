@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // filter() 过滤具有非零 id 的元素的 json
+        var arr = [
+            { id: 15 },
+            { id: -1 },
+            { id: 0 },
+            { id: 3 },
+            { id: 12.2 },
+            {},
+            { id: null },
+            { id: NaN },
+            { id: 'undefined' }
+        ];
+        function isNumber(obj) {
+            // 是一个数字  不是 undefined  typeof === number not isNaN
+            if (obj !== undefined && typeof (obj) === 'number' && !isNaN(obj)) {
+                return true
+            }
+            return false
+        }
+        function filterById(obj) {
+            if (isNumber(obj.id) && obj.id !== 0) {
+                return true
+            }
+            return false
+        }
+        console.log(arr.filter(filterById))
+        // filter 
+        // 求交集
+        var arr1 = [1,2,2,3,4]
+        var arr2 = [2,2,3,4,5,6]
+        arr1.filter(v=>arr2.includes(v))
+    </script>
+</body>
+
+</html>

@@ -18,6 +18,12 @@
             })
         }
         // 要比较的函数 for 、forEach 、for in 、for of
+
+        // 应用场景不同
+        // for in 遍历对象的可枚举属性，包括自有属性、继承原型的属性
+        // for of 可迭代对象（Array, Map, Set, arguments） 返回属性值
+        // Object.keys 元素均为对象自有的可枚举属性  返回 可枚举的实例属性名组成的数组
+        // Object.getOwnProperty 用于返回对象的自有属性 包括可枚举和不可枚举的
     </script>
 </body>
 

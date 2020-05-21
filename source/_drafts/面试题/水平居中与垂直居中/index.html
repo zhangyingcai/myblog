@@ -12,6 +12,7 @@
             <p>行内元素水平居中：设置父元素text-align:center</p>
             <section style="text-align: center">
                 <span>我是一个行内元素</span>
+                <div>我是块级元素</div>
             </section>
         </li>
         <li>
@@ -30,6 +31,43 @@
             <p>css3 新增属性 transform,子元素设置</p>
             <section style="width: 100%;border:1px solid red;height: 100px;display:flex;justify-content:center;">
                 <div style="width:100px;height:50px;background-color:greenyellow;position: absolute;left: 50%;transform: translate(-50%,0)"></div>
+            </section>
+        </li>
+        <li>
+            <p>垂直居中</p>
+            <style>
+                .vertical-align{
+                    display:table;
+                    border: 1px solid red;
+                }
+                .vertical-align .son{
+                    display:table-cell;vertical-align:middle;width:50px;height:50px;background-color:greenyellow;
+                }
+            </style>
+            <section class="vertical-align">
+                <div class="son">
+                    ces
+                </div>
+            </section>
+        </li>
+        <li>
+            <section class="translate">
+                <style>
+                    .translate{
+                        position: relative;
+                        height: 100px;
+                        border: 1px solid red;
+                    }
+                    .translate .son{
+                        width: 50px;
+                        height: 50px;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background-color: rosybrown;
+                    }
+                </style>
+                <div class="son">高度未知垂直居中</div>
             </section>
         </li>
     </ul>

@@ -77,6 +77,8 @@ border-box // width = border + padding + 内容的高度
 
 # 清除浮动的方法，应用场景以及为什么清除浮动。float
 
+
+去除浮动影响，防止父级高度塌陷。
 clear:both;
 overflow:auto;
 
@@ -1209,3 +1211,39 @@ async/defer的区别
 css三角形怎么画
 输入url到渲染都发生什么
 最近的新技术都了解哪些
+# 
+同级的两个iframe分别嵌入页面  能在a iframe的操作中通过ID找到 b iframe吗
+css 硬件加速
+硬件加速是指在计算机中通过把计算量非常大的工作分配给专门的硬件来处理以减轻中央处理器的工作量之技术。尤其是在图像处理中这个技术经常被使用
+
+```js
+for(var n =1;n<=10; n++){
+    if(n==5){
+        break;
+    }
+    console.log(n)
+}
+```
+break 能够暂停for
+
+# 山石
+
+## 闭包
+
+
+
+# ie8 兼容 indexOf
+
+```js
+// 请在此处添加代码
+if(!Array.indexOf){
+    Array.prototype.indexOf = function(obj){
+        for(let i = 0; i< this.length; i++){
+            if(this[i] === obj) return i;
+        }
+        return -1;
+    }
+}
+//
+let index = [1,2,3].indexOf(2);
+```
