@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let names = ['iPhone X', 'iPhone XS', 'iPhone 11']
+
+      let colors = ['黑色', '白色', '金色']
+
+      let storages = ['32','64g','128', '256g']
+
+      let combine = function (...chunks) {
+        console.log(chunks)
+        let res = []
+
+        let helper = function (chunkIndex, prev) {
+          let chunk = chunks[chunkIndex]
+          let isLast = chunkIndex === chunks.length - 1
+          for (let val of chunk) {
+            let cur = prev.concat(val)
+            if (isLast) {
+              // 如果已经处理到数组的最后一项了 则把拼接的结果放入返回值中
+              res.push(cur)
+            } else {
+              helper(chunkIndex + 1, cur)
+            }
+          }
+        }
+
+        // 从属性数组下标为 0 开始处理
+        // 并且此时的 prev 是个空数组
+        helper(0, [])
+
+        return res
+      }
+
+      console.log(combine(names, colors, storages))
+      
+      function test(names, colors, storages){
+        console.log(arguments)
+      }
+      test(names, colors, storages)
+
+      let helper = (zArr, i, preArr, res)=>{
+        let arr = zArr[i]
+        let islast = i === zArr.length-1
+        for(let item of arr){
+          let cur = preArr.concat(item)
+          if(islast){
+            Array.prototype.push.call(res,cur)
+          } else {
+            helper(zArr, i+1, cur, res)
+          }
+        }
+      }
+
+      let myCombine = function(...chunks){
+        let res = []
+        helper(chunks, 0,[],res)
+        return res
+      }
+
+      console.log(myCombine(names, colors, storages))
+      // 前提 dfs  bfs
+      // 构造成二叉树之后递归，bfs，dfs都行
+      // dfs 深度优先遍历
+      // bfs 广度优先搜索
+    </script>
+  </body>
+</html>
