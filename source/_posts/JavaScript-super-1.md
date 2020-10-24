@@ -6,13 +6,13 @@ abbrlink: 18146
 date: 2019-04-25 10:43:57
 ---
 
-前端工程师必须要懂得33个知识点 Event Loop
+前端工程师必须要懂得 33 个知识点 Event Loop
 
 <!-- more -->
 
 # Event loop
 
-javaScript 的并发模型基于**事件循**。
+javaScript 的并发模型基于**事件循环**。
 
 在了解执行栈之前先来了解一些概念
 
@@ -43,6 +43,7 @@ todo 什么时间创建栈？个数限制？
 答：javaScript 是一门单线程的语言，这意味着它只有一个调用栈。
 
 单个栈的数量是有限制的
+
 ```
 function func() {
   func()
@@ -54,10 +55,10 @@ func()
 [调用栈](https://developer.mozilla.org/zh-CN/docs/Glossary/Call_stack)
 [[译] JavaScript 如何工作：对引擎、运行时、调用堆栈的概述](https://juejin.im/post/5a05b4576fb9a04519690d42)
 
-* 当脚本要执行一个函数时，引擎把该函数添加到栈中并执行
-* 任何被这个函数调用的函数会进一步添加到调用栈中，并且会运行到他们被上个程序调用的位置
-* 当函数运行结束后，引擎将他从调用栈中取出，并在主代码列表中继续执行代码
-* 如果栈调用的空间比分配给它的内存空间大，则会导致"栈溢出"
+- 当脚本要执行一个函数时，引擎把该函数添加到栈中并执行
+- 任何被这个函数调用的函数会进一步添加到调用栈中，并且会运行到他们被上个程序调用的位置
+- 当函数运行结束后，引擎将他从调用栈中取出，并在主代码列表中继续执行代码
+- 如果栈调用的空间比分配给它的内存空间大，则会导致"栈溢出"
 
 ## Event Loop 中异步代码的执行顺序？ Event Loop 是什么？
 
@@ -76,20 +77,19 @@ func()
 
 Event Loop 的执行顺序
 
-* 执行一个宏任务（栈中没有就从事件队列中获取，同步代码也是宏任务）
+- 执行一个宏任务（栈中没有就从事件队列中获取，同步代码也是宏任务）
 
-* 执行过程中如果遇到微任务，就将它添加到微任务的任务队列中
+- 执行过程中如果遇到微任务，就将它添加到微任务的任务队列中
 
-* 宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）
+- 宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）
 
-* 当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染
+- 当前宏任务执行完毕，开始检查渲染，然后 GUI 线程接管渲染
 
-* 渲染完毕后，JS引擎线程继续，开始下一个宏任务（从宏任务队列中获取）
-
+- 渲染完毕后，JS 引擎线程继续，开始下一个宏任务（从宏任务队列中获取）
 
 事件循环模型的特性，永不阻塞
 
-# 当 eventloop 遇到了  promise
+# 当 eventloop 遇到了 promise
 
 ```
 function testSometing() {
@@ -125,6 +125,7 @@ var promise = new Promise(
 promise.then((val) => console.log(val));
 console.log("4")
 ```
+
 ```
 function testSometing() {
     console.log("2");
@@ -158,13 +159,20 @@ var promise = new Promise(
 promise.then((val) => console.log(val));
 console.log("4")
 ```
+
 # 问题
 
-[总结：JavaScript异步、事件循环与消息队列、微任务与宏任务](https://juejin.im/post/5be5a0b96fb9a049d518febc)
+[总结：JavaScript 异步、事件循环与消息队列、微任务与宏任务](https://juejin.im/post/5be5a0b96fb9a049d518febc)
 
-问题：为何 try里面放 return， finally还会执行，理解其内部机制？
+问题：为何 try 里面放 return， finally 还会执行，理解其内部机制？
 
-问题：JavaScript如何实现异步编程，可以详细描述 EventLoop 机制
+问题：JavaScript 如何实现异步编程，可以详细描述 EventLoop 机制
+
+1.callback 2.发布订阅者模式
+先订阅了事件，有人发布了事件，就会执行后面的操作
+3.promise
+4.Generator 函数
+5async/await
 
 问题：宏任务和微任务分别有哪些？
 
@@ -172,13 +180,14 @@ console.log("4")
 
 问题：使用 Promise 实现串行
 
-问题：Node与浏览器 EventLoop的差异
+问题：Node 与浏览器 EventLoop 的差异
 
 问题：如何在保证页面运行流畅的情况下处理海量数据
 
 # 面试题
 
 ## 1
+
 ```
 console.log(1)
 setTimeout(function(){
