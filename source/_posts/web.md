@@ -11,15 +11,20 @@ date: 2019-03-07 19:21:49
 <!-- more -->
 
 # CSS
-# css实现图片自适应宽高？
+
+# css 实现图片自适应宽高？
+
 自适应宽和高 // 根据当前父级元素的大小自动更新大小
+
 ```
 img{
     max-width:100%;
     min-height:100%;
 }
 ```
+
 等比例缩放图片的话
+
 ```
 img{
     width:100%;
@@ -37,23 +42,25 @@ img{
 
 # JavaScript
 
-# 异步加载js的方案
+# 异步加载 js 的方案
 
-默认情况javascript是同步加载的，所以通常js文件放到文档底部，优先展示样式。
-* defer 只支持IE
-* async
-* 使用document创建script,插入到DOM中，加载完毕后callback
+默认情况 javascript 是同步加载的，所以通常 js 文件放到文档底部，优先展示样式。
+
+- defer 只支持 IE
+- async
+- 使用 document 创建 script,插入到 DOM 中，加载完毕后 callback
+
 ```
 function loadScript(url, callback) {
     var script = document.createElement("script");
-    script.type = "text/javascript"; 
-    if (script.readyState) { //IE 
-        script.onreadystatechange = function () { 
-            if (script.readyState == "loaded" || script.readyState == "complete") { 
-                script.onreadystatechange = null; callback(); 
-                } 
+    script.type = "text/javascript";
+    if (script.readyState) { //IE
+        script.onreadystatechange = function () {
+            if (script.readyState == "loaded" || script.readyState == "complete") {
+                script.onreadystatechange = null; callback();
+                }
             };
-    } else { //Others: Firefox, Safari, Chrome, and Opera 
+    } else { //Others: Firefox, Safari, Chrome, and Opera
         script.onload = function () { callback(); };
     }
     script.src=url;
@@ -62,7 +69,6 @@ function loadScript(url, callback) {
 ```
 
 # 网站可用性、可访问性
-
 
 面试总结
 
@@ -73,10 +79,9 @@ content-box // 标准盒模型 `width` 与 `height` 只包括内容的宽和高
 border-box // width = border + padding + 内容的高度
 ```
 
-# promise用法
+# promise 用法
 
 # 清除浮动的方法，应用场景以及为什么清除浮动。float
-
 
 去除浮动影响，防止父级高度塌陷。
 clear:both;
@@ -130,27 +135,30 @@ BFC 是块状格式化上下文
 # 千分位分割数字，并自定义保留小数位数
 
 ## 正则表达式
+
 ```
 function money(num){
     return (''+num).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 ```
+
 首先考虑的是小数点，在小数点的地方进行位置划分
 //g;
-//g全局匹配
+//g 全局匹配
 
 /(\d)(?=(\d{3})+\.)/g;
 \d:匹配一个数字字符，等价于[0-9]
 这里最难理解的就是(?=(\d{3})+\.)，且看语法：
-x(?=y)：正向肯定查找，匹配后面带有y的x项目
+x(?=y)：正向肯定查找，匹配后面带有 y 的 x 项目
 
-那么在这里意思是：查找一个和"."之间带有一个或多个连续3位数字的数字（x）
+那么在这里意思是：查找一个和"."之间带有一个或多个连续 3 位数字的数字（x）
+
 ```
 /**
  *num 要分隔的数字（必填）
  *n 保留的小数位数（可选）
  *symbol 分隔数字使用的符号（可选，默认为","）
- */ 
+ */
 function splitNum(num,n,symbol) {
     if(!num)throw new Error('splitNum需要传入一个待转换的数据');
     if(typeof num!=='number')throw new TypeError('num参数应该是一个number类型');
@@ -168,7 +176,9 @@ function splitNum(num,n,symbol) {
     return num;
 }
 ```
-## 
+
+##
+
 ```
 function money(num){
     // 先把数字换成字符串，然后转换成数组，反转之后，再组合成字符串
@@ -182,8 +192,10 @@ function money(num){
     return reverseStr;
 }
 ```
-## (123456.123).toLocaleString('en-US')  ie11以上支持
-[mdn参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#)
+
+## (123456.123).toLocaleString('en-US') ie11 以上支持
+
+[mdn 参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#)
 
 # '123add12da1' 截取数字
 
@@ -209,11 +221,10 @@ css 引入顺序，如果引入了类库和自定义样式，应最后引入自�
 
 # rem
 
-rem 相对  html 根元素
+rem 相对 html 根元素
 css3 新增的一个相对单位
 
 # border 简写
-
 
 # textarea 相关属性
 
@@ -225,7 +236,7 @@ vertical: 调节元素的高度
 
 # 列举伪元素
 
-css2 
+css2
 :before
 :after
 css1
@@ -249,25 +260,36 @@ css1
 # 浏览器渲染原理？
 
 #### 自我介绍
-#### 介绍下你做的项目，用了什么技术，实现了哪些功能？
-#### 说说nginx是什么？聊聊对nginx的原理和你的理解
-#### 什么是ssr?原理和具体过程是什么？
-#### 浏览器渲染原理
-#### 服务端渲染原理
-#### 前端如何做测试？如何与服务器做接口测试？
-#### 跨域是什么？如何解决？
-#### 移动端如何做适配？什么是flex布局？
-#### 小程序框架存在哪些问题？如何解决？
-#### 上传下载功能你是如何实现的？
-#### 说说项目中遇到的问题有哪些？如何解决？
-#### 浏览器如何做兼容？
 
+#### 介绍下你做的项目，用了什么技术，实现了哪些功能？
+
+#### 说说 nginx 是什么？聊聊对 nginx 的原理和你的理解
+
+#### 什么是 ssr?原理和具体过程是什么？
+
+#### 浏览器渲染原理
+
+#### 服务端渲染原理
+
+#### 前端如何做测试？如何与服务器做接口测试？
+
+#### 跨域是什么？如何解决？
+
+#### 移动端如何做适配？什么是 flex 布局？
+
+#### 小程序框架存在哪些问题？如何解决？
+
+#### 上传下载功能你是如何实现的？
+
+#### 说说项目中遇到的问题有哪些？如何解决？
+
+#### 浏览器如何做兼容？
 
 # http 三次握手和四次挥手
 
-
 # 题目
-假设有一个userList
+
+假设有一个 userList
   userList = [
       {
         name: '张三',
@@ -287,7 +309,7 @@ css1
       }
     ]
 
-    请用尽可能简短的代码，将userList转换成如下形式
+请用尽可能简短的代码，将 userList 转换成如下形式
     userList = [
       {
         name: '张三',
@@ -311,7 +333,6 @@ css1
       }
     ]
 
-
 #应用缓存和浏览器缓存有什么区别？
 
 HTML5 引入了应用程序缓存，这意味着 web 应用可进行缓存，并可在没有因特网连接时进行访问。
@@ -320,7 +341,7 @@ HTML5 引入了应用程序缓存，这意味着 web 应用可进行缓存，并
 速度 - 已缓存资源加载得更快
 减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。
 
-实现借助manifest文件
+实现借助 manifest 文件
 
 <html manifest="demo.appache">
 
@@ -334,11 +355,8 @@ SharedWorker
 
 首屏加载速度增加
 
-1.资源的压缩合并，减少HTTP请求
-2.非核心代码异步加载——》异步加载的方式-》异步加载的区别
-3.利用浏览器缓存-》缓存的分类-》缓存的原理
-4.使用CDN
-5.DNS预解析
+1.资源的压缩合并，减少 HTTP 请求 2.非核心代码异步加载——》异步加载的方式-》异步加载的区别 3.利用浏览器缓存-》缓存的分类-》缓存的原理 4.使用 CDN
+5.DNS 预解析
 
 ## 服务端
 
@@ -348,9 +366,9 @@ SharedWorker
 
 解决发布的问题？hash 版本号
 
-###  静态资源缓存，移动端离线缓存
+### 静态资源缓存，移动端离线缓存
 
-缓存利用可包括：添加 Expires 头，配置 ETag，使 Ajax 可缓存等。其实，恰当的缓存设置可以大大的减少 HTTP请求，也可以节省带宽 。
+缓存利用可包括：添加 Expires 头，配置 ETag，使 Ajax 可缓存等。其实，恰当的缓存设置可以大大的减少 HTTP 请求，也可以节省带宽 。
 
 #### 协商缓存
 
@@ -359,73 +377,74 @@ SharedWorker
 ### 添加 Expires 头
 
 服务端通过响应头告诉浏览器，在什么时间之前（Expires）或在多长时间之内（Cache-Control: Max-age=xxx），不要再请求服务器了。这个机制我们通常称之为 HTTP 的强缓存。一般会对 CSS、JS、图片等资源使用强缓存，而入口文件（HTML）一般使用协商缓存或不缓存。
+
 ### AppCache
 
-AppCache主要利用 manifest 文本文件，告知浏览器被缓存的内容以及不缓存的内容。
+AppCache 主要利用 manifest 文本文件，告知浏览器被缓存的内容以及不缓存的内容。
 
 ## 网络
 
 ### 减少请求数量
 
-* 小图片合成雪碧图
-* 更小的图片直接使用 base64
-* js css 文件选择性合并
-* 避免重复的资源请求
+- 小图片合成雪碧图
+- 更小的图片直接使用 base64
+- js css 文件选择性合并
+- 避免重复的资源请求
 
 ### 减少文件大小
 
-* 压缩 css js html 图片文件
-* 尽可能控制 DOM 节点数
-* 精简 css javascript, 移除注释/空格/重复css和脚本
-* 开启 Gzip 脚本
+- 压缩 css js html 图片文件
+- 尽可能控制 DOM 节点数
+- 精简 css javascript, 移除注释/空格/重复 css 和脚本
+- 开启 Gzip 脚本
 
 ### 合理使用静态资源域名
 
 域名的要求是短小且独立。
-短小可以减少头部开销，因为域名越短请求头起始行的 URI 就越短。之所以要求独立，因为独立域名不会共享主域的 Cookie，可以有效减小请求头大小，这个策略一般称之为 Cookie-Free Domain；另外一个原因是浏览器对相同域名的并发连接数限制，一般允许同域名并发 6~8 个连接，域名不是越多越好，每个域名的第一个连接都要经历 DNS 查询（DNS Lookup），导致会耗费一定的时间，控制域名使用在2-4个之间。另外注意：同一静态资源在不同页面被散列到不同子域下，会导致无法利用 HTTP 缓存。
+短小可以减少头部开销，因为域名越短请求头起始行的 URI 就越短。之所以要求独立，因为独立域名不会共享主域的 Cookie，可以有效减小请求头大小，这个策略一般称之为 Cookie-Free Domain；另外一个原因是浏览器对相同域名的并发连接数限制，一般允许同域名并发 6~8 个连接，域名不是越多越好，每个域名的第一个连接都要经历 DNS 查询（DNS Lookup），导致会耗费一定的时间，控制域名使用在 2-4 个之间。另外注意：同一静态资源在不同页面被散列到不同子域下，会导致无法利用 HTTP 缓存。
 
 ## 书写规范
 
-* 使用外链时 css 放在头部，js 放在尾部 。原因：防止阻塞以减少对并发下载的影响，尽早刷新文档的输出。
+- 使用外链时 css 放在头部，js 放在尾部 。原因：防止阻塞以减少对并发下载的影响，尽早刷新文档的输出。
 
 ### Html
 
-* 避免空的 src 
-* 协议自适应（https:// 或者 http:// 更换成 //），优化结构减小 html 文件的大小
+- 避免空的 src
+- 协议自适应（https:// 或者 http:// 更换成 //），优化结构减小 html 文件的大小
 
 ### CSS
 
-* 建议使用类选择器，访问比较快
-* 不建议比较长的 base64
-* 避免表达式
-* 避免使用 Filters
+- 建议使用类选择器，访问比较快
+- 不建议比较长的 base64
+- 避免表达式
+- 避免使用 Filters
 
 ### JavaScript
 
-* 减少作用域链查找（ToDo？）
-* 减少 Dom 访问和操作，尽量缓存 Dom
-* 充分利用事件委托
-* 减少渲染和回流，通过批量处理，最后一次更新
+- 减少作用域链查找（ToDo？）
+- 减少 Dom 访问和操作，尽量缓存 Dom
+- 充分利用事件委托
+- 减少渲染和回流，通过批量处理，最后一次更新
 
 ### 图片格式
 
-* 颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。
-* 条件允许的，使用新格式WEBP和BPG。
-* 用SVG和ICONFONT代替简单的图标。
-* 用字蛛来代替艺术字体切图，它可剔除没有使用的字符，从而解决中文字体过大的问题，并编码成跨平台兼容的格式。
+- 颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。
+- 条件允许的，使用新格式 WEBP 和 BPG。
+- 用 SVG 和 ICONFONT 代替简单的图标。
+- 用字蛛来代替艺术字体切图，它可剔除没有使用的字符，从而解决中文字体过大的问题，并编码成跨平台兼容的格式。
 
 ### 合理分配资源加载时间
 
 按需加载，包括 CSS 、 js 文件以及图片、业务模块等
 
-* 预加载
-* Dom Ready后加载
-* onLoad后加载
-* 滚动加载
+- 预加载
+- Dom Ready 后加载
+- onLoad 后加载
+- 滚动加载
 
 ### 减少 DNS 查询
 
-添加DNS预解析
+添加 DNS 预解析
 
 <link rel="dns-prefetch" href>
 
@@ -435,11 +454,13 @@ AppCache主要利用 manifest 文本文件，告知浏览器被缓存的内容�
 
 需要引入 jquery
 兼容所有浏览器
+
 ```
 $(document).ready(function() {
     alert("加载完成！");
 });
 ```
+
 ## `<script>` 标签的 async="async" 属性
 
 async 属性是 HTML5 新增属性，需要 Chrome、FireFox、IE9+ 浏览器支持
@@ -447,9 +468,11 @@ async 属性规定一旦脚本可用，则会异步执行
 async 属性仅适用于外部脚本 (只有在使用 src 时使用)
 
 此方法不能保证脚本按顺序执行
+
 ```
 <script type="text/javascript" src="xxx.js" async="async"></script>
 ```
+
 ## `<script>` 标签的 defer="defer" 属性
 
 注意： 只有 Internet Explorer 支持 defer 属性。
@@ -463,11 +486,11 @@ defer 属性规定是否对脚本执行进行延迟，直到页面加载为止�
 
 兼容所有浏览器
 (function(){
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "http://code.jquery.com/jquery-1.7.2.min.js";
-    var tmp = document.getElementsByTagName('script')[0];
-    tmp.parentNode.insertBefore(script, tmp);
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = "http://code.jquery.com/jquery-1.7.2.min.js";
+var tmp = document.getElementsByTagName('script')[0];
+tmp.parentNode.insertBefore(script, tmp);
 })();
 
 # web worker?
@@ -484,7 +507,7 @@ web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影�
 
 ## Worker.onmessage
 
-接收 postMessage 传递消息，从执行者发送到父页面对象，消息保存在事件对象的 data 属性中. 
+接收 postMessage 传递消息，从执行者发送到父页面对象，消息保存在事件对象的 data 属性中.
 
 ## Worker.postMessage()
 
@@ -497,35 +520,36 @@ web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影�
 # 水滴筹题目
 
 ## 下面会打印什么？
+
 ```js
 var a = 5;
-function todo(){
-    var a = 9
-    return function(){
-        a = 7
-    }
+function todo() {
+  var a = 9;
+  return function () {
+    a = 7;
+  };
 }
-todo()()
-console.log(a)
+todo()();
+console.log(a);
 ```
 
 答：5
 
 原因： console.log(window.a) 访问的是全局变量 a ， todo()() 作用链中的 a 都是局部变量。
 
-
 ## 测试文本的字符大小
+
 ```html
 <style>
-* {
+  * {
     font-size: 12px !important;
-}
-#test {
+  }
+  #test {
     font-size: 14px;
-}
-.test1 {
+  }
+  .test1 {
     font-size: 10px;
-}
+  }
 </style>
 <div id="test" class="test1">123123</div>
 ```
@@ -533,12 +557,17 @@ console.log(a)
 答：12px
 
 ## 变量提升
+
 ```js
-console.log(foo())
-function foo(){
-    return bar()
-    var bar = (function(){return 7})()
-    function bar(){return 8}
+console.log(foo());
+function foo() {
+  return bar();
+  var bar = (function () {
+    return 7;
+  })();
+  function bar() {
+    return 8;
+  }
 }
 ```
 
@@ -547,36 +576,38 @@ function foo(){
 ## Array.prototype.filter
 
 ```js
-(function(){
-    var greet='Hello Shuidi'
-    var togreet = [].filter.call(greet, function(e,i){
-        return i>5
-    })
-    console.log(togreet)
-})()
+(function () {
+  var greet = "Hello Shuidi";
+  var togreet = [].filter.call(greet, function (e, i) {
+    return i > 5;
+  });
+  console.log(togreet);
+})();
 ```
+
 答： ["S", "h", "u", "i", "d", "i"]
 
-* 自执行函数
-* Array.prototype.filter
-* call
+- 自执行函数
+- Array.prototype.filter
+- call
 
 ## 点击 li 输出索引值
+
 ```html
 <ul id="test">
-    <li>第一条</li>
-    <li>第二条</li>
-    <li>第三条</li>
-  </ul>
-  <script>
-    let testEl = document.getElementById('test')
-    let liArray = document.getElementsByTagName('li');
-    testEl.addEventListener('click', function(e){
-      var liEl = e.target;
-      var i = Array.prototype.indexOf.call(liArray, liEl);
-      console.log(i)
-    })
-  </script>
+  <li>第一条</li>
+  <li>第二条</li>
+  <li>第三条</li>
+</ul>
+<script>
+  let testEl = document.getElementById("test");
+  let liArray = document.getElementsByTagName("li");
+  testEl.addEventListener("click", function (e) {
+    var liEl = e.target;
+    var i = Array.prototype.indexOf.call(liArray, liEl);
+    console.log(i);
+  });
+</script>
 ```
 
 ```事件委托
@@ -600,29 +631,31 @@ function foo(){
 ## 实现 get 函数
 
 ```js
-let obj = {foo: {bar: {name:'dd'}}}
-get(obj, 'foo.bar.name') // 输出 dd
-obj = {}
-get(obj, 'foo.bar.name') // 输出 undefined
-get(obj, 'foo.bar.name', 'dd') // 输出 dd
+let obj = { foo: { bar: { name: "dd" } } };
+get(obj, "foo.bar.name"); // 输出 dd
+obj = {};
+get(obj, "foo.bar.name"); // 输出 undefined
+get(obj, "foo.bar.name", "dd"); // 输出 dd
 
 // 函数如下
-function get(obj, path, defaultvalue){}
+function get(obj, path, defaultvalue) {}
 ```
+
 答：
+
 ```js
 // path 默认 string
-function get(obj, path, defaultvalue){
-    let key = path.split('.').shift()
-    path =path.split('.').splice(1).join('.')
-    if (obj[key]) {
-        if(path){
-            return get(obj[key], path, defaultvalue)
-        }
-        return obj[key]
-    } else {
-        return defaultvalue
+function get(obj, path, defaultvalue) {
+  let key = path.split(".").shift();
+  path = path.split(".").splice(1).join(".");
+  if (obj[key]) {
+    if (path) {
+      return get(obj[key], path, defaultvalue);
     }
+    return obj[key];
+  } else {
+    return defaultvalue;
+  }
 }
 ```
 
@@ -631,29 +664,29 @@ function get(obj, path, defaultvalue){
 ## localStorage 相关
 
 ```js
-localStorage.setItem('show', false)
-console.log(localStorage.show || '显示') // false
+localStorage.setItem("show", false);
+console.log(localStorage.show || "显示"); // false
 ```
 
-* 第一点 localStorage.show 可以直接拿到 show
-* 第二点 localStorage 只能保存字符串
+- 第一点 localStorage.show 可以直接拿到 show
+- 第二点 localStorage 只能保存字符串
 
 ### 给缓存添加时效
 
 请设计 localSrorage 添加时效
 
-## 请解码被多次编码的URl
+## 请解码被多次编码的 URl
 
 例子：https%253A%252F%252Fwww.baidu.com%252Ftest%253D1
 结果：https://www.baidu.com/test=1
 
-
 转义函数：
+
 ### encodeURIComponent
 
-转义除了字母、数字、(、)、.、!、~、*、'、-和_之外的所有字符。
+转义除了字母、数字、(、)、.、!、~、\*、'、-和\_之外的所有字符。
 
-包括 : / 
+包括 : /
 
 ### encodeURI
 
@@ -663,21 +696,16 @@ console.log(localStorage.show || '显示') // false
 
 ### escape
 
-转义除了 @ * _ + - . / 之外的字符
+转义除了 @ \* \_ + - . / 之外的字符
 
 ## http
 
 一次完整的 http 请求，期间需要多少次握手？（tcp?）
 
-* 建立连接 三次 断开连接 四次
-
-## 0.1+0.2 ? 0.3
-
-答：>
-
-0.1 和 0.2 是比较特殊的两个值
+- 建立连接 三次 断开连接 四次
 
 ## 代码题
+
 用 JavaScript 写一个函数，输入 int 型，返回整数逆序后的字符串。如：输入整型 1234，返回字符串“4321”。要求必须使用递归函数调用，不能用全局变量，输入函数必须只有一个参数传入，必须返回字符串。
 
 ```
@@ -691,6 +719,7 @@ function intToStr(num){
     }
 }
 ```
+
 ```
 function reverse(num){
     const str = String(num)
@@ -699,10 +728,10 @@ function reverse(num){
 ```
 
 ```es6
-const reverse = num => [...num.toString()].reverse().join('')
+const reverse = (num) => [...num.toString()].reverse().join("");
 ```
 
-面试题2
+面试题 2
 
 # 压轴题
 
@@ -712,6 +741,7 @@ const reverse = num => [...num.toString()].reverse().join('')
 })()
 console.log(window.a,window.b) // undefined 1
 ```
+
 ## 传参
 
 ```
@@ -750,19 +780,19 @@ console.log(obj.bar); // zyc2
 
 回调地狱是由于回调函数嵌套太多引起的
 
-* 代码难以阅读和维护
-* 代码无法定位到错误，回调函数总会将错误抛出到顶层
+- 代码难以阅读和维护
+- 代码无法定位到错误，回调函数总会将错误抛出到顶层
 
 ## object in es5 map in es6
 
-* 一个 Object 的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值。
-* Map 中的键值是有序的（FIFO 原则），而添加到对象中的键则不是。
-* Map 的键值对个数可以从 size 属性获取，而 Object 的键值对个数只能手动计算。
-* Object 都有自己的原型，原型链上的键名有可能和你自己在对象上的设置的键名产生冲突。
+- 一个 Object 的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值。
+- Map 中的键值是有序的（FIFO 原则），而添加到对象中的键则不是。
+- Map 的键值对个数可以从 size 属性获取，而 Object 的键值对个数只能手动计算。
+- Object 都有自己的原型，原型链上的键名有可能和你自己在对象上的设置的键名产生冲突。
 
 引申
 
-map set 
+map set
 
 set 存储的值是唯一的(想当于一维数组去重)
 
@@ -781,23 +811,22 @@ Iterating over the properties of an object
 注：之前有过面试是英文题目
 
 ```javascript
-var obj = {}
+var obj = {};
 for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
-        console.log(key, obj[key])
-    }
+  if (obj.hasOwnProperty(key)) {
+    console.log(key, obj[key]);
+  }
 }
 ```
-
 
 # 快手笔试题
 
 ## 请写出一下代码执行结果。
 
 ```js
-var a = {x: 1}
+var a = { x: 1 };
 var b = a;
-a.x = a = {n: 1};
+a.x = a = { n: 1 };
 console.log(a); // {n:1}
 console.log(b); // {x:{n:1}}
 ```
@@ -805,19 +834,19 @@ console.log(b); // {x:{n:1}}
 引申
 
 ```js
-function test(){
-    var a = b = 1;
+function test() {
+  var a = (b = 1);
 }
-a // ReferebceError
-b // 1
+a; // ReferebceError
+b; // 1
 ```
 
 ## 请写出以下代码执行结果
 
 ```js
-Function.prototype.a = ()=> alert(1);
+Function.prototype.a = () => alert(1);
 Object.prototype.b = () => alert(2);
-function A(){};
+function A() {}
 const a = new A();
 a.a(); // TypeError a is not a function
 a.b(); // alert(2)
@@ -831,17 +860,17 @@ console.log(a); // 0
 console.log(b); // 暂时性死区 ReferenceError
 let b = {};
 console.log(c); // function c() {}
-function c() {};
+function c() {}
 ```
 
-## 
+##
 
 ```js
 var myMap = new Map();
-myMap.set('k1','value1');
-myMap.set('k2','value2');
-console.log('%s', myMap) // Map(2)
-console.log('%s', Array.from(myMap)) // Array(2)
+myMap.set("k1", "value1");
+myMap.set("k2", "value2");
+console.log("%s", myMap); // Map(2)
+console.log("%s", Array.from(myMap)); // Array(2)
 ```
 
 ## 请写出以下代码执行结果
@@ -853,7 +882,7 @@ function a(y) {
   return b(y);
 }
 function b(y) {
-  return x+y;
+  return x + y;
 }
 a(20); // 30
 ```
@@ -898,12 +927,12 @@ Promise.resolve().then(()=> {
 ## 请写出以下代码执行结果
 
 ```js
-[1,2,3,4,5].map(parseInt);
+[1, 2, 3, 4, 5].map(parseInt);
 // callback(item, index, array)
 // parseInt(num, index)
 // [1,NaN,NaN,NaN,NaN]
-['1', '3', '10'].map(parseInt);
-[1, NaN, 2]
+["1", "3", "10"].map(parseInt);
+[1, NaN, 2];
 ```
 
 parseInt(string, radix)
@@ -927,7 +956,7 @@ typeof typeof typeof [];
 // string
 ```
 
-## 以下CSS最后是什么颜色
+## 以下 CSS 最后是什么颜色
 
 ```css
 <style>
@@ -958,14 +987,14 @@ div.title {color: blue};
 // red
 ```
 
-##  请解释一下什么BFC，IFC，FFC。
+## 请解释一下什么 BFC，IFC，FFC。
 
 ## visibility: hidden 和 display: none 有什么区别？
 
 visibility: hidden 占用的空间还在，
 display: none 都隐藏了
 
-## css中你所知道的长度单位有哪些？有哪些区别？
+## css 中你所知道的长度单位有哪些？有哪些区别？
 
 px(Pixel) 相对长度单位。
 像素 px 是相对与显示器屏幕分辨率而言的。
@@ -974,8 +1003,7 @@ em 相对长度单位 相对于父级元素设定字体大小
 
 rem 现对于 html 根元素设定字体大小
 
-## img 的 alt 和 title有何不同
-
+## img 的 alt 和 title 有何不同
 
 # 深拷贝实现
 
@@ -1010,6 +1038,7 @@ var name = 123;
 # 图片翻转
 
 css3 transform:scale
+
 ```
 transform:scale(-1,1)
 ```
@@ -1029,18 +1058,23 @@ text-overflow: ellipsis 可以用来多行文本的情况下，用省略号“..
 # css 盒模型
 
 标准模型 + ie 模型
-标准模型和ie模型的区别
-css如何设置这两种模型
-js如何设置获取盒模型对应的宽和高
+标准模型和 ie 模型的区别
+css 如何设置这两种模型
+js 如何设置获取盒模型对应的宽和高
 根据盒模型解释边距重叠
 
 ## content+padding+border+margin
+
 ## 标准模型
+
 box-sizing:content-box
 width = content.width
+
 ## ie 模型
+
 box-sizing:border-box
-## css如何设置这两种模型
+
+## css 如何设置这两种模型
 
 DOM.style.width/heiht
 是否能获得所有的元素的 width heiht 不能
@@ -1051,7 +1085,6 @@ Dom.currentStyle.width/height (仅 ie 支持)
 window.getComputedStyle(DOM).width/height(即时运行完)
 
 DOM.getBoundingClientRect().width/height(即时运行完)
-
 
 # 性能优化
 
@@ -1069,7 +1102,7 @@ http 会通过 Tcp 建立一个到服务器的连接，当本次请求需要的�
 
 # 去重数组并返回重复的元素
 
-# 原生js 插入一个div
+# 原生 js 插入一个 div
 
 # 性能优化
 
@@ -1077,19 +1110,19 @@ http 会通过 Tcp 建立一个到服务器的连接，当本次请求需要的�
 
 # 浏览器缓存
 
-session、cookie、sessionStorage、localStorage区别
+session、cookie、sessionStorage、localStorage 区别
 cookie:一般是服务器生成，可以设置过期时间。4k
 localStorage：除非被清理否则一直存在。5M
 sessionStorage: 页面关闭就会被清理。
-从client和Server中区分回答session是什么以及一般session如何使用注意事项以及安全策略，cookie、sessionStorage和localStorage等分别从概念和异同处回答。最后补充项目中的使用情况
+从 client 和 Server 中区分回答 session 是什么以及一般 session 如何使用注意事项以及安全策略，cookie、sessionStorage 和 localStorage 等分别从概念和异同处回答。最后补充项目中的使用情况
 
-# 改变div位置的方式以及性能比较
-# 
+# 改变 div 位置的方式以及性能比较
+
+#
 
 # +new Date()
 
-是什么意思 相当于 +(new Date()) 将对象转换为 number  调用 prototype.valueOf 方法
-
+是什么意思 相当于 +(new Date()) 将对象转换为 number 调用 prototype.valueOf 方法
 
 # scroll 更顺滑 TODO
 
@@ -1110,6 +1143,7 @@ var body = document.body,
             }
         }, false);
 ```
+
 ```
 window.clearRequestTimeout = function(handle) {
 	if ( typeof handle !== 'undefined' ) {
@@ -1124,12 +1158,12 @@ window.clearRequestTimeout = function(handle) {
 };
 ```
 
-
 # 1.hybird jsbrige 如何通信的,JSBridge 的原理 2.做 sdk 是怎么做的，有哪些讲究
 
 JSBridge 是 Native 代码与 JS 代码通信的桥梁。 目前的一种统一方案：h5 页面触发 url scheme -> native 捕获 url scheme -> 原生分析 url scheme 调用哪个方法？ -> 调用原生方法
 
 3.js 在面向对象里面的体现 ， 继承 ，es5 和 es6 继承的区别
+
 # js 的垃圾回收机制
 
 垃圾回收的概念
@@ -1138,8 +1172,7 @@ JSBridge 是 Native 代码与 JS 代码通信的桥梁。 目前的一种统一�
 
 垃圾回收算法主要依赖于引用的概念。在内存管理的环境中，一个对象如果有访问另外一个对象的权限（隐性或者显性），叫做一个对象引用另外一个对象。
 
-一个 JavaScript 
-
+一个 JavaScript
 
 5.闭包 的原理 和使用场景
 6.webpack 执行流程， loader 执行顺序， 写过 loader 和 plugin 么
@@ -1148,7 +1181,7 @@ JSBridge 是 Native 代码与 JS 代码通信的桥梁。 目前的一种统一�
 9.data 为什么是个函数
 10.proxy 比 object.defineProperty 优势，执行效率为什么高 11.虚拟 dom 的 diff 算法是怎样的 2，3，4，5 如果 34 换 45，怎么改变
 
-#  浏览器存储
+# 浏览器存储
 
 ## localStorage & sessionStorage & cookie
 
@@ -1157,10 +1190,10 @@ localStorage 和 sessionStorage 的区别主要是 存储的有效期 和 作用
 localStorage 有效期： 永久存在 除非手动删除
 sessionStorage 有效期：窗口（顶级窗口）或者浏览器标签页关闭之后被删除，现代浏览器实现了 浏览记录恢复的功能 有效期会延长一段时间
 localStorage 作用域： document origin 必须一致，要求 **域名** **协议** **端口**都一致 才被认为是同一 **文档源**
-sessionStorage 作用域： document origin 必须一致，同时要求 **必须是同一窗口（顶级窗口）或者标签页下，只有相同的窗口（顶级窗口）或者标签页下才能共享同一数据，如果 同一窗口（顶级窗口）或者标签页下 的不同 iframe 的文档源是相同的，那么这两个 iframe 是可以共享 sessionStorage
+sessionStorage 作用域： document origin 必须一致，同时要求 \*\*必须是同一窗口（顶级窗口）或者标签页下，只有相同的窗口（顶级窗口）或者标签页下才能共享同一数据，如果 同一窗口（顶级窗口）或者标签页下 的不同 iframe 的文档源是相同的，那么这两个 iframe 是可以共享 sessionStorage
 
-cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览器的进程有关，如果想要延长可以设置 max-age ,使用的时候必须要设置有效期是多少，一旦设置有效期，就会将cookie存储在一个文件中
-作用域： document origin 和 文档路径 ，可以通过 cookie 的 path 和 domain 属性进行配置，默认是 同 path下 同 domain 共享 cookie
+cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览器的进程有关，如果想要延长可以设置 max-age ,使用的时候必须要设置有效期是多少，一旦设置有效期，就会将 cookie 存储在一个文件中
+作用域： document origin 和 文档路径 ，可以通过 cookie 的 path 和 domain 属性进行配置，默认是 同 path 下 同 domain 共享 cookie
 
 ## 存储事件
 
@@ -1176,7 +1209,7 @@ cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览�
 
 应用程序存储 包括 应用的所有文件。
 
-应用程序清单包括 应用程序存储依赖的所有URL列表，json 文件，通过在主 HTML 页面的 <html> 标签设置 manifest 属性，指向该清单文件就可以了。 添加 manifest 标签，并设置文件路径。
+应用程序清单包括 应用程序存储依赖的所有 URL 列表，json 文件，通过在主 HTML 页面的 <html> 标签设置 manifest 属性，指向该清单文件就可以了。 添加 manifest 标签，并设置文件路径。
 
 manifest json 文件规则
 
@@ -1185,12 +1218,12 @@ CACHE MANIFEST 字符串开始
 相对路径的 URL 都相对清单文件的 URL
 `#` 开头是注释行
 
-一旦一个web应用首次下载下来并缓存，之后的任何加载请求都来自缓存。从缓存中载入一个应用资源的时候，就要求请求的任何资源都在清单中。不会载入不在清单中的资源。
+一旦一个 web 应用首次下载下来并缓存，之后的任何加载请求都来自缓存。从缓存中载入一个应用资源的时候，就要求请求的任何资源都在清单中。不会载入不在清单中的资源。
 
 缓存的更新，在在线状态下，会异步的检查清单文件是否有更新，但是有一点要注意的是，浏览器只会检查清单文件是否更新，不会去检查缓存的文件是否有更新。
 浏览器检查清单文件以及更新缓存的操作是异步的，可能是在从缓存中载入应用之前，也有可能是用时进行。因此，对于简单的 web 应用,在更新 清单文件之后，用户必须载入应用两次才能保证最新的版本生效。
 
-# （网易2019秋招）
+# （网易 2019 秋招）
 
 ## 你怎么理解模块化编程？
 
@@ -1201,49 +1234,73 @@ CACHE MANIFEST 字符串开始
 =》了解他们的运作原理
 
 ## 杭州滴滴一面
-React的setState是同步还是异步
-immutable.js和pureComponent有什么关系
-vue响应式的原理
-webpack现在有100个入口，编了5分钟怎么办
-101状态码是什么意思
-302和304分别表示什么
-async/defer的区别
-css三角形怎么画
-输入url到渲染都发生什么
+
+React 的 setState 是同步还是异步
+immutable.js 和 pureComponent 有什么关系
+vue 响应式的原理
+webpack 现在有 100 个入口，编了 5 分钟怎么办
+101 状态码是什么意思
+302 和 304 分别表示什么
+async/defer 的区别
+css 三角形怎么画
+输入 url 到渲染都发生什么
 最近的新技术都了解哪些
-# 
-同级的两个iframe分别嵌入页面  能在a iframe的操作中通过ID找到 b iframe吗
+
+#
+
+同级的两个 iframe 分别嵌入页面 能在 a iframe 的操作中通过 ID 找到 b iframe 吗
 css 硬件加速
 硬件加速是指在计算机中通过把计算量非常大的工作分配给专门的硬件来处理以减轻中央处理器的工作量之技术。尤其是在图像处理中这个技术经常被使用
 
 ```js
-for(var n =1;n<=10; n++){
-    if(n==5){
-        break;
-    }
-    console.log(n)
+for (var n = 1; n <= 10; n++) {
+  if (n == 5) {
+    break;
+  }
+  console.log(n);
 }
 ```
-break 能够暂停for
+
+break 能够暂停 for
 
 # 山石
 
 ## 闭包
 
-
-
 # ie8 兼容 indexOf
 
 ```js
 // 请在此处添加代码
-if(!Array.indexOf){
-    Array.prototype.indexOf = function(obj){
-        for(let i = 0; i< this.length; i++){
-            if(this[i] === obj) return i;
-        }
-        return -1;
+if (!Array.indexOf) {
+  Array.prototype.indexOf = function (obj) {
+    for (let i = 0; i < this.length; i++) {
+      if (this[i] === obj) return i;
     }
+    return -1;
+  };
 }
 //
-let index = [1,2,3].indexOf(2);
+let index = [1, 2, 3].indexOf(2);
 ```
+
+# 题目
+
+## 0.1+0.2 ? 0.3
+
+答：>
+
+原因： JS 采用 IEEE 754 双精度版本（64 位），0.1 会被表示为
+
+```
+// (0011) 表示循环
+0.1 = 2^-4 * 1.10011(0011)
+```
+
+解决办法：
+原生方法最简单的做法。
+
+```
+parseFloat((0.1+0.2).toFixed(10))
+```
+
+0.1 + 0.2 返回 17 位小数

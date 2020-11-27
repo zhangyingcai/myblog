@@ -1,11 +1,12 @@
 ---
 title: 变量提升
 tags: 变量提升
-categories: JavaScript进阶系列
+categories: JavaScript基础
 abbrlink: 30046
 date: 2019-05-20 10:32:26
 ---
-JavaScript进阶系列 - 变量提升
+
+JavaScript 进阶系列 - 变量提升
 
 每次技术更新都是为了解决历史问题。
 
@@ -13,15 +14,25 @@ JavaScript进阶系列 - 变量提升
 
 # 常识
 
-es6写法：默认情况下应当使用 let 而不是 var ，对需要受到保护的变量使用 const 。
-在声明之后使用变量。
+## 全局变量
+
+在函数外部声明的变量
+
+在浏览器 var 声明的全局变量会被挂载到 window 上。
+
+## 局部变量
+
+在函数内部声明的变量
+
+es6 写法：默认情况下应当使用 let 而不是 var ，对需要受到保护的变量使用 const 。
+在声明之后使用变量。若省略 const 关键字，则标识符被视为变量。
 const 声明必须 赋值，并且声明的基本类型无法更改。
 
-var、let 都有变量提升，不过 let 是放到暂时性死区中。
+var、let、const 都有变量提升，不过 let（const） 是放到暂时性死区中，直到变量被声明为止。
 
 # 重要
 
->var 在全局声明的变量会挂载到 window 上，let/const 不会。
+> var 在浏览器全局声明的变量会挂载到 window 上，let/const 不会。
 
 ```
 var x = 10;
@@ -41,6 +52,7 @@ var obj = {
 }
 obj.f()
 ```
+
 ```
 let x = 10;
 var obj = {
@@ -60,7 +72,7 @@ var obj = {
 obj.f()
 ```
 
->函数提升优于变量提升，函数提升会将整个函数提升到作用域的顶部，变量提升会将变量声明提升到作用域顶部，赋值不会。
+> 函数提升优于变量提升，函数提升会将整个函数提升到作用域的顶部，变量提升会将变量声明提升到作用域顶部，赋值不会。
 
 # 变量的作用域与变量提升
 
@@ -71,16 +83,17 @@ ECMAScript6 之后引入 let const 两个变量声明关键字 和 块级作用�
 
 > 作用域（Scope）即代码执行过程中的变量、函数或者对象的可访问区域，作用域决定了变量或者其他资源的可见性
 
->JavaScript 中的作用域主要分为**全局作用域**（Global Scope）与**局部作用域**（Local Scope）两大类，在 ECMAScript5 中定义在函数内的变量即是属于某个局部作用域，而定义在函数外的变量即是属于全局作用域
+> JavaScript 中的作用域主要分为**全局作用域**（Global Scope）与**局部作用域**（Local Scope）两大类，在 ECMAScript5 中定义在函数内的变量即是属于某个局部作用域，而定义在函数外的变量即是属于全局作用域
 
 在 JavaScript 中，所有绑定的声明在控制流到达他们出现的作用域时被初始化。这里的作用域就是 执行上下文(Execution Context)
 每个执行上下文分为 内存分配（Memory Creation Phase）与 执行（Execution）这两个阶段
 
 ## 变量提升
 
->函数声明和变量声明总是被 JavaScript 解释器隐式地提升 (hoist) 到包含他们的作用域的最顶端。很明显的，语言自身定义和函数形参已经处于作用域顶端, 并被赋值为 undefined。
+> 函数声明和变量声明总是被 JavaScript 解释器隐式地提升 (hoist) 到包含他们的作用域的最顶端。很明显的，语言自身定义和函数形参已经处于作用域顶端, 并被赋值为 undefined。
 
 下面两段代码等价
+
 ```
 function foo() {
   if (false) {
@@ -107,7 +120,7 @@ function foo() {
         var temp = 5;
          console.log(temp);
     }
-    
+
     console.log(temp);
 }
 
@@ -116,7 +129,7 @@ function bar(） {
         let temp = 5;
         console.log(temp);
     }
-    
+
     console.log(temp);
 }
 
@@ -132,23 +145,26 @@ bar(); // 5 和 "ReferenceError: temp is not defined
 
 ## 函数提升
 
-**函数声明**(要理解函数声明和函数表达式)中， 整个函数体都会提升到作用域的顶部。
+**函数声明**(要理解函数声明和函数表达式)中，只有函数声明会被提升到顶部，而函数表达式不会被提升。
 
 ```javascript
 function test() {
-    foo(); // TypeError "foo is not a function"
-    bar(); // "this will run!"
-    var foo = function () { // 函数表达式被赋值给变量'foo'
-        alert("this won't run!");
-    }
-    function bar() { // 名为'bar'的函数声明
-        alert("this will run!");
-    }
+  foo(); // TypeError "foo is not a function"
+  bar(); // "this will run!"
+  var foo = function () {
+    // 函数表达式被赋值给变量'foo'
+    alert("this won't run!");
+  };
+  function bar() {
+    // 名为'bar'的函数声明
+    alert("this will run!");
+  }
 }
 test();
 ```
 
 下面打印什么？ ToDo why?
+
 ```
 foo(); // TypeError
 if (true){
@@ -162,20 +178,20 @@ if (true){
 
 在 JavaScript 中，一个作用域中的名称有以下四种：
 
-* 语言自身定义(Language-defined): 所有的作用域默认都会包含this和arguments。
+- 语言自身定义(Language-defined): 所有的作用域默认都会包含 this 和 arguments。
 
-* 函数形参(Formal parameters): 函数有名字的形参会进入到函数体的作用域中。
+- 函数形参(Formal parameters): 函数有名字的形参会进入到函数体的作用域中。
 
-* 函数声明(Function decalrations): 通过function foo() {}的形式。
+- 函数声明(Function decalrations): 通过 function foo() {}的形式。
 
-* 变量声明(Variable declarations): 通过var foo;的形式。
+- 变量声明(Variable declarations): 通过 var foo;的形式。
 
 需要记住的最最重要的特例就是**名称解析顺序**(name resolution order)。
 记住一个名称进入一个作用域一共有四种方式。
 我上面列出的顺序就是他们解析的顺序。总的来说，如果一个名称已经被定义了，他绝不会被另一个拥有不用属性的同名名称覆盖。这就意味着，函数声明比变量声明具有更高的优先级。但是这却不意味着对这个名称的赋值无效，仅仅是声明的部分会被忽略而已。但是有下面几个例外：
 
-内置的名称 arguments 的行为有些怪异。他似乎是在形参之后，函数声明之前被声明。这就意味着名为 arguments 的形参会比内置的 arguments 具有更高的优先级，即使这个形参是undefined 。这是一个不好的特性，不要使用 arguments 作为形参。
-任何地方试图使用this作为一个标识都会引起语法错误，这是一个好的特性。
+内置的名称 arguments 的行为有些怪异。他似乎是在形参之后，函数声明之前被声明。这就意味着名为 arguments 的形参会比内置的 arguments 具有更高的优先级，即使这个形参是 undefined 。这是一个不好的特性，不要使用 arguments 作为形参。
+任何地方试图使用 this 作为一个标识都会引起语法错误，这是一个好的特性。
 如果有多个同名形参，那位于列表最后的形参拥有最高的优先级，即使它是 undefined 。
 
 # 面试题
@@ -183,11 +199,14 @@ if (true){
 打印结果题目
 
 ## 1
+
 ```
 (function(){var a = b =1;})()
 console.log(a,b)
 ```
+
 ## 2
+
 ```
 var foo = 1;
 function bar() {
@@ -220,7 +239,9 @@ function bar() {
 }
 bar(); // alert(1)
 ```
+
 ## 3
+
 ```
 var a = 1;
 function b() {
@@ -247,3 +268,23 @@ function foo() {
 }
 ```
 
+## 4
+
+```
+/* 函数声明 */
+
+foo(); // "bar"
+
+function foo() {
+  console.log("bar");
+}
+
+
+/* 函数表达式 */
+
+baz(); // 类型错误：baz 不是一个函数
+
+var baz = function() {
+  console.log("bar2");
+};
+```

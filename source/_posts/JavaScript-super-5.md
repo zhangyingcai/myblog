@@ -1,15 +1,14 @@
 ---
-title: 'JavaScript进阶系列- == vs ===, typeof vs instanceof'
-tags: '== vs ===, typeof vs instanceof'
+title: "JavaScript进阶系列- == vs ===, typeof vs instanceof"
+tags: "== vs ===, typeof vs instanceof"
 categories: JavaScript进阶系列
 abbrlink: 64439
 date: 2019-04-30 14:50:38
 ---
 
-JavaScript进阶系列- == vs ===, typeof vs instanceof
+JavaScript 进阶系列- == vs ===, typeof vs instanceof
 
 <!-- more -->
-
 
 # 严格相等 ===
 
@@ -17,9 +16,9 @@ JavaScript进阶系列- == vs ===, typeof vs instanceof
 
 比较步骤：
 
-* 首先判断是不是相同类型，如果不是则是不严格相等
-* 类型相同，值也相同并且不是 number 类型时，两个值全等
-* number 类型时，如果两个值都不是 NaN，值相同时或者两个值分别为 +0 和 -0，两个值全等。
+- 首先判断是不是相同类型，如果不是则是不严格相等
+- 类型相同，值也相同并且不是 number 类型时，两个值全等
+- number 类型时，如果两个值都不是 NaN，值相同时或者两个值分别为 +0 和 -0，两个值全等。
 
 ```
 NaN === NaN // false
@@ -31,35 +30,34 @@ NaN === NaN // false
 
 在类型转换时有些规律
 
-* number 和  string 进行比较时会先转换成 number
-* number 和  boolean 进行比较时会先转换成 number
-* string 和  boolean 进行比较时会先转换成 number
-* 其中一方是 Object 会先转换成原始值，在进行 == 判断。
+- number 和 string 进行比较时会先转换成 number
+- number 和 boolean 进行比较时会先转换成 number
+- string 和 boolean 进行比较时会先转换成 number
+- 其中一方是 Object 会先转换成原始值，在进行 == 判断。
 
 整体的判断流程就是
 
-* 类型是否相同，相同的话判断值是否相同。
-* 其中一方是 null 或者 undefined , null 和 undefined 只和自己相等。
-* 其中一方是 boolean ，将 boolean 转换成 number 。
-* 其中一方是 Object 将根据另外一个的类型转换成对应的类型。
+- 类型是否相同，相同的话判断值是否相同。
+- 其中一方是 null 或者 undefined , null 和 undefined 只和自己相等，NaN 不和自己相等。
+- 其中一方是 boolean ，将 boolean 转换成 number 。
+- 其中一方是 Object 将根据另外一个的类型转换成对应的类型。
 
 [] == ![] 现在应该能正确判断了吧
 
-首先是右边是个表达式，由前两节可知道 [] 转换成 boolean 为 true ,非运算之后就是 false, 此时的左边是 object 右边是 boolean ,执行第四步 为 ''， 将 '' 转换成数字0， false 转换成数字是 0， 所以 0===0。
+首先是右边是个表达式，由前两节可知道 [] 转换成 boolean 为 true ,非运算之后就是 false, 此时的左边是 object 右边是 boolean ,右边执行第三步 为 0， 左边是对象，先调用 valueOf 返回 [], 在调用 toString() 返回 "", "" 转换成数字 0， 所以 0===0。
 
-|比较值列表|
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|\|Undefined|Null|Number|String|Boolean|Object|
-|Undefined|true|true|false|false|false|IsFalsy(B)|
-|Null|true|true|false|false|false|IsFalsy(B)|
-|Number|false|false|A === B|A === ToNumber(B)|A=== ToNumber(B)|A=== ToPrimitive(B)|
-|String|false|false|ToNumber(A) === B|A === B|ToNumber(A) === ToNumber(B)|ToPrimitive(B) == A|
-|Boolean|false|false|ToNumber(A) === B|ToNumber(A) === ToNumber(B)|A === B|ToNumber(A) == ToPrimitive(B)|
-|Object|false|false|ToPrimitive(A) == B|ToPrimitive(A) == B|ToPrimitive(A) == ToNumber(B)|A === B|
+| 比较值列表  |
+| :---------: | :---: | :----: | :-----------------: | :-------------------------: | :---------------------------: | :---------------------------: |
+| \|Undefined | Null  | Number |       String        |           Boolean           |            Object             |
+|  Undefined  | true  |  true  |        false        |            false            |             false             |          IsFalsy(B)           |
+|    Null     | true  |  true  |        false        |            false            |             false             |          IsFalsy(B)           |
+|   Number    | false | false  |       A === B       |      A === ToNumber(B)      |       A=== ToNumber(B)        |      A=== ToPrimitive(B)      |
+|   String    | false | false  |  ToNumber(A) === B  |           A === B           |  ToNumber(A) === ToNumber(B)  |      ToPrimitive(B) == A      |
+|   Boolean   | false | false  |  ToNumber(A) === B  | ToNumber(A) === ToNumber(B) |            A === B            | ToNumber(A) == ToPrimitive(B) |
+|   Object    | false | false  | ToPrimitive(A) == B |     ToPrimitive(A) == B     | ToPrimitive(A) == ToNumber(B) |            A === B            |
 
-* ToNumber(A) 尝试在比较前将参数 A 转换为数字，这与 +A（单目运算符+）的效果相同。
-* ToPrimitive(A)通过尝试调用 A 的A.toString() 和 A.valueOf() 方法，将参数 A 转换为原始值（Primitive）。
-
+- ToNumber(A) 尝试在比较前将参数 A 转换为数字，这与 +A（单目运算符+）的效果相同。
+- ToPrimitive(A)通过尝试调用 A 的 A.toString() 和 A.valueOf() 方法，将参数 A 转换为原始值（Primitive）。
 
 # typeof vs instanceof
 
@@ -115,9 +113,14 @@ typeof Math.sin === 'function';
 
 typeof 对于 null date array object RegExp 返回值都是 object 在做类型比较的时候不是很精确。
 
+### typeof null
+
+原因： 历史原因，在最初版本 null 的内存存储信息是 000 开头，被认为是对象。
+
 ## instanceof 判断对象的类型
 
 语法：
+
 ```
 typeof operand
 operand:对象或者原始值
@@ -127,13 +130,16 @@ object instanceof constructor
 object: 要检测的对象  // 必须是对象呢
 constructor: 某个构造函数
 ```
+
 instanceof 典型的用法是判断是否继承关系，用于测试对象是不是特定构造函数的实例。
 
-实现instanceof 
+实现 instanceof
 要点：
-* obj 是null 或者不是对象的时候返回 false
-* 每个实例对象都有一个私有属性( __proto__ )指向它的原型对象Prototype
-* 该原型对象也有一个自己的原型对象( __proto__ ) ，层层向上直到一个对象的原型对象为 null。根据定义，null 没有原型，并作为这个原型链中的最后一个环节。
+
+- obj 是 null 或者不是对象的时候返回 false
+- 每个实例对象都有一个私有属性( **proto** )指向它的原型对象 Prototype
+- 该原型对象也有一个自己的原型对象( **proto** ) ，层层向上直到一个对象的原型对象为 null。根据定义，null 没有原型，并作为这个原型链中的最后一个环节。
+
 ```
 function myinstanceof(obj, constructor){
   if(obj === null || typeof obj !== 'Object'){ // 去除Null和不是对象的情况
@@ -156,16 +162,18 @@ function myinstanceof(obj, constructor){
 ```
 
 参考：
-[mdn原型链](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+[mdn 原型链](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 [浅谈 instanceof 和 typeof 的实现原理](https://juejin.im/post/5b0b9b9051882515773ae714)
 [mdn instanceof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof)
 
 问题：
+
 ```
  var y = 1, x = y = typeof x;
  x;
 ```
-表达式是从右往左的，x由于变量提升，类型是undefined，所以x=y="undefined"。
+
+表达式是从右往左的，x 由于变量提升，类型是 undefined，所以 x=y="undefined"。
 
 ```
   (function f(f){
@@ -173,7 +181,7 @@ function myinstanceof(obj, constructor){
   })(function(){ return 1; });
 ```
 
-传入的参数为 f 是function(){ return 1; }这个函数。通过f()执行后，得到结果1，所以typeof 1返回"number"。这道题很简单，主要是区分f和f()。
+传入的参数为 f 是 function(){ return 1; }这个函数。通过 f()执行后，得到结果 1，所以 typeof 1 返回"number"。这道题很简单，主要是区分 f 和 f()。
 
 ```
 'use strict'
@@ -221,7 +229,9 @@ false == '0'// true
 typeof null == 'object'
 
 有时候会让你判断下面代码有什么问题
+
 ```
 if (typeof obj === 'object')
 ```
+
 obj 为 null 时为真

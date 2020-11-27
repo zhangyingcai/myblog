@@ -6,7 +6,7 @@ abbrlink: 7415
 date: 2019-04-30 15:06:48
 ---
 
-JavaScript进阶系列 - 闭包
+JavaScript 进阶系列 - 闭包
 
 <!-- more -->
 
@@ -70,6 +70,8 @@ Person();
 ## 闭包
 
 定义：函数 A 有一个函数 B ，函数 B 引用了函数 A 的变量， 函数 B 就叫做闭包。
+mdn 定义：内部函数只可以在外部函数中访问，内部函数形成一个闭包，他可以引用外部函数的参数和变量，但是外部函数却不能使用内部函数的参数和变量。
+当内部函数以某一种方式被任何一个外部函数作用域访问时，一个闭包就产生了。
 
 ### 闭包的使用场景
 
@@ -85,6 +87,7 @@ Person();
 下面是偏函数的示例，柯里化和偏函数稍微有些区别，放到单独一个模块来说。
 
 ```
+// 保存变量
 function makeAdder(x) {
   return function(y) {
     return x + y;
@@ -100,7 +103,6 @@ console.log(add10(2)); // 12
 
 ### 解决循环中创建闭包的问题
 
-
 ```
 for (var i = 1; i <= 5; i++) {
   setTimeout(function timer() {
@@ -109,9 +111,9 @@ for (var i = 1; i <= 5; i++) {
 }
 ```
 
-这是在循环中创建闭包的常见错误，这段代码会输出五个6，原因是给 setTimeout 的函数是闭包，循环六次形成六个闭包，这六个闭包在循环环境中被创建，共享了一个**词法作用域**，这个作用域存在一个变量 i ，异步执行的时候循环早已经结束，此时 i = 6 所以输出的都是 6 。
+这是在循环中创建闭包的常见错误，这段代码会输出五个 6，原因是给 setTimeout 的函数是闭包，循环六次形成六个闭包，这六个闭包在循环环境中被创建，共享了一个**词法作用域**，这个作用域存在一个变量 i ，异步执行的时候循环早已经结束，此时 i = 6 所以输出的都是 6 。
 
-方法1： let ,而且这样不会产生闭包
+方法 1： let ,而且这样不会产生闭包
 
 ```
 for (let i = 1; i <= 5; i++) {
@@ -121,7 +123,7 @@ for (let i = 1; i <= 5; i++) {
 }
 ```
 
-方法2：匿名函数
+方法 2：匿名函数
 
 ```
 for (var i = 1; i <= 5; i++) {
@@ -179,7 +181,7 @@ for (var i = 1; i <= 5; i++) {
 
 addEventListener 是异步事件 所以最后都是 3 ，是因为没有块级作用用域导致，最后循环出来每个事件输出的都是全局 i
 
-解决办法1：
+解决办法 1：
 
 ```
 var node = document.querySelectorAll('ul li')
@@ -192,7 +194,8 @@ for(var i = 0;i<node.length;i++){
 }
 ```
 
-解决办法2：
+解决办法 2：
+
 ```
  <body>
     <ul>
@@ -218,6 +221,7 @@ for(var i = 0;i<node.length;i++){
 闭包在处理速度和内存消耗方面都有比较大的开销。
 
 例如：在创建新的对象或者类时，方法通常应该关联于对象的原型，而不是定义到对象的构造器中。原因是这将导致每次构造器被调用时，方法都会被重新赋值一次（也就是，每个对象的创建）。
+
 ```
 function Persion(name,age){
     this.name = name.toString();
@@ -230,6 +234,7 @@ function Persion(name,age){
     }
 }
 ```
+
 应该这样做
 
 ```
@@ -250,6 +255,7 @@ Persion.prototype.getAge = function(){
 # 面试题
 
 ## 1
+
 闭包和变量提升
 
 ```
@@ -268,41 +274,47 @@ for (var i=0; i<arr.length; i++) {
 }
 // 4个相同的 4 undefined
 ```
+
 如何解决
 
 ES5
 
 ### 1
+
 ```js
-const arr = [10,12,11,21];
-for (var i=0; i<arr.length; i++) {
-  (function(j){
-    setTimeout(function(){
-        console.log(j, arr[j])
-    }, 300)
-  })(i)
+const arr = [10, 12, 11, 21];
+for (var i = 0; i < arr.length; i++) {
+  (function (j) {
+    setTimeout(function () {
+      console.log(j, arr[j]);
+    }, 300);
+  })(i);
 }
 ```
 
 ### 2
 
 ```js
-const arr = [10,12,11,21];
-for (var i=0; i<arr.length; i++) {
-    setTimeout(function(j){
-        console.log(j, arr[j])
-    }, 300, i)
+const arr = [10, 12, 11, 21];
+for (var i = 0; i < arr.length; i++) {
+  setTimeout(
+    function (j) {
+      console.log(j, arr[j]);
+    },
+    300,
+    i
+  );
 }
 ```
 
 ES6
 
 ```js
-const arr = [10,12,11,21];
-for (let i=0; i<arr.length; i++) {
-  setTimeout(function(){
-    console.log(i, arr[i])
-  }, 300)
+const arr = [10, 12, 11, 21];
+for (let i = 0; i < arr.length; i++) {
+  setTimeout(function () {
+    console.log(i, arr[i]);
+  }, 300);
 }
 ```
 
@@ -322,12 +334,17 @@ JavaScript 里，函数即对象，可以把函数赋值给变量，作为参数
 
 方法调用和函数调用有一个重要的区别，即：调用上下文。任何函数作为方法调用实际上都会传入一个隐式的实参。这个实参是一个对象，方法调用的母体就是这个对象。
 
-作为函数调用，其this值不是全局对象，就是 undefined 。
+作为函数调用，其 this 值不是全局对象，就是 undefined 。
 
 构造函数调用，如果函数或者方法调用之前有关键字 new ，它就构成构造函数调用。构造函数调用和普通的函数调用以及方法调用在实参处理、调用上下文和返回值方面都有不同。
 
 ```js
 var o = new Object();
-var o = new Object;
+var o = new Object();
 ```
+
 JavaScript 构造函数调用是允许省略实参列表和圆括号的。
+
+# 命名冲突
+
+当同一个闭包作用域下两个参数或者变量命名冲突，最近的作用域优先级最高。
