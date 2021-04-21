@@ -53,11 +53,11 @@ ECMAScript 提供了两种把非数字的原始值转换成数字的方法，即
 | :-------: | :-----------------------------------------: |
 | undefined |                     NaN                     |
 |   null    |                     +0                      |
-|  boolean  |       true 被转换为 1,false 转换为+0        |
+|  boolean  |       true 被转换为 1,false =>+0        |
 |  number   |                  无需转换                   |
-|  string   | 由字符串解析为数字。例如，"324"被转换为 324 |
+|  string   | 由字符串解析为数字。例如，"324"=> 324, ''=>0, '1a'=>NaN |
 |    []     |                     +0                      |
-|    [5]    |                      5                      |
+|    [5]    |                      5,[1,2,3]=>'1,2,3'                      |
 |    {}     |                     NaN                     |
 |  Symbol   |                    报错                     |
 
@@ -73,7 +73,6 @@ ECMAScript 提供了两种把非数字的原始值转换成数字的方法，即
 |    []     |              true              |
 |    {}     |              true              |
 |  Symbol   |              true              |
-
 # 强制类型转换
 
 ECMAScript 中可用的 3 种强制类型转换如下：
@@ -140,7 +139,30 @@ if (表达式){}
 如果是对象，就通过 toPrimitive 转换对象。
 如果是字符串，就通过 unicode 比较大小。
 
-## 对象
+## 对象转原始类型
+
+对象在转换类型的时候，会调用内置的 [[ToPrimitive]] 函数，对于该函数来说，算法逻辑一般来说如下：
+
+如果已经是原始类型，无需转换。
+如果需要转字符串类型就调用 x.toString()，转换为基础类型的话就返回转换的值。不是字符串类型的话就先调用 valueOf，结果不是基础类型的话再调用 toString
+调用 x.valueOf()，如果转换为基础类型，就返回转换的值
+如果都没有返回原始类型，就会报错
+当然你也可以重写 Symbol.toPrimitive ，该方法在转原始类型时调用优先级最高。
+
+```
+const a = {
+  valueOf() {
+    return 0
+  },
+  toString() {
+    return '1'
+  },
+  [Symbol.toPrimitive]() {
+    return 2
+  }
+}
+1 + a // => 3
+```
 
 只有在 JavaScript **表达式**或**语句**中需要用到数字或字符串时，对象才被隐式转换。
 
@@ -161,8 +183,7 @@ if (表达式){}
 - 否则，抛出一个类型错误。
 
 ```
-3*{toString:function () { return {} }} //TypeError: C
-】annot convert object to primitive value
+3*{toString:function () { return {} }} //TypeError: Cannot convert object to primitive value
 ```
 
 参考
@@ -194,4 +215,11 @@ const a = {
   value:[3,2,1],
   valueOf: function(){this.value.pop()}
 }
+```
+
+```
+null == undefined // true
+null === undefined // false
+null === null // true
+undefined === undefined // true
 ```

@@ -145,6 +145,10 @@ function myinstanceof(obj, constructor){
   if(obj === null || typeof obj !== 'Object'){ // 去除Null和不是对象的情况
     return false
   }
+  // 右边类型判断
+  if(typeof constructor !== 'function){
+    return throw TypeError('right is not callable')
+  }
   // 获得构造函数的原型对象
   const prototype = constructor.prototype
   // 获取对象的原型
@@ -218,6 +222,8 @@ typeof f;//"number"
 ```
 null == undefined // true
 null === undefined // false
+null === null // true
+undefined === undefined // true
 
 0 == '0'// true
 false == '0'// true

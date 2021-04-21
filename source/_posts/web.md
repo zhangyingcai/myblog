@@ -1189,11 +1189,11 @@ localStorage 和 sessionStorage 的区别主要是 存储的有效期 和 作用
 
 localStorage 有效期： 永久存在 除非手动删除
 sessionStorage 有效期：窗口（顶级窗口）或者浏览器标签页关闭之后被删除，现代浏览器实现了 浏览记录恢复的功能 有效期会延长一段时间
-localStorage 作用域： document origin 必须一致，要求 **域名** **协议** **端口**都一致 才被认为是同一 **文档源**
-sessionStorage 作用域： document origin 必须一致，同时要求 \*\*必须是同一窗口（顶级窗口）或者标签页下，只有相同的窗口（顶级窗口）或者标签页下才能共享同一数据，如果 同一窗口（顶级窗口）或者标签页下 的不同 iframe 的文档源是相同的，那么这两个 iframe 是可以共享 sessionStorage
+localStorage 作用域： 文档源必须一致，要求 **域名** **协议** **端口**都一致 才被认为是同一 **文档源**
+sessionStorage 作用域： 文档源 必须一致，同一窗口（顶级窗口）或者标签页下，只有相同的窗口（顶级窗口）或者标签页下才能共享同一数据，如果 同一窗口（顶级窗口）或者标签页下 的不同 iframe 的文档源是相同的，那么这两个 iframe 是可以共享 sessionStorage
 
 cookie 有效期：只能持续在浏览器中的会话期间，和整个浏览器的进程有关，如果想要延长可以设置 max-age ,使用的时候必须要设置有效期是多少，一旦设置有效期，就会将 cookie 存储在一个文件中
-作用域： document origin 和 文档路径 ，可以通过 cookie 的 path 和 domain 属性进行配置，默认是 同 path 下 同 domain 共享 cookie
+作用域： 文档源 和 文档路径 ，可以通过 cookie 的 path 和 domain 属性进行配置，默认是 同 path 下 同 domain 共享 cookie
 
 ## 存储事件
 
