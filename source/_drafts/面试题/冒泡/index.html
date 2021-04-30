@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>冒泡</title>
-</head>
-<body>
-  <script>
-    function myFunc(arr){
-      let i,j,temp;
-      for(i=0; i<arr.length; i++){
-        for(j=0; j<arr.length-i; j++){
-          if(arr[j] > arr[j+1]){
-            temp = arr[j];
-            arr[j] = arr[j+1];
-            arr[j+1] = temp;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>冒泡</title>
+  </head>
+  <body>
+    <script>
+      function myFunc(arr) {
+        let i, j, temp;
+        for (i = 0; i < arr.length - 1; i++) {
+          for (j = 1; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+              temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
           }
         }
+        return arr;
       }
-      return arr;
-    }
-    const arr = [6,5,4,3,1,2];
-    console.log(myFunc(arr))
-  </script>
-</body>
+      const arr = [6, 5, 4, 3, 1, 2];
+      console.log(myFunc(arr));
+    </script>
+  </body>
 </html>
