@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>装饰器-开放封闭原则</title>
+</head>
+<body>
+  <script>
+    // 装饰器实现
+    function after(_afterFn){
+      const _self = this
+      return function(){
+        _afterFn.apply(_self, arguments)
+        return _self
+      }
+    };
+    // 严格实现
+    function after1(_afterFn){
+      const _self = this
+      return function(){
+        const ret = _self.apply(this, arguments)
+        _afterFn.apply(this, arguments)
+        return ret
+      }
+    };
+    Function.prototype.after = after;
+    // 应用
+    window.onload = (window.onload || function(){}).after(function(){
+      console.log('我要插入的内容')
+    })
+  </script>
+</body>
+</html>
