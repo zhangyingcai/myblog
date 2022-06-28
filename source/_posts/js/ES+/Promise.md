@@ -32,6 +32,25 @@ delay(1000).then((time)=>{
 ```
 ## Promise 手写
 
+```js
+class Promise {
+  callbacks = []
+  /*
+  * @params { function } res
+  * @params { function } rej
+  */
+  constructor(fn){
+    fn(this._resolve.bind(this))
+  }
+  then(res){
+    this.callbacks.push(res)
+  }
+  _resolve(val){
+    this.callbacks.forEach((fn)=> typeof fn === "function" && fn(val))
+  }
+}
+```
+
 ## Promise.all
 
 ## Promise.race
